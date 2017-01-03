@@ -6,7 +6,6 @@
 本手册还包含分布式服务器的搭建指南，大家可以在本手册中学习到大数据库、文件分发、分布式附件库（图片库）、分布式缓存、负载均衡、中文分词等技术。
 
 # # 适应平台
-本手册适于但不仅限于 CentOS 6.5+ x64,CentOS 7 x64
+本手册适于但不仅限于 CentOS 6.5 x64、CentOS 7 x64
 
-替换相关库的版本，可以支持CentOS 7
-替换相关库以及 <kbd>yum install</kbd> 为 <kbd>apt-get install</kbd> 可以支持ubuntu
+替换相关库以及 `yum install` 为 `apt-get install` 可以支持ubuntu
