@@ -3,7 +3,7 @@
     "plugins": ["disqus", "editlink", "comment", "page-toc", "splitter", "image-captions",  "sitemap-general", "chart", "mermaid", "ace", "sectionx", "github-buttons", "include-codeblock", "anchor-navigation"],
     "pluginsConfig": {
         "disqus": {
-            "shortName": "l-manual"
+            "shortName": "web-server-manual"
         },
         "github": {
             "url": "https://github.com/fly-studio/web-server-manual/"
