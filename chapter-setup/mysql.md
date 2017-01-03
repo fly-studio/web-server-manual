@@ -28,9 +28,9 @@ $ yum install --enablerepo=remi mysql-server
 
 PHP 服务器端需安装
 ```
-$ yum --enablerepo=remi-php70,remi install php-mysqli
+$ yum --enablerepo=remi-php71,remi install php-mysqli
 ```
-> 配合php的版本，需启用remi-php55或php70
+> 配合php的版本，需启用remi-php55或php71
 
 ## ## 从mysql官网安装(最新版)
 > 需要 glibc 2.17以上，而centos 6很难编译，建议在centos 7下安装， 笔者在CentOS 6.5下安装glibc不成功，最终还是用的remi安装的 MySQL 5.5
@@ -81,7 +81,7 @@ $ yum install MariaDB-server MariaDB-client
 ```
 PHP服务器上安装
 ```
-$ yum --enablerepo=remi-php70,remi install MariaDB-devel php-mysqlnd
+$ yum --enablerepo=remi-php71,remi install MariaDB-devel php-mysqlnd
 ```
 如果需要TukuDB
 >TukuDB：1、高压缩比 2、高insert性能 3、增删字段秒级。
