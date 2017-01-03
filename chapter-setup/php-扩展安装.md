@@ -19,11 +19,11 @@
 > 需要编译的php扩展，需安装phpize来编译
 
 ```
-$ yum --enablerepo=remi-php70,remi install php-pear php-devel
+$ yum --enablerepo=remi-php71,remi install php-pear php-devel
 ```
 # # 加速类扩展
 
-<div class="alert alert-info"> PHP 5.6 或以上，开启OpCache即可，详见[上一章](http://www.load-page.com/base/manual/25#h2--opcache-php-5-5--5-1 "上一章")</div>
+> PHP 5.6 或以上，开启OpCache即可，详见[PHP 安装与配置](chapter-setup/php-安装与配置.md "上一章")
 
 ## ## APC
 > xCache 与 APC 任选其一
@@ -35,10 +35,15 @@ $ echo "extension=apc.so" > /etc/php.d/apc.ini
 ```
 安装中的选项
 > Enable internal debugging in APC [no] : <kbd>Enter</kbd>
+>
 > Enable per request file info about files used from the APC cache [no] : <kbd>Enter</kbd>
+>
 > Enable spin locks (EXPERIMENTAL) [no] : <kbd>yes</kbd> <kbd>Enter</kbd>
+>
 > Enable memory protection (EXPERIMENTAL) [no] : <kbd>yes</kbd> <kbd>Enter</kbd>
+>
 > Enable pthread mutexes (default) [no] : <kbd>yes</kbd> <kbd>Enter</kbd>
+>
 > Enable pthread read/write locks (EXPERIMENTAL) [yes] : <kbd>yes</kbd> <kbd>Enter</kbd>
 
 ### 安装成功的提示(其它pecl安装的雷同)
@@ -133,7 +138,7 @@ xcache.var_maxttl = 604800 ; 程序无法指定超过这个最大值的
 
 # # 缓存类扩展
 ## ## Memcache
-> 关于Memcache的端口开放请参考「[服务器『必要组建』和『开放端口』](http://www.load-page.com/base/manual/23 "服务器『必要组建』和『开放端口』")」
+> 关于Memcache的端口开放请参考「[服务器『必要组建』和『开放端口』](chapter-started/服务器「必要组建」和「开放端口」.md "服务器『必要组建』和『开放端口』")」
 
 ### 安装
 缓存服务器上安装
@@ -178,7 +183,7 @@ PHP服务器
 $ yum remove php-pecl-memcache php-pecl-memcached
 ```
 ## ## Redis
-> 关于Redis的端口开放请参考「[服务器『必要组建』和『开放端口』](http://www.load-page.com/base/manual/23 "服务器『必要组建』和『开放端口』")」
+> 关于Redis的端口开放请参考「[服务器『必要组建』和『开放端口』](chapter-started/服务器「必要组建」和「开放端口」.md "服务器『必要组建』和『开放端口』")」
 
 ### 工作目录
 ```
