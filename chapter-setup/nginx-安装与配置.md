@@ -26,24 +26,30 @@ $ yum install nginx
 ### ### openSSL 1.1.0
 如果条件不允许，请参照下文openSSL 1.0.2
 
-
-
-
-
-### ### 安装openSSL 1.0.2()/
-- 1.0.2需要打ChaCha20/Poly1305的补丁，对手机支持友好  [cloudflare补丁](https://github.com/travislee8964/sslconfig/tree/master/patches "cloudflare补丁")
-
-- 由于默认 gcc 版本为 4.4.7，在添加 Chacha 20 补丁之后，编译会报错：[#11](https://github.com/cloudflare/sslconfig/issues/11 "#11")，需要将 gcc 升级到 4.8 以上版本：
-- 1.1.0c [下载地址](https://www.openssl.org/source/openssl-1.1.0-latest.tar.gz "下载地址")，不用打补丁，其它步骤类似
-
+1.1.0c [下载地址](https://www.openssl.org/source/openssl-1.1.0-latest.tar.gz "下载地址")
 ```
-$ wget https://www.openssl.org/source/openssl-1.0.2-latest.tar.gz
-# 或者
 $ wget https://www.openssl.org/source/openssl-1.1.0-latest.tar.gz
 $ tar -zxf openssl-*-latest.tar.gz
 $ cd openssl-*
+# 安装
+$ ./config
+$ make
+$ make test
+$ make install
+$ mv /usr/bin/openssl /usr/bin/openssl-v1.0.1
+$ ln -s /usr/local/lib64/libssl.so.1.1 /usr/lib64/libssl.so.1.1
+$ ln -s /usr/local/lib64/libcrypto.so.1.1 /usr/lib64/libcrypto.so.1.1
+$ ln -s /usr/local/bin/openssl /usr/bin/openssl
+```
+### ### 安装openSSL 1.0.2()/
+- 1.0.2需要打ChaCha20/Poly1305的补丁，对手机支持友好  [cloudflare补丁](https://github.com/travislee8964/sslconfig/tree/master/patches "cloudflare补丁")
+- 由于默认 gcc 版本为 4.4.7，在添加 Chacha 20 补丁之后，编译会报错：[#11](https://github.com/cloudflare/sslconfig/issues/11 "#11")，需要将 gcc 升级到 4.8 以上版本：
+
+```
+$ wget https://www.openssl.org/source/openssl-1.0.2-latest.tar.gz
+$ tar -zxf openssl-*-latest.tar.gz
+$ cd openssl-*
 # openssl-1.0.2j 打补丁
-# (1.1.0c 是不用打补丁的，跳过下面2行)
 $ wget https://raw.githubusercontent.com/travislee8964/sslconfig/master/patches/openssl__chacha20_poly1305_draft_and_rfc_ossl102i.patch
 $ patch -p1 < ./openssl__chacha20_poly1305_draft_and_rfc_ossl102i.patch 
 # 安装
@@ -56,10 +62,6 @@ $ ln -s /usr/local/lib64/libssl.so.1.1 /usr/lib64/libssl.so.1.1
 $ ln -s /usr/local/lib64/libcrypto.so.1.1 /usr/lib64/libcrypto.so.1.1
 $ ln -s /usr/local/bin/openssl /usr/bin/openssl
 ```
-
-
-
-
 
 ### ### brotli插件
 > accept-encoding:gzip, deflate, sdch, br
