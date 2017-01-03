@@ -24,7 +24,7 @@
         * [缓存类扩展](chapter-setup/chapter-php-ext/缓存类扩展.md)
         * [媒体扩展](chapter-setup/chapter-php-ext/媒体扩展.md)
         * [运行、调试类扩展](chapter-setup/chapter-php-ext/运行-调试类扩展.md)
-    * [MySQL](chapter-setup/mysql.md)
+    * [MySQL/MariaDB](chapter-setup/mysql.md)
         * [安装](chapter-setup/chapter-mysql/安装.md)
         * [操作](chapter-setup/chapter-mysql/操作.md)
         * [配置](chapter-setup/chapter-mysql/配置.md)
