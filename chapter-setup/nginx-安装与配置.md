@@ -17,12 +17,3 @@ server {
         return       301 http://www.domain.com$request_uri;
 }
 ```
-## ## 启用br压缩算法
-http段 添加
-```
-brotli               on;
-brotli_comp_level    6;
-brotli_buffers       16 8k;
-brotli_min_length    20;
-brotli_types         *;
-```
