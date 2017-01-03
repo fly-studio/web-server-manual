@@ -1,0 +1,24 @@
+{
+    "title" : "Web Server 学习手册",
+    "plugins": ["disqus", "editlink", "comment", "page-toc", "splitter", "image-captions",  "sitemap-general", "chart", "mermaid", "ace", "sectionx", "github-buttons", "include-codeblock", "anchor-navigation"],
+    "pluginsConfig": {
+        "disqus": {
+            "shortName": "l-manual"
+        },
+        "github": {
+            "url": "https://github.com/fly-studio/web-server-manual/"
+        },
+        "editlink": {
+            "base": "https://github.com/fly-studio/web-server-manual/blob/master/",
+            "label": "编辑本页"
+        },
+        "sitemap-general": {
+            "prefix": "https://www.load-page.com/manuals/web-server/"
+        }
+    },
+    "styles": {
+        "website": "styles/website.css",
+        "ebook": "styles/ebook.css",
+        "epub": "styles/epub.css"
+    }
+}
