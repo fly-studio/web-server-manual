@@ -36,7 +36,7 @@ $ yum --enablerepo=remi-php71,remi install php-mysqli
 > 需要 glibc 2.17以上，而centos 6很难编译，建议在centos 7下安装， 笔者在CentOS 6.5下安装glibc不成功，最终还是用的remi安装的 MySQL 5.5
 > 有兴趣折腾的：查看 [glibc的安装教程](/base/manual/23#h2--gcc-0-1 "glibc的安装教程")
 
- repo库
+repo库
 ```
 # CentOS 7
 $ wget http://repo.mysql.com/mysql57-community-release-el7-8.noarch.rpm
