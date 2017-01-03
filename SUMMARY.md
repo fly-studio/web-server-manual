@@ -19,5 +19,3 @@
     * [Elasticsearch](chapter-search/elasticsearch.md)
     * [Logstash](chapter-search/logstash.md)
 
-
-
