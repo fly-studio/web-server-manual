@@ -1,17 +1,6 @@
 > 安装之前请确认安装了必须的 [Repo库](chapter-started/repo-仓库.md "Repo库")
 
-# # 安装nginX
-
-
-
-# # 配置
-## 1. 创建服务(开机运行)
-```
-$ chkconfig --level 2345 nginx on
-# 7.0
-$ systemctl enable nginx.service
-```
-## 2. 建立工作文件夹
+#  建立工作文件夹
 ```
 ＄ mkdir -m 777 -p /www/website
 ＄ chown -R nobody:nobody /www/website
@@ -368,36 +357,7 @@ $ setenforce 1
 ```
 
 
-# # 操作
-## ## 启动
-```
-$ service nginx start
-# 7.0
-$ systemctl start nginx.service
-```
-## ## 重启
-```
-$ service nginx restart
-# 7.0
-$ systemctl restart nginx.service
-```
-## ## 停止
-```
-$ service nginx stop
-# 7.0
-$ systemctl stop nginx.service
-```
-## ## 重新加载配置
-```
-$ service nginx reload
-# 7.0
-$ systemctl reload nginx.service
-```
-## ## 卸载
-```
-$ yum remove nginx
-$ rm -rf /etc/nginx/
-```
+
 # # 日志
 ## ## 访问日志
 ```
