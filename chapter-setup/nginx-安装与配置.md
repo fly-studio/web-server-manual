@@ -23,7 +23,14 @@ $ yum install nginx
 ## ## 编译安装方式
 > https://imququ.com/post/my-nginx-conf.html
 
-### ### 升级openSSL 1.0.2/1.1.0
+### ### openSSL 1.1.0
+如果条件不允许，请参照下文openSSL 1.0.2
+
+
+
+
+
+### ### 安装openSSL 1.0.2()/
 - 1.0.2需要打ChaCha20/Poly1305的补丁，对手机支持友好  [cloudflare补丁](https://github.com/travislee8964/sslconfig/tree/master/patches "cloudflare补丁")
 
 - 由于默认 gcc 版本为 4.4.7，在添加 Chacha 20 补丁之后，编译会报错：[#11](https://github.com/cloudflare/sslconfig/issues/11 "#11")，需要将 gcc 升级到 4.8 以上版本：
@@ -49,6 +56,9 @@ $ ln -s /usr/local/lib64/libssl.so.1.1 /usr/lib64/libssl.so.1.1
 $ ln -s /usr/local/lib64/libcrypto.so.1.1 /usr/lib64/libcrypto.so.1.1
 $ ln -s /usr/local/bin/openssl /usr/bin/openssl
 ```
+
+
+
 
 
 ### ### brotli插件
