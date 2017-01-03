@@ -60,7 +60,7 @@ $ rm -rf /etc/php.d/*.ini
 ```
 # # 安装PHP
 ```
-$ yum --enablerepo=remi-php70,remi install php php-cgi php-fastcgi pcre pcre-devel php-fpm gd php-gd libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel zlib zlib-devel  php-pecl-zip glibc glibc-devel glib2 glib2-devel bzip2 bzip2-devel curl curl-devel openssl openssl-devel openldap openldap-devel nss_ldap openldap-clients openldap-servers libmcrypt libmcrypt-devel mcrypt mhash php-mcrypt libidn libidn-devel php-mbstring libxml2 libxml2-devel php-xmlrpc php-xml php-bcmath php-gmp php-ssh2 php-pecl-libsodium  php-pthreads php-pecl-swoole 
+$ yum --enablerepo=remi-php71,remi install php php-cgi php-fastcgi pcre pcre-devel php-fpm gd php-gd libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel zlib zlib-devel  php-pecl-zip glibc glibc-devel glib2 glib2-devel bzip2 bzip2-devel curl curl-devel openssl openssl-devel openldap openldap-devel nss_ldap openldap-clients openldap-servers libmcrypt libmcrypt-devel mcrypt mhash php-mcrypt libidn libidn-devel php-mbstring libxml2 libxml2-devel php-xmlrpc php-xml php-bcmath php-gmp php-ssh2 php-pecl-libsodium  php-pthreads php-pecl-swoole 
 ```
 - **php-cgi**：
 apache执行php的中间件
@@ -179,7 +179,7 @@ date.timezone = UTC
 ```
 ## ## 开启Opcache（PHP 5.5以上）
 ```
-yum --enablerepo=remi-php70,remi install php-opcache
+yum --enablerepo=remi-php71,remi install php-opcache
 ```
 配置文件在：/etc/php.d/*-opcache.ini
 ```
