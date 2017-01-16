@@ -46,7 +46,7 @@ cluster.name: 你应用的名字，集群保持一致
 path.data: /www/database/elasticsearch
 # 强制所有内存锁定，不要搞什么swap的来影响性能 
 # 设置为true来锁住内存。因为当jvm开始swapping时es的效率会降低，所以要保证它不swap，可以把ES_MIN_MEM和ES_MAX_MEM两个环境变量设置成同一个值，并且保证机器有足够的内存分配给es。同时也要允许elasticsearch的进程可以锁住内存，linux下可以通过`ulimit -l unlimited`命令。 
-bootstrap.mlockall: true
+bootstrap.memory_lock: true
 
 # 这个参数是用来同时设置bind_host和publish_host上面两个参数。
 # (默认为_local_) _local_ 本地访问  _site_ 局域网访问 _global_都可以访问
