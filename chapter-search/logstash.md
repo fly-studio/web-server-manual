@@ -5,11 +5,17 @@ $ yum install logstash
 ```
 # # 配置
 ## ## JAVA的环境变量
+```
+$ vim /etc/profile
+```
 ```bash
 JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk
 JRE_HOME=/usr/lib/jvm/jre-1.8.0-openjdk-1.8.0.111-1.b15.el7_2.x86_64
 PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
 export JAVA_HOME JRE_HOME PATH
+```
+```
+$ source /etc/profile
 ```
 ## ## 数据文件夹
 ```bash
