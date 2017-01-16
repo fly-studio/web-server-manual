@@ -1,16 +1,23 @@
 # # 安装
 如果你有安装过 elasticsearch.repo，那么直接使用yum安装即可
-```
+```bash
 $ yum install logstash
 ```
 # # 配置
-## ## 数据文件夹
+## ## JAVA的环境变量
+```bash
+JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk
+JRE_HOME=/usr/lib/jvm/jre-1.8.0-openjdk-1.8.0.111-1.b15.el7_2.x86_64
+PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
+export JAVA_HOME JRE_HOME PATH
 ```
+## ## 数据文件夹
+```bash
 $ mkdir /www/database/logstash/
 $ chown -R logstash:logstash /www/database/logstash/
 ```
 ## ## 主配置文件
-```
+```bash
 $ vim /etc/logstash/logstash.yml
 ```
 ```
@@ -18,7 +25,7 @@ path.data: /www/database/logstash/
 ```
 ## ## 运行配置
 Logstash的运行依赖运行配置文件，所有的日志、通道都是通过此文件配置
-```
+```bash
 $ vim /etc/logstash/conf.d/l+.conf
 ```
 
