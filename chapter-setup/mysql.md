@@ -12,13 +12,3 @@
 > 关于remi的解释，请查看「PHP 安装与配置 - 安装」
 
 
-# # 目录
-## ## 设置运行目录
-```
-$ mkdir -m 777 -p /www/database/mysql/
-```
-## ## 工作目录
-需要等待安装之后才能设置
-```
-$ chown -R mysql:mysql /www/database/mysql
-```
