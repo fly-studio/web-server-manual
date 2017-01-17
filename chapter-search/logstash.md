@@ -64,9 +64,6 @@ $ mkdir /etc/logstash/patterns.d/
 ```
 默认的patterns类型：
 https://github.com/logstash-plugins/logstash-patterns-core/blob/master/patterns/grok-patterns
-```
-
-```
 
 
 # # 启动
@@ -88,3 +85,19 @@ $ vim /usr/lib/systemd/system/logstash.service
 $ vim /etc/init.d/logstash
 ```
 > 参照 https://gist.githubusercontent.com/piavlo/4538157/raw/0f4c05bfa7c5fece96065b60a19c063d99058cb2/etc%2520init.d%2520logstash
+
+
+# # 问题
+## ## 启动非常缓慢
+
+这是因为`/dev/random`导致的问题
+> https://github.com/elastic/logstash/issues/6117
+
+```
+$ vim $JAVA_HOME/lib/security/java.security
+```
+修改下面的内容
+```
+securerandom.source=file:/dev/urandom
+```
+
