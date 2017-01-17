@@ -9,7 +9,7 @@ $ vim /etc/nginx/nginx.conf
     log_format logstash_json '{ "@timestamp": "$time_iso8601", '
                          '"host":"$server_addr",'
                          '"http_host":"$host",'
-                         '"clientip": "$remote_addr",'
+                         '"client": "$remote_addr",'
                          '"url":"$uri",'
                          '"referer":"$http_referer",'
                          '"status": "$status", '

@@ -13,7 +13,7 @@ $ mkdir /etc/logstash/patterns.d/
 $ vim /etc/logstash/patterns.d/apache22-error
 ```
 ```
-APACHE22_ERROR_LOG \[(?<timestamp>%{DAY:day} %{MONTH:month} %{MONTHDAY} %{TIME} %{YEAR})\] \[%{LOGLEVEL:loglevel}\]( \[clientip %{IP:clientip}:.*\])? %{GREEDYDATA:errormsg}
+APACHE22_ERROR_LOG \[(?<timestamp>%{DAY:day} %{MONTH:month} %{MONTHDAY} %{TIME} %{YEAR})\] \[%{LOGLEVEL:loglevel}\]( \[client %{IP:clientip}:.*\])? %{GREEDYDATA:errormsg}
 ```
 > 可匹配：
 
@@ -25,7 +25,7 @@ APACHE22_ERROR_LOG \[(?<timestamp>%{DAY:day} %{MONTH:month} %{MONTHDAY} %{TIME} 
 $ vim /etc/logstash/patterns.d/apache24-error
 ```
 ```
-APACHE24_ERROR_LOG \[(?<timestamp>%{DAY:day} %{MONTH:month} %{MONTHDAY} %{TIME} %{YEAR})\] \[.*:%{LOGLEVEL:loglevel}\] \[pid %{NUMBER:pid}:tid %{NUMBER:tid}\]( \[clientip %{IP:clientip}:.*\])? %{GREEDYDATA:errormsg}
+APACHE24_ERROR_LOG \[(?<timestamp>%{DAY:day} %{MONTH:month} %{MONTHDAY} %{TIME} %{YEAR})\] \[.*:%{LOGLEVEL:loglevel}\] \[pid %{NUMBER:pid}:tid %{NUMBER:tid}\]( \[client %{IP:clientip}:.*\])? %{GREEDYDATA:errormsg}
 ```
 
 > 可匹配：
