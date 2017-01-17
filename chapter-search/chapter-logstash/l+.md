@@ -22,15 +22,7 @@ $ vim /www/website/base/config/elasticsearch.php
 
 
 
-## ## Filebeat
 
-```
-- input_type: log
-  paths:
-    - /www/website/base/storage/log/logstash-*.log
-  document_type: base
-
-```
 
 ## ## Logstash
 
@@ -51,7 +43,7 @@ input {
   }
 }
 ```
-# 日志输出到 redis
+# # 日志输出到 redis
 ```
 $ vim /www/website/base/config/elasticsearch.php
 ```
@@ -64,11 +56,6 @@ $ vim /www/website/base/config/elasticsearch.php
 - **KEY** 的名称是`logstash-INDEX`
 - **INDEX** 是 `config/elasticsearch.php`的`connections - default - index`
 - 也就是说 `KEY = 'logstash-'.config('elasticsearch.connections.default.index')`
-
-## ## Filebeat
-
-filebeat 不支持redis的日志收集
-
 
 ## ## LogStash
 ```
@@ -86,7 +73,7 @@ input {
 }
 ```
 
-## 日志输出到elasticsearch
+# #日志输出到elasticsearch
 ```
 $ vim /www/website/base/config/elasticsearch.php
 ```
