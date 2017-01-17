@@ -119,6 +119,7 @@ filter {
     }
   } else if [type] == "apache-access" {
     grok {
+      patterns_dir => ["/etc/logstash/patterns.d/"]
       match => [
         "message", "%{COMBINEDAPACHELOG}",
         "message", "%{APACHE22_LOG_404}",

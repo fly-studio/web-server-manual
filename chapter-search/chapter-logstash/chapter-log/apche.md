@@ -51,6 +51,7 @@ filter {
   if [path] =~ "access" {
     mutate { replace => { "type" => "apache_access" } }
     grok {
+      patterns_dir => ["/etc/logstash/patterns.d/"]
       match => [
         "message", "%{COMBINEDAPACHELOG}",
         "message", "%{APACHE22_LOG_404}",
