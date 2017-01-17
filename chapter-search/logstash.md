@@ -36,7 +36,6 @@ Logstash的运行依赖运行配置文件，所有的日志、通道配置文件
 ```bash
 $ vim /etc/logstash/conf.d/l+.conf
 ```
-
 ```
 input {
   file {
@@ -58,6 +57,12 @@ output {
 #  stdout { codec => rubydebug }
 }
 ```
+
+# 添加patterns文件夹
+```
+$ mkdir /etc/logstash/patterns.d/
+```
+
 
 # # 启动
 ## ## 创建服务

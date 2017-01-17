@@ -1,5 +1,20 @@
 # 默认日志
 
+## ## 默认配置
+适合没有修改过的nginx配置
+```bash
+$ vim /etc/logstash/patterns.d/nginx-access
+```
+```
+MAINNGINXLOG %{COMBINEDAPACHELOG} %{QS:forwarded_for}
+```
+> 适配格式：
+
+> 59.172.199.68 - - [17/Jan/2017:19:46:57 +0800]  "GET /img/icon-5.png HTTP/1.1" 200 4456 "https://xxx.com/xxxx" "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0_2 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Mobile/14A456 MicroMessenger/6.5.3 NetType/WIFI Language/zh_CN" "-"
+
+
+## ## 
+
 # JSON 日志
 ```bash
 $ vim /etc/nginx/nginx.conf

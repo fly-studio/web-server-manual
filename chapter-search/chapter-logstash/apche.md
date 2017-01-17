@@ -5,9 +5,7 @@ Apache日志分为 access/error 日志两种
 但是Logstash没有error的解析日志，所以添加一个错误日志的解析正则
 
 ## ## 错误日志解析正则表达式
-```
-$ mkdir /etc/logstash/patterns.d/
-```
+
 ### Apache 2.2
 ```bash
 $ vim /etc/logstash/patterns.d/apache22-error

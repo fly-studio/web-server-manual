@@ -54,11 +54,15 @@ $ vim /etc/filebeat/filebeat.yml
     - /var/log/cron
   document_type: cron
   
-output:
+output.logstash:
+  hosts: ["elastic's ip:9601"]
 
 ```
 
 # Logstash 接收端
+```
+$ vim /etc/logstash/conf.d/beat.conf
+```
 ```
 input {
   beats {
