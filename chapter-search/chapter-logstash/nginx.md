@@ -4,7 +4,7 @@
 ```bash
 $ vim /etc/nginx/nginx.conf
 ```
-在 http 段 的 `log_format main` 上面添加
+在 http 中添加
 ```
     log_format logstash_json '{ "@timestamp": "$time_iso8601", '
                          '"host":"$server_addr",'
