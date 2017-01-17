@@ -2,16 +2,36 @@
 
 ## ## 默认配置
 适合没有修改过的nginx配置
+```
+log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                     '$status $body_bytes_sent "$http_referer" '
+                     '"$http_user_agent" "$http_x_forwarded_for" ';
+```
+新建 patterns
 ```bash
 $ vim /etc/logstash/patterns.d/nginx-access
 ```
 ```
-MAINNGINXLOG %{COMBINEDAPACHELOG} %{QS:forwarded_for}
+MAINNGINXLOG %{COMBINEDAPACHELOG} "%{QS:forwarded_for}"
 ```
 > 适配格式：
 
 > 59.172.199.68 - - [17/Jan/2017:19:46:57 +0800]  "GET /img/icon-5.png HTTP/1.1" 200 4456 "https://xxx.com/xxxx" "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0_2 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Mobile/14A456 MicroMessenger/6.5.3 NetType/WIFI Language/zh_CN" "-"
 
+## ## 自定义日志格式
+```
+log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                     '$status $body_bytes_sent "$http_referer" '
+                     '"$http_user_agent" "$http_x_forwarded_for"'
+                     '"$gzip_ratio" $request_time $bytes_sent $request_length';
+```
+新建 patterns
+```bash
+$ vim /etc/logstash/patterns.d/nginx-diy-access
+```
+```
+DIYNGINXLOG %{COMBINEDAPACHELOG} "%{QS:forwarded_for}" "%{QS:gzip_ratio}" %{NUMBER:request_time:float} %{NUMBER:bytes_sent} %{NUMBER:request_length}
+```
 
 ## ## 
 
