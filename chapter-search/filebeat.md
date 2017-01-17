@@ -72,9 +72,10 @@ input {
 filter {
   if [type] == "nginx-access" {
     grok {
+      patterns_dir => [ "/etc/logstash/patterns.d/" ]
       match => [
-        "message" , "%{COMBINEDAPACHELOG} "%{GREEDYDATA:user_agent}"",
-        "message" , "%{COMBINEDAPACHELOG} "%{GREEDYDATA:user_agent}" "%{GREEDYDATA:gzip_ratio}" %{NUMBER:request_time:float} %{NUMBER:bytes_sent} %{NUMBER:request_length}",
+        "message" , "%{MAINNGINXLOG}",
+        "message" , "%{DIYNGINXLOG}",
         "message" , "%{COMBINEDAPACHELOG}+%{GREEDYDATA:extra_fields}",
       ]
     }
