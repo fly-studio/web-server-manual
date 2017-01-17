@@ -1,3 +1,7 @@
+# 配置
+```
+$ vim /etc/filebeat/filebeat.yaml
+```
 ```
 - input_type: log
   paths:
@@ -50,4 +54,86 @@
     - /var/log/cron
   document_type: cron
 
+```
+
+# Logstash 接收端
+```
+input {
+  beats {
+    port => 9601
+  }
+}
+filter {
+  if [type] == "nginx-access" {
+    grok {
+      match => [
+        "message" , "%{COMBINEDAPACHELOG} "%{GREEDYDATA:user_agent}"",
+        "message" , "%{COMBINEDAPACHELOG} "%{GREEDYDATA:user_agent}" "%{GREEDYDATA:gzip_ratio}" %{NUMBER:request_time:float} %{NUMBER:bytes_sent} %{NUMBER:request_length}",
+        "message" , "%{COMBINEDAPACHELOG}+%{GREEDYDATA:extra_fields}",
+      ]
+    }
+    mutate {
+      remove_field => [ "message" ]
+      add_field => ["timestamp_submitted", "%{@timestamp}"]
+    }
+    date {
+      match => [ "timestamp" , "dd/MMM/yyyy:HH:mm:ss Z" ]
+      remove_field => [ "timestamp" ]
+      target => '@timestamp'
+    }
+    geoip {
+      source => "clientip"
+    }
+  } else if [type] == "nginx-error" {
+
+  } else if [type] == "apache-access" {
+    grok {
+      match => { "message" => "%{COMBINEDAPACHELOG}" }
+    }
+    mutate {
+      remove_field => [ "message" ]
+      add_field => ["timestamp_submitted", "%{@timestamp}"]
+    }
+    date {
+      match => [ "timestamp" , "dd/MMM/yyyy:HH:mm:ss Z" ]
+      remove_field => [ "timestamp" ]
+      target => '@timestamp'
+    }
+    geoip {
+      source => "clientip"
+    }
+  } else if [type] == "apache-error" {
+    grok {
+      patterns_dir => [ "/etc/logstash/patterns.d/" ]
+      match => [
+        "message", "%{APACHE24_ERROR_LOG}",
+        "message", "%{APACHE22_ERROR_LOG}",
+        "message", ""
+      ]
+    }
+    mutate {
+      remove_field => [ "message" ]
+      add_field =>  ["timestamp_submitted", "%{@timestamp}"]
+    }
+    if !("_grokparsefailure" in [tags]) {
+      date {
+        # Try to pull the timestamp from the 'timestamp' field (parsed above with grok). The apache time format looks like: "18/Aug/2011:05:44:34 -0700"
+        #                        Sat Feb 08 06:31:09.123456 2014
+        match => [ "timestamp", "EEE MMM dd HH:mm:ss.SSSSSS yyyy" ]
+        target => '@timestamp'
+        remove_field => [ "timestamp" ]
+      }
+    }
+  }
+}
+output {
+  elasticsearch {
+    hosts => ["10.13.115.90:9200"]
+    index => "filebeat-%{+YYYY.MM.dd}"
+    workers => 1
+    flush_size => 10
+    idle_flush_time => 10
+    template_overwrite => true
+  }
+}
 ```
