@@ -21,9 +21,6 @@ $ vim /www/website/base/config/elasticsearch.php
 （不影响原日志的写入`storage/logs/laravel-YYYY-MM-DD.log`）。
 
 
-
-
-
 ## ## Logstash
 
 Logstash需要如下配置
