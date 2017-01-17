@@ -1,19 +1,3 @@
-# # Filebeat 配置
-
-```
-- input_type: log
-  paths:
-    - /var/log/httpd/access.log
-  document_type: apache-access
-- input_type: log
-  paths:
-    - /var/log/httpd/error.log
-  document_type: apache-error
-
-```
-
-## ## Logstash接收端配置
-
 
 # # Logstash
 
