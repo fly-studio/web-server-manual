@@ -52,6 +52,7 @@ filter {
     grok {
       match => [
         "message", "%{COMBINEDAPACHELOG}",
+        "message", "%{APACHE22LOG404}",
         "message", "%{GREEDYDATA:access_message}"
       ]
     }
