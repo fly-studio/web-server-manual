@@ -7,13 +7,29 @@ Apache日志分为 access/error 日志两种
 ## ## 错误日志解析正则表达式
 ```
 $ mkdir /etc/logstash/patterns.d/
-$ vim /etc/logstash/patterns.d/apache-error
+```
+### Apache 2.2
+```bash
+$ vim /etc/logstash/patterns.d/apache2-error
 ```
 ```
-APACHE_ERROR_LOG \[(?<timestamp>%{DAY:day} %{MONTH:month} %{MONTHDAY} %{TIME} %{YEAR})\] \[.*:%{LOGLEVEL:loglevel}\] \[pid %{NUMBER:pid}:tid %{NUMBER:tid}\]( \[client %{IP:clientip}:.*\])? %{GREEDYDATA:errormsg}
+APACHE22_ERROR_LOG \[(?<timestamp>%{DAY:day} %{MONTH:month} %{MONTHDAY} %{TIME} %{YEAR})\] \[%{LOGLEVEL:loglevel}\]( \[client %{IP:clientip}:.*\])? %{GREEDYDATA:errormsg}
+```
+> 可匹配：
+
+> [Sun Jan 01 03:29:45 2017] [error] [client 91.213.126.147] File does not exist: /data/www/Discuz/upload/discuz, referer: 
+
+### Apache 2.4
+```bash
+
+$ vim /etc/logstash/patterns.d/apache24-error
+```
+```
+APACHE24_ERROR_LOG \[(?<timestamp>%{DAY:day} %{MONTH:month} %{MONTHDAY} %{TIME} %{YEAR})\] \[.*:%{LOGLEVEL:loglevel}\] \[pid %{NUMBER:pid}:tid %{NUMBER:tid}\]( \[client %{IP:clientip}:.*\])? %{GREEDYDATA:errormsg}
 ```
 
 > 可匹配：
+
 > [Fri Nov 11 10:15:47.509138 2016] [:error] [pid 7632:tid 1928] [client 127.0.0.1:61179] PHP  20. Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}() /laravel/vendor/addons/core/src
 
 
