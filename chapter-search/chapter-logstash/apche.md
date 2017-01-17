@@ -1,19 +1,27 @@
-# Filebeat 配置
+# # Filebeat 配置
 
 ```
 - input_type: log
   paths:
-    - /var/log/httpd/*.log
-  document_type: apache
+    - /var/log/httpd/access.log
+  document_type: apache-access
+- input_type: log
+  paths:
+    - /var/log/httpd/error.log
+  document_type: apache-error
+
 ```
 
+## ## Logstash接收端配置
 
-# Logstash
+
+# # Logstash
 
 Apache日志分为 access/error 日志两种
+
 但是Logstash没有error的解析日志，所以添加一个错误日志的解析正则
 
-错误日志解析正则表达式
+## ## 错误日志解析正则表达式
 ```
 $ mkdir /etc/logstash/patterns.d/
 $ vim /etc/logstash/patterns.d/apache-error
@@ -26,7 +34,7 @@ APACHE_ERROR_LOG \[(?<timestamp>%{DAY:day} %{MONTH:month} %{MONTHDAY} %{TIME} %{
 > [Fri Nov 11 10:15:47.509138 2016] [:error] [pid 7632:tid 1928] [client 127.0.0.1:61179] PHP  20. Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}() /laravel/vendor/addons/core/src
 
 
-Logstash 配置如下
+## ## Logstash 配置如下
 ```
 $ vim /etc/logstash/conf.d/apache.conf
 ```
