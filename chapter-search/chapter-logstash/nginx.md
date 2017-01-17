@@ -82,7 +82,7 @@ filter {
       match => [
         "message" , "%{MAINNGINXLOG}",
         "message" , "%{DIYNGINXLOG}",
-        "message" , "%{COMBINEDAPACHELOG}+%{GREEDYDATA:extra_fields}",
+        "message" , "%{COMBINEDAPACHELOG}+%{GREEDYDATA:extra_fields}"
       ]
     }
     mutate {
