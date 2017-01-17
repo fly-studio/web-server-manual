@@ -1,6 +1,6 @@
 如果你使用的 L+项目，请查看下文的配置，因为laravel的错误日志很详细
 
-# # 开启文件日志
+# # 输出日志到文件
 在L+项目，已经集成了logstash方案，开启方式也很简单
 ```
 $ vim /www/website/base/config/elasticsearch.php
@@ -60,7 +60,12 @@ $ vim /www/website/base/config/elasticsearch.php
 - **INDEX** 是 `config/elasticsearch.php`的`connections - default - index`
 - 也就是说 `KEY = 'logstash-'.config('elasticsearch.connections.default.index')`
 
-## LogStash
+## ## Filebeat
+
+filebeat 不支持redis的日志收集
+
+
+## ## LogStash
 ```
 $ vim /etc/logstash/conf.d/l+redis.conf
 ```
