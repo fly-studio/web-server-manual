@@ -137,7 +137,7 @@ filter {
       match => [
         "message", "%{APACHE24_ERROR_LOG}",
         "message", "%{APACHE22_ERROR_LOG}",
-        "message", ""
+        "message", "%{GREEDYDATA:message}"
       ]
     }
     mutate {
