@@ -30,12 +30,13 @@ $ vim /etc/logstash/logstash.yml
 path.data: /www/database/logstash/
 ```
 ## ## 运行配置
-Logstash的运行依赖运行配置文件，所有的日志、通道都是通过此文件配置
+Logstash的运行依赖运行配置文件，所有的日志、通道配置文件在`/etc/logstash/conf.d/`
+
+比如 L+ 的配置
 ```bash
 $ vim /etc/logstash/conf.d/l+.conf
 ```
 
-以下是一个配置示例
 ```
 input {
   file {
@@ -54,7 +55,7 @@ filter {
 output {
   elasticsearch { hosts => ["127.0.0.1:9200"] }
   # 在服务器运行时，下面的可以不用
-  stdout { codec => rubydebug }
+#  stdout { codec => rubydebug }
 }
 ```
 
