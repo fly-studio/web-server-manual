@@ -66,4 +66,3 @@
         * [MySQL](chapter-search/chapter-logstash/mysql.md)
         * [Cron](chapter-search/chapter-logstash/cron.md)
 
-
