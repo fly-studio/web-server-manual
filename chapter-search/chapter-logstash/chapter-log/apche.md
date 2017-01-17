@@ -69,7 +69,7 @@ filter {
       match => [
         "message", "%{APACHE24_ERROR_LOG}",
         "message", "%{APACHE22_ERROR_LOG}",
-        "message", "%{GREEDYDATA:message}"
+        "message", "%{GREEDYDATA:error_message}"
       ]
     }
     mutate {
