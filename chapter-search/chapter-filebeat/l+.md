@@ -1,5 +1,3 @@
-# # Filebeat
-
 ```
 - input_type: log
   paths:
