@@ -1,4 +1,9 @@
-如果你使用的 L+项目，请查看下文的配置，因为laravel的错误日志很详细
+Laravel项目，PHP所有日志都在`storage/logs/laravel-*.log`文件，但这个日志不方便同步到logstash。
+
+如果你使用的 L+项目，在`addons/elasticsearch`中有`logstash`的输出模块，
+
+总共有3种`logstash`的输出方式
+
 
 # # 输出日志到文件
 在L+项目，已经集成了logstash方案，开启方式也很简单
