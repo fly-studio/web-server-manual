@@ -57,4 +57,13 @@
 * [搜索引擎](search.md)
     * [Elasticsearch](chapter-search/elasticsearch.md)
     * [Logstash](chapter-search/logstash.md)
+        * [L+](chapter-search/chapter-logstash/l+.md)
+        * [nginX](chapter-search/chapter-logstash/nginx.md)
+        * [Apache](chapter-search/chapter-logstash/apche.md)
+        * [Redis](chapter-search/chapter-logstash/reid.md)
+        * [PHP-FPM](chapter-search/chapter-logstash/php-fpm.md)
+        * [PHP](chapter-search/chapter-logstash/php.md)
+        * [MySQL](chapter-search/chapter-logstash/mysql.md)
+        * [Cron](chapter-search/chapter-logstash/cron.md)
+
 
