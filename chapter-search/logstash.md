@@ -58,13 +58,6 @@ output {
 }
 ```
 
-
-## ## PHP
-
-#### elasticsearch
-此处将laravel的日志直接写到elastic服务器端，Logstash只需要去读取elastic即可得到日志
-
-
 # # 启动
 ## ## 创建服务
 ### ### CentOS 7
