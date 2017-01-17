@@ -1,6 +1,6 @@
 # 配置
 ```
-$ vim /etc/filebeat/filebeat.yaml
+$ vim /etc/filebeat/filebeat.yml
 ```
 ```
 - input_type: log
@@ -53,6 +53,8 @@ $ vim /etc/filebeat/filebeat.yaml
   paths:
     - /var/log/cron
   document_type: cron
+  
+output:
 
 ```
 
