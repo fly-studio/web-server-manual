@@ -75,9 +75,10 @@ filter {
     grok {
       patterns_dir => [ "/etc/logstash/patterns.d/" ]
       match => [
-        "message" , "%{MAINNGINXLOG}",
-        "message" , "%{DIYNGINXLOG}",
-        "message" , "%{COMBINEDAPACHELOG}+%{GREEDYDATA:extra_fields}",
+        "message", "%{MAINNGINXLOG}",
+        "message", "%{APACHE22LOG404}",
+        "message", "%{DIYNGINXLOG}",
+        "message", "%{COMBINEDAPACHELOG}+%{GREEDYDATA:extra_fields}",
         "message", "%{GREEDYDATA:access_message}"
       ]
     }
@@ -120,6 +121,7 @@ filter {
     grok {
       match => [
         "message", "%{COMBINEDAPACHELOG}",
+        "message", "%{APACHE22LOG404}",
         "message", "%{GREEDYDATA:access_message}"
       ]
     }

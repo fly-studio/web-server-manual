@@ -12,6 +12,7 @@ $ vim /etc/logstash/patterns.d/apache22-error
 ```
 ```
 APACHE22_ERROR_LOG \[(?<timestamp>%{DAY:day} %{MONTH:month} %{MONTHDAY} %{TIME} %{YEAR})\] \[%{LOGLEVEL:loglevel}\]( \[client %{IP:clientip}:.*\])? %{GREEDYDATA:errormsg}
+APACHE22LOG404 %{IPORHOST:clientip} %{HTTPDUSER:ident} (%{HTTPDUSER:auth}|"") \[%{HTTPDATE:timestamp}\] "(?:%{WORD:verb} %{NOTSPACE:request}(?: HTTP/%{NUMBER:httpversion})?|%{DATA:rawrequest})" %{NUMBER:response} (?:%{NUMBER:bytes}|-)
 ```
 > 可匹配：
 
