@@ -64,7 +64,8 @@ filter {
     mutate { replace => { type => "apache_error" } }
     grok {
       patterns_dir => [ "/etc/logstash/patterns.d/" ]
-      match => { "message" => "%{APACHE_ERROR_LOG}" }
+      # 修改下文 APACHE22_ERROR_LOG APACHE24_ERROR_LOG 
+      match => { "message" => "%{APACHE24_ERROR_LOG}" }
     }
     mutate {
       remove_field => [ "message" ]
