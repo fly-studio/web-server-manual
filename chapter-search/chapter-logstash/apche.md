@@ -10,7 +10,7 @@ $ mkdir /etc/logstash/patterns.d/
 ```
 ### Apache 2.2
 ```bash
-$ vim /etc/logstash/patterns.d/apache2-error
+$ vim /etc/logstash/patterns.d/apache22-error
 ```
 ```
 APACHE22_ERROR_LOG \[(?<timestamp>%{DAY:day} %{MONTH:month} %{MONTHDAY} %{TIME} %{YEAR})\] \[%{LOGLEVEL:loglevel}\]( \[clientip %{IP:clientip}:.*\])? %{GREEDYDATA:errormsg}
