@@ -62,6 +62,11 @@ output {
 ```
 $ mkdir /etc/logstash/patterns.d/
 ```
+默认的patterns类型：
+https://github.com/logstash-plugins/logstash-patterns-core/blob/master/patterns/grok-patterns
+```
+
+```
 
 
 # # 启动

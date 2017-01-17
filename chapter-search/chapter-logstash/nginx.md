@@ -12,7 +12,7 @@ log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
 $ vim /etc/logstash/patterns.d/nginx-access
 ```
 ```
-MAINNGINXLOG %{COMBINEDAPACHELOG} "%{QS:forwarded_for}"
+MAINNGINXLOG %{COMBINEDAPACHELOG} "%{GREEDYDATA:forwarded_for}"
 ```
 > 适配格式：
 
@@ -30,7 +30,7 @@ log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
 $ vim /etc/logstash/patterns.d/nginx-diy-access
 ```
 ```
-DIYNGINXLOG %{COMBINEDAPACHELOG} "%{QS:forwarded_for}" "%{QS:gzip_ratio}" %{NUMBER:request_time:float} %{NUMBER:bytes_sent} %{NUMBER:request_length}
+DIYNGINXLOG %{COMBINEDAPACHELOG} %{QS:forwarded_for} %{QS:gzip_ratio} %{NUMBER:request_time:float} %{NUMBER:bytes_sent} %{NUMBER:request_length}
 ```
 
 ## ## 
