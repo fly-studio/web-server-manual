@@ -81,3 +81,16 @@ input {
 }
 ```
 
+## 日志输出到elasticsearch
+```
+$ vim /www/website/base/config/elasticsearch.php
+```
+```
+'logstashDriver' => 'elasticsearch', //file redis elasticsearch
+```
+
+此处将laravel的日志直接写到elastic服务器端，Logstash只需要去读取elastic即可得到日志
+
+
+
+
