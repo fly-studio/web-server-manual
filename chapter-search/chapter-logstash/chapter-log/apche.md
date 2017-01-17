@@ -12,7 +12,7 @@ $ vim /etc/logstash/patterns.d/apache22-error
 ```
 ```
 APACHE22_ERROR_LOG \[(?<timestamp>%{DAY:day} %{MONTH:month} %{MONTHDAY} %{TIME} %{YEAR})\] \[%{LOGLEVEL:loglevel}\]( \[client %{IP:clientip}:.*\])? %{GREEDYDATA:errormsg}
-APACHE22LOG404 %{IPORHOST:clientip} %{HTTPDUSER:ident} (%{HTTPDUSER:auth}|"") \[%{HTTPDATE:timestamp}\] "(?:%{WORD:verb} %{NOTSPACE:request}(?: HTTP/%{NUMBER:httpversion})?|%{DATA:rawrequest})" %{NUMBER:response} (?:%{NUMBER:bytes}|-)
+APACHE22_LOG_404 %{IPORHOST:clientip} %{HTTPDUSER:ident} (%{HTTPDUSER:auth}|"") \[%{HTTPDATE:timestamp}\] "(?:%{WORD:verb} %{NOTSPACE:request}(?: HTTP/%{NUMBER:httpversion})?|%{DATA:rawrequest})" %{NUMBER:response} (?:%{NUMBER:bytes}|-)
 ```
 > 可匹配：
 
@@ -53,7 +53,7 @@ filter {
     grok {
       match => [
         "message", "%{COMBINEDAPACHELOG}",
-        "message", "%{APACHE22LOG404}",
+        "message", "%{APACHE22_LOG_404}",
         "message", "%{GREEDYDATA:access_message}"
       ]
     }
@@ -72,6 +72,7 @@ filter {
       patterns_dir => [ "/etc/logstash/patterns.d/" ]
       # 修改下文 APACHE22_ERROR_LOG APACHE24_ERROR_LOG 
       match => [
+        "message", "%{HTTPD_ERRORLOG}",
         "message", "%{APACHE24_ERROR_LOG}",
         "message", "%{APACHE22_ERROR_LOG}",
         "message", "%{GREEDYDATA:error_message}"

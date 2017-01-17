@@ -121,7 +121,7 @@ filter {
     grok {
       match => [
         "message", "%{COMBINEDAPACHELOG}",
-        "message", "%{APACHE22LOG404}",
+        "message", "%{APACHE22_LOG_404}",
         "message", "%{GREEDYDATA:access_message}"
       ]
     }
@@ -141,6 +141,7 @@ filter {
     grok {
       patterns_dir => [ "/etc/logstash/patterns.d/" ]
       match => [
+        "message", "%{HTTPD_ERRORLOG}",
         "message", "%{APACHE24_ERROR_LOG}",
         "message", "%{APACHE22_ERROR_LOG}",
         "message", "%{GREEDYDATA:error_message}"
