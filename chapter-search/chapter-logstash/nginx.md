@@ -76,6 +76,7 @@ input {
 }
 filter {
   if [path] =~ "access" {
+    mutate { replace => { "type" => "nginx_access" } }
     grok {
       patterns_dir => [ "/etc/logstash/patterns.d/" ]
       match => [
@@ -97,7 +98,29 @@ filter {
       source => "clientip"
     }
   } else if [path] =~ "error" {
-    
+    mutate { replace => { "type" => "nginx_access" } }
+    grok {
+        match => { "message" => "(?<datetime>\d\d\d\d/\d\d/\d\d \d\d:\d\d:\d\d) \[(?<errtype>\w+)\] \S+: \*\d+ (?<errmsg>[^,]+), (?<errinfo>.*)$" }
+    }
+    mutate {
+        rename => [ "host", "fromhost" ]
+        gsub => [ "errmsg", "too large body: \d+ bytes", "too large body" ]
+    }
+    if [errinfo]
+    {
+        ruby {
+            code => "
+                new_event = LogStash::Event.new(Hash[event.get('errinfo').split(', ').map{|l| l.split(': ')}])
+                new_event.remove('@timestamp')
+                event.append(new_event)
+            "
+        }
+    }
+    grok {
+        match => { "request" => '"%{WORD:verb} %{URIPATH:urlpath}(?:\?%{NGX_URIPARAM:urlparam})?(?: HTTP/%{NUMBER:httpversion})"' }
+        patterns_dir => ["/etc/logstash/patterns.d/"]
+        remove_field => [ "message", "errinfo", "request" ]
+    }
   }
   geoip {
     source => "clientip"
