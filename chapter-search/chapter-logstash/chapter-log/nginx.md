@@ -82,7 +82,8 @@ filter {
       match => [
         "message" , "%{MAINNGINXLOG}",
         "message" , "%{DIYNGINXLOG}",
-        "message" , "%{COMBINEDAPACHELOG}+%{GREEDYDATA:extra_fields}"
+        "message" , "%{COMBINEDAPACHELOG}+%{GREEDYDATA:extra_fields}",
+        "message", "%{GREEDYDATA:access_message}"
       ]
     }
     mutate {
@@ -100,7 +101,10 @@ filter {
   } else if [path] =~ "error" {
     mutate { replace => { "type" => "nginx_access" } }
     grok {
-        match => { "message" => "(?<datetime>\d\d\d\d/\d\d/\d\d \d\d:\d\d:\d\d) \[(?<errtype>\w+)\] \S+: \*\d+ (?<errmsg>[^,]+), (?<errinfo>.*)$" }
+        match => [
+          "message" , "(?<datetime>\d\d\d\d/\d\d/\d\d \d\d:\d\d:\d\d) \[(?<errtype>\w+)\] \S+: \*\d+ (?<errmsg>[^,]+), (?<errinfo>.*)$",
+          "message", "%{GREEDYDATA:error_message}"
+      ]
     }
     mutate {
         rename => [ "host", "fromhost" ]

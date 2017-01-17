@@ -77,7 +77,8 @@ filter {
       match => [
         "message" , "%{MAINNGINXLOG}",
         "message" , "%{DIYNGINXLOG}",
-        "message" , "%{COMBINEDAPACHELOG}+%{GREEDYDATA:extra_fields}"
+        "message" , "%{COMBINEDAPACHELOG}+%{GREEDYDATA:extra_fields}",
+        "message", "%{GREEDYDATA:access_message}"
       ]
     }
     mutate {
@@ -117,7 +118,10 @@ filter {
     }
   } else if [type] == "apache-access" {
     grok {
-      match => { "message" => "%{COMBINEDAPACHELOG}" }
+      match => [
+        "message", "%{COMBINEDAPACHELOG}",
+        "message", "%{GREEDYDATA:access_message}"
+      ]
     }
     mutate {
       remove_field => [ "message" ]

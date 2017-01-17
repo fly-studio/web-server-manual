@@ -50,7 +50,10 @@ filter {
   if [path] =~ "access" {
     mutate { replace => { "type" => "apache_access" } }
     grok {
-      match => { "message" => "%{COMBINEDAPACHELOG}" }
+      match => [
+        "message", "%{COMBINEDAPACHELOG}",
+        "message", "%{GREEDYDATA:access_message}"
+      ]
     }
     mutate {
       remove_field => [ "message" ]
