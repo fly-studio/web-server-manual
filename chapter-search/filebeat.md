@@ -3,6 +3,7 @@
 $ vim /etc/filebeat/filebeat.yml
 ```
 ```
+filebeat.prospectors:
 - input_type: log
   paths:
     - /www/website/base/storage/log/logstash-*.log
