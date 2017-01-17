@@ -1,6 +1,6 @@
-# 默认日志
+# 日志类型
 
-## ## 默认配置
+## ## 默认日志配置
 适合没有修改过的nginx配置
 ```
 log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
@@ -33,9 +33,7 @@ $ vim /etc/logstash/patterns.d/nginx-diy-access
 DIYNGINXLOG %{COMBINEDAPACHELOG} %{QS:forwarded_for} %{QS:gzip_ratio} %{NUMBER:request_time:float} %{NUMBER:bytes_sent} %{NUMBER:request_length}
 ```
 
-## ## 
-
-# JSON 日志
+## ## JSON 日志
 ```bash
 $ vim /etc/nginx/nginx.conf
 ```
@@ -62,5 +60,54 @@ $ vim /etc/nginx/nginx.conf
 
     access_log /var/log/nginx/logstash.log logstash_json;
 ```
+
+# Logstash 配置
+
+```
+$ vim /etc/logstash/conf.d/apache.conf
+```
+```
+input {
+  file {
+    # nginx的日志地址
+    path => "/var/log/nginx/*.log"
+    start_position => "beginning"
+  }
+}
+filter {
+  if [path] =~ "access" {
+    grok {
+      patterns_dir => [ "/etc/logstash/patterns.d/" ]
+      match => [
+        "message" , "%{MAINNGINXLOG}",
+        "message" , "%{DIYNGINXLOG}",
+        "message" , "%{COMBINEDAPACHELOG}+%{GREEDYDATA:extra_fields}",
+      ]
+    }
+    mutate {
+      remove_field => [ "message" ]
+      add_field => ["timestamp_submitted", "%{@timestamp}"]
+    }
+    date {
+      match => [ "timestamp" , "dd/MMM/yyyy:HH:mm:ss Z" ]
+      remove_field => [ "timestamp" ]
+      target => '@timestamp'
+    }
+    geoip {
+      source => "clientip"
+    }
+  } else if [path] =~ "error" {
+    
+  }
+  geoip {
+    source => "clientip"
+  }
+}
+output {
+  elasticsearch { hosts => ["127.0.0.1:9200"] }
+}
+
+```
+
 
 

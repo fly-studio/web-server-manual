@@ -39,7 +39,10 @@ $ vim /etc/logstash/conf.d/apache.conf
 input {
   file {
     # apache的access日志地址
-    path => "/opt/xampp/apache/logs/*.log"
+    path => [
+      "/var/log/httpd/access_log"
+      "/var/log/httpd/error_log"
+    ]
     start_position => "beginning"
   }
 }
@@ -85,8 +88,11 @@ filter {
   geoip {
     source => "clientip"
   }
-
 }
+output {
+  elasticsearch { hosts => ["127.0.0.1:9200"] }
+}
+
 ```
 
 
