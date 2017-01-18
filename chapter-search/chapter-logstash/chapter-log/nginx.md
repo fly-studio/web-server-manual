@@ -70,7 +70,10 @@ $ vim /etc/logstash/conf.d/apache.conf
 input {
   file {
     # nginx的日志地址
-    path => "/var/log/nginx/*.log"
+    path => [
+        "/var/log/nginx/*.log",
+        "/etc/nginx/logs/*.log"
+    ]
     start_position => "beginning"
   }
 }
