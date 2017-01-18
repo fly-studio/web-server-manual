@@ -20,7 +20,6 @@ filebeat.prospectors:
     - /etc/nginx/logs/error*.log
   document_type: nginx-error
 
-
 - input_type: log
   paths:
     - /var/log/httpd/access_log*
