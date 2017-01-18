@@ -81,7 +81,7 @@ filter {
       patterns_dir => [ "/etc/logstash/patterns.d/" ]
       match => [
         "message", "%{MAINNGINXLOG}",
-        "message", "%{APACHE22LOG404}",
+        "message", "%{APACHE22_LOG_404}",
         "message", "%{DIYNGINXLOG}",
         "message", "%{COMBINEDAPACHELOG} %{GREEDYDATA:extra_fields}",
         "message", "%{GREEDYDATA:access_message}"
