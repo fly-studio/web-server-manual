@@ -12,7 +12,7 @@ log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
 $ vim /etc/logstash/patterns.d/nginx-access
 ```
 ```
-MAINNGINXLOG %{COMBINEDAPACHELOG} "%{GREEDYDATA:forwarded_for}"
+MAINNGINXLOG %{COMBINEDAPACHELOG} %{QS:forwarded_for}
 ```
 > 适配格式：
 
@@ -83,7 +83,7 @@ filter {
         "message", "%{MAINNGINXLOG}",
         "message", "%{APACHE22LOG404}",
         "message", "%{DIYNGINXLOG}",
-        "message", "%{COMBINEDAPACHELOG}+%{GREEDYDATA:extra_fields}",
+        "message", "%{COMBINEDAPACHELOG} %{GREEDYDATA:extra_fields}",
         "message", "%{GREEDYDATA:access_message}"
       ]
     }
