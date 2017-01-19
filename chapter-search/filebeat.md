@@ -8,6 +8,7 @@ filebeat.prospectors:
   paths:
     - /www/website/base/storage/log/logstash-*.log
   document_type: base
+  json.message_key:
 
 - input_type: log
   paths:
