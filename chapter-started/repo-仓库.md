@@ -10,7 +10,7 @@ yum install epel-release
 ```
 $ wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 # 7.0
-$ wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-8.noarch.rpm
+$ wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-9.noarch.rpm
 
 $ wget http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
 # 7.0
