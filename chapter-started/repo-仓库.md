@@ -80,6 +80,47 @@ $ vim /etc/yum.repos.d/rpmforge.repo
 ...
 enabled = 0
 ```
+
+## III 安装 Sclo-RH 源
+
+```
+$ cat > /etc/yum.repos.d/rpmforge.repo << EOF
+# CentOS-SCLo-rh.repo
+#
+# Please see http://wiki.centos.org/SpecialInterestGroup/SCLo for more
+# information
+
+[centos-sclo-rh]
+name=CentOS-$releasever - SCLo rh
+baseurl=http://mirror.centos.org/centos/$releasever/sclo/$basearch/rh/
+gpgcheck=1
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-SCLo
+
+[centos-sclo-rh-testing]
+name=CentOS-$releasever - SCLo rh Testing
+baseurl=http://buildlogs.centos.org/centos/$releasever/sclo/$basearch/rh/
+gpgcheck=0
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-SCLo
+
+[centos-sclo-rh-source]
+name=CentOS-6 - SCLo rh Sources
+baseurl=http://vault.centos.org/centos/$releasever/sclo/Source/rh/
+gpgcheck=1
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-SCLo
+
+[centos-sclo-rh-debuginfo]
+name=CentOS-$releasever - SCLo rh Debuginfo
+baseurl=http://debuginfo.centos.org/centos/$releasever/sclo/$basearch/
+gpgcheck=1
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-SCLo
+EOF
+
+```
+
 # 其它版本的软件仓库
 
 将上例的资源网址，去掉文件名，即可显示其它版本的仓库
