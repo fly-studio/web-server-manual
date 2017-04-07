@@ -26,9 +26,9 @@ remi 软件库包含 PHP 5.4-5.6、PHP 7.0-7.1，以及其对应的扩展
 ##### 1. 安装
 
 ```
-$ wget http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm
+$ wget http://repository.it4i.cz/mirrors/repoforge/redhat/el6/en/x86_64/rpmforge/RPMS/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm
 # 7.0
-$ wget http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el7.rf.x86_64.rpm
+$ wget http://repository.it4i.cz/mirrors/repoforge/redhat/el7/en/x86_64/rpmforge/RPMS/rpmforge-release-0.5.3-1.el7.rf.x86_64.rpm
 $ rpm -ivh rpmforge-release-*.rpm
 ```
 
@@ -64,10 +64,6 @@ protect = 0
 gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmforge-dag
 gpgcheck = 1
 EOF
-```
-向系统中添加 Repoforge 的 GPG 公钥：
-```
-rpm --import http://apt.sw.be/RPM-GPG-KEY.dag.txt
 ```
 
 ##### 2. 修改库配置
@@ -126,7 +122,7 @@ EOF
 将上例的资源网址，去掉文件名，即可显示其它版本的仓库
 比如：
 - http://dl.fedoraproject.org/pub/epel/7/x86_64/e/
-- http://rpms.famillecollet.com/enterprise
-- http://pkgs.repoforge.org/rpmforge-release
+- http://rpms.famillecollet.com/enterprise/
+- http://repository.it4i.cz/mirrors/repoforge/redhat/
 
 可以自行选择对应系统版本的仓库
