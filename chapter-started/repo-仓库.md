@@ -1,6 +1,6 @@
 # 安装扩展包
 ```
-yum install epel-release
+$ yum install epel-release
 ```
 
 # 软件仓库
@@ -19,7 +19,7 @@ $ wget http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
 $ rpm -ivh epel-release-*.rpm
 $ rpm -Uvh remi-release-*.rpm
 ```
-remi 软件库包含 PHP 5.4、PHP 5.5、PHP 5.6，以及其对应的扩展
+remi 软件库包含 PHP 5.4-5.6、PHP 7.0-7.1，以及其对应的扩展
 并且默认情况下 remi 库是未激活状态
 
 ## II 安装rpmforge仓库
@@ -39,8 +39,8 @@ $ rpm -ivh rpmforge-release-*.rpm
 $ cat > /etc/yum.repos.d/rpmforge.repo << EOF
 [rpmforge]
 name = RHEL $releasever - RPMforge.net - dag
-baseurl = https://mirrors.tuna.tsinghua.edu.cn/repoforge/redhat/el6/en/$basearch/rpmforge
-mirrorlist = http://mirrorlist.repoforge.org/el6/mirrors-rpmforge
+baseurl = https://mirrors.tuna.tsinghua.edu.cn/repoforge/redhat/el$releasever/en/$basearch/rpmforge
+mirrorlist = http://mirrorlist.repoforge.org/el$releasever/mirrors-rpmforge
 enabled = 1
 protect = 0
 gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmforge-dag
@@ -48,8 +48,8 @@ gpgcheck = 1
 
 [rpmforge-extras]
 name = RHEL $releasever - RPMforge.net - extras
-baseurl = https://mirrors.tuna.tsinghua.edu.cn/repoforge/redhat/el6/en/$basearch/extras
-mirrorlist = http://mirrorlist.repoforge.org/el6/mirrors-rpmforge-extras
+baseurl = https://mirrors.tuna.tsinghua.edu.cn/repoforge/redhat/el$releasever/en/$basearch/extras
+mirrorlist = http://mirrorlist.repoforge.org/el$releasever/mirrors-rpmforge-extras
 enabled = 0
 protect = 0
 gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmforge-dag
@@ -57,8 +57,8 @@ gpgcheck = 1
 
 [rpmforge-testing]
 name = RHEL $releasever - RPMforge.net - testing
-baseurl = https://mirrors.tuna.tsinghua.edu.cn/repoforge/redhat/el6/en/$basearch/testing
-mirrorlist = http://mirrorlist.repoforge.org/el6/mirrors-rpmforge-testing
+baseurl = https://mirrors.tuna.tsinghua.edu.cn/repoforge/redhat/el$releasever/en/$basearch/testing
+mirrorlist = http://mirrorlist.repoforge.org/el$releasever/mirrors-rpmforge-testing
 enabled = 0  
 protect = 0
 gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmforge-dag
