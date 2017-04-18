@@ -12,9 +12,10 @@ server {
 	# 根目录
 	root /www/website/path/to/project_name/;
 	# 如果使用L+ 需要禁止这些文件的访问（不使用则不用）
-	location ~ /((config/|resources/).*?\.(php|tpl)|artisan|\.htaccess|\.env)$ {
-		return 405;
+	location ~ /(\.|artisan$|config|resource|storage) {
+	    deny all;
 	}
+
 	#访问配置
 	location / {
 		index index.php;
