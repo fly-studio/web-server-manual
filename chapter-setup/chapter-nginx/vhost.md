@@ -11,8 +11,8 @@ server {
 	server_name domain.com www.domain.com *.domain.com;
 	# 根目录
 	root /www/website/path/to/project_name/;
-	# 如果使用L+ 需要禁止这些文件的访问（不使用则不用）
-	location ~ /(\.|artisan$|config|resource|storage) {
+	# 如果使用L+ 需要禁止这些文件的访问
+	location ~ /(\.|artisan$|config|resources|storage) {
 	    deny all;
 	}
 
