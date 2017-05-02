@@ -23,6 +23,8 @@
         * [操作](chapter-setup/chapter-php/操作.md)
         * [配置](chapter-setup/chapter-php/配置.md)
         * [常见问题](chapter-setup/chapter-php/常见问题.md)
+        * [插件开发环境](chapter-setup/chapter-php/插件开发环境.md)
+            * [Cygwin 编译](chapter-setup/chapter-php/chapter-ext/cygwin-编译.md)
     * [PHP 扩展安装](chapter-setup/php-扩展安装.md)
         * [加速类扩展](chapter-setup/chapter-php-ext/加速类扩展.md)
         * [缓存类扩展](chapter-setup/chapter-php-ext/缓存类扩展.md)
