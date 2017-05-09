@@ -1,6 +1,6 @@
 {
     "title" : "Web Server 学习手册",
-    "plugins": ["disqus", "editlink", "comment", "page-toc", "splitter", "image-captions",  "sitemap-general", "chart", "mermaid", "include-codeblock", "ace", "sectionx", "github-buttons", "anchor-navigation"],
+    "plugins": ["disqus", "editlink", "comment", "etoc", "splitter", "image-captions",  "sitemap-general", "chart", "mermaid", "include-codeblock", "ace", "sectionx", "github-buttons", "anchor-navigation"],
     "pluginsConfig": {
         "disqus": {
             "shortName": "web-server-manual"
