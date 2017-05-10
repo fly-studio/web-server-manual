@@ -22,7 +22,7 @@
             * [YUM 安装](chapter-setup/chapter-php/chapter-install/yum-安装.md)
             * [编译安装](chapter-setup/chapter-php/chapter-install/编译安装.md)
         * [操作](chapter-setup/chapter-php/操作.md)
-            * [编译安装](chapter-setup/chapter-php/chapter-operation/编译后注册服务.md)
+            * [编译安装注册服务](chapter-setup/chapter-php/chapter-operation/编译后注册服务.md)
         * [配置](chapter-setup/chapter-php/配置.md)
         * [常见问题](chapter-setup/chapter-php/常见问题.md)
         * [插件开发环境](chapter-setup/chapter-php/插件开发环境.md)
