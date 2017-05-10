@@ -7,11 +7,7 @@ $ ./configure --prefix=/usr --exec-prefix=/usr --localstatedir=/var --sysconfdir
 ```
 
 ## PHP-CPP 
-## Makefile 修改
+PHP-CPP在Cygwin下根本编译通不过，shared的so均有问题，还是放弃吧。
 
-将`${PHP_COMPILER_FLAGS}`添加到编译`${PHP_SHARED_LIBRARY}`下，不然报错
 
-```
-${PHP_SHARED_LIBRARY}: shared_directories ${COMMON_SHARED_OBJECTS} ${PHP_SHARED_OBJECTS}
-	${LINKER} ${PHP_LINKER_FLAGS} ${PHP_COMPILER_FLAGS} -Wl,-soname,libphpcpp.so.$(SONAME) -o $@ ${COMMON_SHARED_OBJECTS} ${PHP_SHARED_OBJECTS}
-```
+请使用「交叉编译」
