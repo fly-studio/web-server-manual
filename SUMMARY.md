@@ -12,6 +12,7 @@
             * [编译安装](chapter-setup/chapter-nginx/chapter-install/编译安装.md)
         * [操作](chapter-setup/chapter-nginx/操作.md)
         * [网站配置](chapter-setup/chapter-nginx/网站目录.md)
+            * [一些配置](chapter-setup/chapter-nginx/chapter-setting/一些配置.md)
         * [vHost](chapter-setup/chapter-nginx/vhost.md)
         * [HTTPS](chapter-setup/chapter-nginx/https.md)
         * [日志](chapter-setup/chapter-nginx/日志.md)
