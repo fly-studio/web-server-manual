@@ -47,8 +47,17 @@ $ vim /etc/exports
 - **no_root_squash**：NFS客户端连接服务端时如果使用的是root的话，那么对服务端分享的目录来说，也拥有root权限。显然开启这项是不安全的。
 - **root_squash**：NFS客户端连接服务端时如果使用的是root的话，那么对服务端分享的目录来说，拥有匿名用户权限，通常他将使用nobody或nfsnobody身份；
 - **all_squash**：不论NFS客户端连接服务端时使用什么用户，对服务端分享的目录来说都是拥有匿名用户权限；
+- **no_all_squash**：保留共享文件的UID和GID（默认） 
 - **anonuid**：匿名用户的UID值，可以在此处自行设定。
 - **anongid**：匿名用户的GID值。
+- **secure**：NFS通过1024以下的安全TCP/IP端口发送 
+- **insecure**：NFS通过1024以上的端口发送 
+- **wdelay**：如果多个用户要写入NFS目录，则归组写入（默认） 
+- **no_wdelay**：如果多个用户要写入NFS目录，则立即写入，当使用async时，无需此设置。
+- **hide**：在NFS共享目录中不共享其子目录 
+- **no_hide**：共享NFS目录的子目录 
+- **subtree_check**：如果共享/usr/bin之类的子目录时，强制NFS检查父目录的权限（默认） 
+- **no_subtree_check**：和上面相对，不检查父目录权限 
 
 ## 其它命令
 查看运行状况
