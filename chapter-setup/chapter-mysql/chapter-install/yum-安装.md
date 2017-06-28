@@ -5,22 +5,46 @@
 > 需要 glibc 2.17以上，而centos 6很难编译，建议在centos 7下安装， 笔者在CentOS 6.5下安装glibc不成功，最终还是用的remi安装的 MySQL 5.5  
 > 有兴趣折腾的：查看 [glibc的安装教程](/base/manual/23#h2--gcc-0-1 "glibc的安装教程")
 
-### ### repo库
+### ### 5.7 repo库
 
 ```bash
 # CentOS 7
 $ wget http://repo.mysql.com/mysql57-community-release-el7-9.noarch.rpm
 # CentOS 6
 $ wget http://repo.mysql.com/mysql57-community-release-el6-9.noarch.rpm
+
 $ rpm -ivh mysql*-community-release-*.noarch.rpm
 ```
+
+### ### 5.5 
+```bash
+# CentOS 7
+$ wget http://repo.mysql.com/yum/mysql-5.5-community/el/7/x86_64/mysql-community-release-el7-5.noarch.rpm
+# CentOS 6
+$ wget http://repo.mysql.com/yum/mysql-5.5-community/el/6/x86_64/mysql-community-release-el6-5.noarch.rpm
+
+$ rpm -ivh mysql*-community-release-*.noarch.rpm
+```
+默认打开`MySQL 5.6`的源，关闭之后启动`5.5`的源
+```
+vim /etc/yum.repo.d/mysql-community.repo
+```
+```
+[mysql55-community]
+...
+enabled=1
+
+
+# Enable to use MySQL 5.6
+[mysql56-community]
+...
+enabled=0
+```
+
 
 ## ## 数据库服务器上安装
 
 ```bash
-# MySQL 5.5
-$ yum install --enablerepo=remi mysql-server
-# MySQL 5.7
 $ yum install mysql-server
 ```
 
