@@ -12,11 +12,11 @@ $ yum install nfs-utils rpcbind
 
 ## ## 开启服务
 ```
-$ systemctl enable nfs
+$ systemctl enable nfs-server
 $ systemctl enable rpcbind
 ```
 ```
-$ sytemctl start nfs
+$ sytemctl start nfs-server
 $ sytemctl start rpcbind
 ```
 
@@ -35,19 +35,51 @@ $ vim /etc/exports
 ## 配置详情
 
 - **rw**：read-write，可读写；
-
 - **ro**：read-only，只读；
-
 - **sync**：文件同时写入硬盘和内存；
-
 - **async**：文件暂存于内存，而不是直接写入内存；
-
 - **no_root_squash**：NFS客户端连接服务端时如果使用的是root的话，那么对服务端分享的目录来说，也拥有root权限。显然开启这项是不安全的。
-
 - **root_squash**：NFS客户端连接服务端时如果使用的是root的话，那么对服务端分享的目录来说，拥有匿名用户权限，通常他将使用nobody或nfsnobody身份；
-
 - **all_squash**：不论NFS客户端连接服务端时使用什么用户，对服务端分享的目录来说都是拥有匿名用户权限；
-
 - **anonuid**：匿名用户的UID值，可以在此处自行设定。
-
 - **anongid**：匿名用户的GID值。
+
+## 其它命令
+查看运行状况
+```
+$ rpcinfo -p
+```
+哪些文件夹共享
+```
+$ exportfs
+```
+
+# 客户端
+## ## 安装
+```
+$ yum install nfs-utils rpcbind
+```
+
+## ## 开启服务
+```
+$ systemctl enable rpcbind
+```
+```
+$ sytemctl start rpcbind
+```
+
+## ## 挂载
+```
+$ vim /etc/fstab
+```
+添加
+```
+# 服务端IP:服务端文件夹             本地路径
+192.168.1.100:/www/website/data   /client/path/       nfs     defaults        0       0
+```
+挂载
+```
+$ mount -a
+```
+
+
