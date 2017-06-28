@@ -36,7 +36,9 @@ $ rpm -ivh rpmforge-release-*.rpm
 > https://mirror.tuna.tsinghua.edu.cn/help/repoforge/
 
 ```
-$ cat > /etc/yum.repos.d/rpmforge.repo << EOF
+$ vim /etc/yum.repos.d/rpmforge.repo
+```
+```
 [rpmforge]
 name = RHEL $releasever - RPMforge.net - dag
 baseurl = https://mirrors.tuna.tsinghua.edu.cn/repoforge/redhat/el$releasever/en/$basearch/rpmforge
@@ -63,7 +65,6 @@ enabled = 0
 protect = 0
 gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmforge-dag
 gpgcheck = 1
-EOF
 ```
 
 ##### 2. 修改库配置
@@ -80,7 +81,10 @@ enabled = 0
 ## III 安装 Sclo-RH 源
 
 ```
-$ cat > /etc/yum.repos.d/CentOS-Sclo-RH.repo << EOF
+$ vim /etc/yum.repos.d/CentOS-Sclo-RH.repo
+```
+
+```
 # CentOS-SCLo-rh.repo
 #
 # Please see http://wiki.centos.org/SpecialInterestGroup/SCLo for more
@@ -113,8 +117,6 @@ baseurl=http://debuginfo.centos.org/centos/$releasever/sclo/$basearch/
 gpgcheck=0
 enabled=0
 #gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-SCLo
-EOF
-
 ```
 
 # 其它版本的软件仓库
