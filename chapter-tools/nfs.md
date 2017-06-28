@@ -20,6 +20,12 @@ $ sytemctl start nfs-server
 $ sytemctl start rpcbind
 ```
 
+## ## 共享文件
+```
+$ mkdir -p /www/website/data
+$ chown nobody:nobody /www/website/data
+```
+
 ## ## 配置
 ```
 $ vim /etc/exports
@@ -82,4 +88,7 @@ $ vim /etc/fstab
 $ mount -a
 ```
 
+## 注意
+
+- 如果服务端修改了配置，客户端需要重启 `rpcbind`
 
