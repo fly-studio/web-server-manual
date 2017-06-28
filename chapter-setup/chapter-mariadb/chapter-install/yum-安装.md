@@ -10,26 +10,12 @@ $ vim /etc/yum.repos.d/MariaDB.repo
 
 输入如下内容保存，下面的内容来源于[https://downloads.mariadb.org/mariadb/repositories/](https://downloads.mariadb.org/mariadb/repositories/)
 
-### CentOS 6.5
-
-```
-# MariaDB 10.1 CentOS repository list - created 2016-03-31 14:00 UTC
-# http://mariadb.org/mariadb/repositories/
-[mariadb]
-name = MariaDB
-baseurl = http://yum.mariadb.org/10.1/centos6-amd64
-gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
-gpgcheck=1
-```
-
-### CentOS 7
-
 ```
 # MariaDB 10.2 CentOS repository list - created 2017-06-28 07:07 UTC
 # http://downloads.mariadb.org/mariadb/repositories/
 [mariadb]
 name = MariaDB
-baseurl = http://yum.mariadb.org/10.2/centos7-amd64
+baseurl = http://yum.mariadb.org/10.2/centos$releasever-amd64
 gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
 gpgcheck=1
 ```
