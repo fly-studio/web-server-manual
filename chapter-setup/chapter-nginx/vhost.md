@@ -54,18 +54,7 @@ server {
 
 > L+ 框架中，已有.htaccess文件，这个文件支持apache的重写URL，但是nginX中需要做如下配置，如果不加入这个配置，则只能通过 **http://127.0.0.1/dir_name/index.php/controller/action** 这种类似的方式访问页面
 
-修改主配置文件加入子目录配置
-```
-$ vim /etc/nginx/conf.d/default.conf
-```
-```
-server {
-	...
-	...
-	# 末尾加入
-	include /etc/nginx/conf.d/alias/alias.conf;
-}
-```
+
 新建子目录配置
 ```
 $ mkdir -m 777 -p /etc/nginx/alias.d

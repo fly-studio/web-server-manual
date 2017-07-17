@@ -75,6 +75,12 @@ $ exportfs
 $ yum install nfs-utils rpcbind
 ```
 
+## ## 新建挂载点
+```
+$ mkdir -p /client/path
+$ chown nobody:nobody /client/path
+```
+
 ## ## 开启服务
 ```
 $ systemctl enable rpcbind
