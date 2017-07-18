@@ -111,6 +111,7 @@ $ git clone https://github.com/FRiCKLE/ngx_coolkit.git
 ## 在nginx的编译配置中加
 ```
 --with-http_auth_request_module \
+--add-module=../ngx_devel_kit \
 --add-module=../stream-lua-nginx-module \
 --add-module=../lua-nginx-module \
 --add-module=../lua-upstream-nginx-module \
