@@ -31,3 +31,9 @@ $ cd ~/nginx
 $ git clone https://github.com/FRiCKLE/ngx_coolkit.git
 ```
 
+
+
+```
+--with-http_auth_request_module \
+
+```
