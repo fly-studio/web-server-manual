@@ -10,6 +10,7 @@
     * [安装](chapter-setup/chapter-nginx/安装.md)
       * [YUM 安装](chapter-setup/chapter-nginx/chapter-install/yum-安装.md)
       * [编译安装](chapter-setup/chapter-nginx/chapter-install/编译安装.md)
+        * [编译安装Lua](chapter-setup/chapter-nginx/chapter-install/编译安装/bian-yi-an-zhuang-lua.md)
     * [操作](chapter-setup/chapter-nginx/操作.md)
       * [编译安装注册服务](chapter-setup/chapter-nginx/chapter-operation/编译后注册服务.md)
     * [网站配置](chapter-setup/chapter-nginx/网站目录.md)
