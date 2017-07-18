@@ -108,21 +108,20 @@ $ git clone https://github.com/FRiCKLE/ngx_coolkit.git
 ```
 
 
-在nginx的编译配置中加
+## 在nginx的编译配置中加
 ```
 --with-http_auth_request_module \
 --add-module=../stream-lua-nginx-module \
 --add-module=../lua-nginx-module \
 --add-module=../lua-upstream-nginx-module \
---add-module=../xss-nginx-module
---add-module=../ngx_coolkit
---add-module=../set-misc-nginx-module
---add-module=../memc-nginx-module
---add-module=../form-input-nginx-module
---add-module=../encrypted-session-nginx-module
---add-module=../headers-more-nginx-module
---add-module=../array-var-nginx-module
---add-module=../redis2-nginx-module
---add-module=../srcache-nginx-module
---add-module=../
+--add-module=../xss-nginx-module \
+--add-module=../ngx_coolkit \
+--add-module=../set-misc-nginx-module \
+--add-module=../memc-nginx-module \
+--add-module=../form-input-nginx-module \
+--add-module=../encrypted-session-nginx-module \
+--add-module=../headers-more-nginx-module \
+--add-module=../array-var-nginx-module \
+--add-module=../redis2-nginx-module \
+--add-module=../srcache-nginx-module \
 ```
