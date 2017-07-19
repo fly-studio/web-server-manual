@@ -128,13 +128,21 @@ $ git clone https://github.com/FRiCKLE/ngx_coolkit.git
 ```
 
 ## 编译中需要注意
-1. --with-stream 不能是动态
-2. --with-http_perl_module 与 stream-lua-nginx-module 有冲突，需要去掉
-3. openssl 需要 v1.0.2
-4. LD，CC的参数如下
+1. `--with-stream` 不能是动态
+2. `--with-http_perl_module` 与 `stream-lua-nginx-module` 有冲突，需要去掉
+3. `openssl` 需要 v1.0.2
+4. `LD`，`CC`的参数如下
 ```
 --with-cc-opt='-O2 -I/usr/include -I/usr/include/openssl' \
 --with-ld-opt='-Wl,-rpath,/usr/lib'
+```
+5. 如果nginx的版本高于1.10，需要修改
+`stream-lua-nginx-module/src/ngx_stream_lua_util.c`
+```
+将
+ngx_stream_close_connection(s->connection); 
+替换为
+ngx_stream_finalize_session(s, NGX_STREAM_INTERNAL_SERVER_ERROR);
 ```
 
 完整编译命令行是
