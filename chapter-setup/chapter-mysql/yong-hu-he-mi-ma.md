@@ -16,7 +16,7 @@ $ /usr/bin/mysql_secure_installation
 先使用`mysql -u root -p ` 在服务器上进入MYSQL控制台
 ```
 CREATE USER 'root'@'%' IDENTIFIED BY '密码';
-GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;; 
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
 ```
 
 ## ## 忘记 Root 密码
