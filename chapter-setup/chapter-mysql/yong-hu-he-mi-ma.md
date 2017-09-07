@@ -5,7 +5,7 @@ $ grep "password" /var/log/mysqld.log
 
 ## ## 修改mysql密码
 ```
-$ mysqladmin -u root password
+$ mysqladmin -u root password -p
 ```
 或者
 ```
