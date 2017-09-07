@@ -28,34 +28,51 @@ CREATE USER '用户名'@'%' IDENTIFIED BY '密码';
 GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLES, CREATE VIEW, SHOW VIEW ON *.* TO '用户名'@'%';
 ```
 
+## ## 刷新权限表
+修改任意用户权限之后，需要刷新权限表
+```
+flush privileges;
+```
+
 ## ## 忘记 Root 密码
 
 1. 跳过权限检查方式启动
+
 ```
 $ mysqld_safe --skip-grant-tables
 # 或只允许本地访问
 $ mysqld_safe --skip-grant-tables --skip-networking
 ```
+
 2. 登录mysql
+
 	> 此时不检查密码
 	
 	```
 $ mysql -u root
-	```
-3. 修改root密码
 ```
+
+3. 修改root密码
+
+	```
 mysql> UPDATE `mysql`.`user` SET `Password`=PASSWORD('新密码') WHERE `User`='root';
 ```
+
 4. 刷新权限
-```
+
+	```
 mysql> flush privileges;
 ```
+
 5. 退出
-```
+
+	```
 mysql> quit
 ```
+
 6. 退出mysql进程
-```
+
+	```
 $ mysqladmin -u qualquer_coisa shutdown
 $ service mysqld start
 ```
