@@ -19,6 +19,15 @@ CREATE USER 'root'@'%' IDENTIFIED BY '密码';
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
 ```
 
+## ## 普通用户
+- 不包含`DROP`的权限，有需要可以自己添加
+- `%` 代表所有主机，`localhost`、`127.0.0.1`表示本地
+
+```
+CREATE USER '用户名'@'%' IDENTIFIED BY '密码';
+GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLES, CREATE VIEW, SHOW VIEW ON *.* TO '用户名'@'%';
+```
+
 ## ## 忘记 Root 密码
 
 1. 跳过权限检查方式启动
