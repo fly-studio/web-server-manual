@@ -23,6 +23,11 @@ $ vim /etc/supervisord.conf
 files = /www/supervisor/*.conf
 ```
 
+创建文件夹
+```
+$ mkdir -p /www/supervisor/
+```
+
 ### Laravel队列示例
 
 ```bash
