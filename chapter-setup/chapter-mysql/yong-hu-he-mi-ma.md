@@ -15,7 +15,7 @@ $ /usr/bin/mysql_secure_installation
 ## ## 添加root用户
 先使用`mysql -u root -p ` 在服务器上进入MYSQL控制台
 ```
-CREATE USER 'root'@'%' IDENTIFIED BY '密码'; GRANT ALL ON *.* TO 'root'@'%';
+CREATE USER 'root'@'%' IDENTIFIED BY '密码';
 GRANT ALL ON *.* TO 'root'@'%'; 
 ```
 
