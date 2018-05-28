@@ -1,28 +1,41 @@
 # 安装扩展包
-```
-$ yum install epel-release
-```
+
+
 
 # 软件仓库
+
 手册中所有软件仓库都基于以下仓库
+
+## I 安装epel
+```
+$ yum install epel-release
+
+//或者
+
+$ wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+
+# 7.0
+
+$ wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-10.noarch.rpm
+$ rpm -ivh epel-release-*.rpm
+
+```
 
 ## I 安装epel remi软件仓库
 ```
-$ wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-# 7.0
-$ wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-10.noarch.rpm
-
 $ wget http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+
 # 7.0
 $ wget http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
 
-$ rpm -ivh epel-release-*.rpm
 $ rpm -Uvh remi-release-*.rpm
 ```
-remi 软件库包含 PHP 5.4-5.6、PHP 7.0-7.1，以及其对应的扩展
+
+remi 软件库包含 PHP 5.4-5.6、PHP 7.0-7.1，以及其对应的扩展  
 并且默认情况下 remi 库是未激活状态
 
 ## II 安装rpmforge仓库
+
 ##### 1. 安装
 
 ```
@@ -33,11 +46,13 @@ $ rpm -ivh rpmforge-release-*.rpm
 ```
 
 实在不行，用清华大学镜像
-> https://mirror.tuna.tsinghua.edu.cn/help/repoforge/
+
+> [https://mirror.tuna.tsinghua.edu.cn/help/repoforge/](https://mirror.tuna.tsinghua.edu.cn/help/repoforge/)
 
 ```
 $ vim /etc/yum.repos.d/rpmforge.repo
 ```
+
 ```
 [rpmforge]
 name = RHEL $releasever - RPMforge.net - dag
@@ -68,10 +83,13 @@ gpgcheck = 1
 ```
 
 ##### 2. 修改库配置
+
 ```
 $ vim /etc/yum.repos.d/rpmforge.repo
 ```
+
 ##### 3. 关闭激活状态
+
 ```
 [rpmforge]
 ...
@@ -121,10 +139,12 @@ enabled=0
 
 # 其它版本的软件仓库
 
-将上例的资源网址，去掉文件名，即可显示其它版本的仓库
+将上例的资源网址，去掉文件名，即可显示其它版本的仓库  
 比如：
-- http://dl.fedoraproject.org/pub/epel/7/x86_64/e/
-- http://rpms.famillecollet.com/enterprise/
-- http://repository.it4i.cz/mirrors/repoforge/redhat/
+
+* [http://dl.fedoraproject.org/pub/epel/7/x86\_64/e/](http://dl.fedoraproject.org/pub/epel/7/x86_64/e/)
+* [http://rpms.famillecollet.com/enterprise/](http://rpms.famillecollet.com/enterprise/)
+* [http://repository.it4i.cz/mirrors/repoforge/redhat/](http://repository.it4i.cz/mirrors/repoforge/redhat/)
 
 可以自行选择对应系统版本的仓库
+
