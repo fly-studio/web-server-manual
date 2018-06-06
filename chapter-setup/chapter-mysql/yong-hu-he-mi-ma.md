@@ -12,6 +12,31 @@ $ mysqladmin -u root password -p
 $ /usr/bin/mysql_secure_installation
 ```
 
+## ## 设置为空密码
+首先使用原密码`mysql -u root -p`登录进去
+```
+# 设置policy为LOW
+set global validate_password_policy=0;
+# 设置大小写、数字、特殊字符的数量
+set global validate_password_mixed_case_count=0;
+set global validate_password_number_count=0;
+set global validate_password_special_char_count=0;
+# 下面的值是上面3个的总数。
+set global validate_password_length=0;
+```
+
+### ### 设置空密码
+```
+SET PASSWORD = PASSWORD('');
+```
+
+## ## 密码永不过期
+比如`root@localhost`用户
+```
+ALTER USER 'root'@'localhost' PASSWORD EXPIRE NEVER;
+flush privileges;
+```
+
 ## ## 添加root用户
 先使用`mysql -u root -p ` 在服务器上进入MYSQL控制台
 ```
