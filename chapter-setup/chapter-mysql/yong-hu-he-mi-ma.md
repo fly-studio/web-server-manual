@@ -27,7 +27,10 @@ set global validate_password_length=0;
 
 ### ### 设置空密码
 ```
+# 当前用户
 SET PASSWORD = PASSWORD('');
+# 指定用户
+SET PASSWORD FOR 'root'@'localhost' = PASSWORD('123');
 ```
 
 ## ## 密码永不过期
