@@ -9,9 +9,9 @@
 
 ```bash
 # CentOS 7
-$ wget http://repo.mysql.com/mysql57-community-release-el7-9.noarch.rpm
+$ wget http://repo.mysql.com/mysql57-community-release-el7-10.noarch.rpm
 # CentOS 6
-$ wget http://repo.mysql.com/mysql57-community-release-el6-9.noarch.rpm
+$ wget http://repo.mysql.com/mysql57-community-release-el6-10.noarch.rpm
 
 $ rpm -ivh mysql*-community-release-*.noarch.rpm
 ```
@@ -27,7 +27,7 @@ $ rpm -ivh mysql*-community-release-*.noarch.rpm
 ```
 默认打开`MySQL 5.6`的源，关闭之后启动`5.5`的源
 ```
-vim /etc/yum.repo.d/mysql-community.repo
+vim /etc/yum.repos.d/mysql-community.repo
 ```
 ```
 [mysql55-community]
