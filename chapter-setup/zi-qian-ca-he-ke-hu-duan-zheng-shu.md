@@ -2,8 +2,8 @@
 
 ## 新建 CA文件夹
 ```
-$ mkdir ~/ca
-$ cd ~/ca
+$ mkdir -p ~/certs/ca
+$ cd ~/certs/ca
 ```
 
 ## 新建CA证书
@@ -51,7 +51,7 @@ $ cat ~/ca/cacert.pem >> /etc/pki/tls/certs/ca-bundle.crt
 比如新建nginx的证书
 
 ```
-$ cd ~
+$ cd ~/certs/
 # 私钥
 $ openssl genrsa -out nginx.key 2048
 # 公钥
@@ -64,12 +64,60 @@ $ openssl req -new -key nginx.key -out nginx.csr
 
 连接到刚才的CA证书，并颁发最终的目标证书
 ```
-$ openssl x509 -req -days 365 -in nginx.csr -CA ~/ca/cacert.pem -CAkey ~/ca/cakey.pem -CAcreateserial -out nginx.crt
+$ openssl x509 -req -days 365 -in nginx.csr -CA ~/certs/ca/cacert.pem -CAkey ~/certs/ca/cakey.pem -CAcreateserial -out nginx.crt
 ```
 
 nginx配置示例
 ```
 ssl on;
-ssl_certificate ~/nginx.crt;
-ssl_certificate_key ~/nginx.key;
+ssl_certificate ~/certs/nginx.crt;
+ssl_certificate_key ~/certs/nginx.key;
+```
+
+# 其它
+
+## 查看证书
+```
+$ openssl x509 -text -noout -in cacert.crt
+```
+
+
+## 浏览器
+
+### Chrome需要签SAN（subjectAltName ）证书
+```
+# CSR 文件
+$ openssl req -new -sha256 \
+    -key nginx.key \
+    -subj "/C=CN/ST=/L=/O=/OU=/CN=www.domain.com" \
+    -reqexts SAN \
+    -config <(cat /etc/pki/tls/openssl.cnf \
+        <(printf "[SAN]\nsubjectAltName=DNS:www.domain1.com,DNS:www.domain2.com")) \
+    -out nginx.csr
+    
+# CRT 证书
+$ openssl ca -in nginx.csr \
+    -md sha256 \
+    -days 365 -in nginx.csr -cert ~/certs/ca/cacert.pem -keyfile ~/certs/ca/cakey.pem \
+    -extensions SAN \
+    -config <(cat /etc/pki/tls/openssl.cnf \
+        <(printf "[SAN]\nsubjectAltName=DNS:www.domain1.com,DNS:www.domain2.com")) \
+    -out nginx.crt
+```
+
+上面生成证书请求时的几个字段的意义：
+
+```
+C  => Country
+ST => State
+L  => City
+O  => Organization
+OU => Organization Unit
+CN => Common Name (证书所请求的域名)
+emailAddress => main administrative point of contact for the certificate
+```
+
+### Chrome下，可以启用本地的证书
+```
+chrome://flags/#allow-insecure-localhost
 ```
