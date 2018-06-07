@@ -54,6 +54,7 @@
     * [配置](chapter-setup/chapter-postgresql/配置.md)
     * [客户端](chapter-setup/chapter-postgresql/客户端.md)
     * [常见问题](chapter-setup/chapter-postgresql/常见问题.md)
+  * [自签CA和客户端证书](chapter-setup/zi-qian-ca-he-ke-hu-duan-zheng-shu.md)
 * [常用软件](tools.md)
   * [Git](chapter-tools/git.md)
   * [Supervisor](chapter-tools/supervisor.md)
