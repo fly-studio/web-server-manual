@@ -124,18 +124,12 @@ IP.2 = 127.0.0.1
 
 ## 生成证书
 ```
-# 根证书的 key 和 cer
+# 根证书的 key 和 crt
 openssl req -x509 -newkey rsa:2048 -out ca.crt -outform PEM -keyout ca.key -days 10000 -verbose -config req.cnf -nodes -sha256 -subj "/CN=MyCompany CA"
 
 # nginx的 key 和 csr
 openssl req -newkey rsa:2048 -keyout nginx.key -out nginx.csr -subj /CN=domain.com 
  -sha256 -nodes
-
-# CSR 文件
-$ openssl req -new -sha256 \
-    -key nginx.key \
-    -config req.conf -extensions 'v3_req'\
-    -out nginx.csr
     
 # 和CA一起颁发 CRT 证书
 $ openssl x509 -req -CA ca.crt -CAkey ca.key -in nginx.csr -out nginx.crt -days 10000 -extfile domain.ext -sha256 -set_serial 0x1111
