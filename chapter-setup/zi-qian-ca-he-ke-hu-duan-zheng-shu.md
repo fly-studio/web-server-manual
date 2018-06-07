@@ -1,12 +1,12 @@
 # CA根证书
 
-## 新建 CA文件夹
+## CA文件夹
 ```
 $ mkdir -p ~/certs/ca
 $ cd ~/certs/ca
 ```
 
-## 新建CA证书
+## CA证书
 因为是根证书，资料不重要，可以按需填写，注意**Common Name** 会显示在证书颁发者
 
 ### 方法一
@@ -59,9 +59,9 @@ openssl req -x509 -out nginx.crt -keyout nginx.key \
    printf "[dn]\nCN=www.domain.com\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:www.domain.com\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth")
 ```
 
-## CA颁发的证书
+## 浏览器证书
 
-nginx的证书
+简单的nginx的证书
 ```
 $ cd ~/certs/
 # 私钥
@@ -71,64 +71,9 @@ $ openssl req -new -key nginx.key -out nginx.csr
 ```
 **Common Name**  必须是你的域名，支持IP或者泛域名
 
-
 连接到刚才的CA证书，并颁发最终的目标证书
 ```
 $ openssl x509 -req -days 365 -in nginx.csr -CA ~/certs/ca/cacert.pem -CAkey ~/certs/ca/cakey.pem -CAcreateserial -out nginx.crt
-```
-## SAN + CA 证书
-
-新建一个文件req.conf
-```
-[ca]
-default_ca = req
-[req]
-distinguished_name = req_distinguished_name
-x509_extensions = v3_req
-prompt = no
-[req_distinguished_name]
-C = US
-ST = VA
-L = SomeCity
-O = MyCompany
-OU = MyDivision
-CN = www.company.com
-[v3_req]
-keyUsage = keyEncipherment, dataEncipherment
-extendedKeyUsage = serverAuth
-subjectAltName = @alt_names
-[alt_names]
-DNS.1 = www.company.net
-DNS.2 = company.com
-DNS.3 = company.net
-```
-上面生成证书请求时的几个字段的意义：
-
-```
-C  => Country
-ST => State
-L  => City
-O  => Organization
-OU => Organization Unit
-CN => Common Name (证书所请求的域名)
-emailAddress => main administrative point of contact for the certificate
-```
-
-生成证书
-```
-
-# CSR 文件
-$ openssl req -new -sha256 \
-    -key nginx.key \
-    -config req.conf -extensions 'v3_req'\
-    -out nginx.csr
-    
-# 和CA一起颁发 CRT 证书
-$ openssl ca -in nginx.csr \
-    -md sha256 \
-    -days 365 -in nginx.csr -cert ~/certs/ca/cacert.pem -keyfile ~/certs/ca/cakey.pem \
-    -config req.conf -extensions 'v3_req'\
-    -out nginx.crt
 ```
 
 ## nginx配置示例
@@ -137,6 +82,66 @@ ssl on;
 ssl_certificate ~/certs/nginx.crt;
 ssl_certificate_key ~/certs/nginx.key;
 ```
+
+
+# SAN + CA 证书
+
+## 新建req.conf 申请CA根证书的配置文件
+```
+[ req ]
+distinguished_name  = req_distinguished_name
+x509_extensions     = root_ca
+
+[ req_distinguished_name ]
+
+# 以下内容可随意填写
+countryName             = CN
+countryName_min         = 2
+countryName_max         = 2
+stateOrProvinceName     = ZheJiang
+localityName            = HangZhou
+0.organizationName      = Mycompany
+organizationalUnitName  = technology 
+commonName              = develop 
+commonName_max          = 64
+emailAddress            = xxxxxxxx@gmail.com 
+emailAddress_max        = 64
+
+[ root_ca ]
+basicConstraints            = critical, CA:true
+```
+## 新建domain.ext 生成服务器证书的扩展配置文件
+```
+subjectAltName = @alt_names
+extendedKeyUsage = serverAuth
+[alt_names]
+# 域名，如有多个用DNS.2,DNS.3…来增加
+DNS.1 = domain.com 
+# IP地址
+IP.1 = 192.168.1.2
+IP.2 = 127.0.0.1
+```
+
+## 生成证书
+```
+# 根证书的 key 和 cer
+openssl req -x509 -newkey rsa:2048 -out ca.crt -outform PEM -keyout ca.key -days 10000 -verbose -config req.cnf -nodes -sha256 -subj "/CN=MyCompany CA"
+
+# nginx的 key 和 csr
+openssl req -newkey rsa:2048 -keyout nginx.key -out nginx.csr -subj /CN=domain.com 
+ -sha256 -nodes
+
+# CSR 文件
+$ openssl req -new -sha256 \
+    -key nginx.key \
+    -config req.conf -extensions 'v3_req'\
+    -out nginx.csr
+    
+# 和CA一起颁发 CRT 证书
+$ openssl x509 -req -CA ca.crt -CAkey ca.key -in nginx.csr -out nginx.crt -days 10000 -extfile domain.ext -sha256 -set_serial 0x1111
+```
+
+
 # 其它
 
 ## 查看证书
