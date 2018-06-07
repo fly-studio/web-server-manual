@@ -81,15 +81,55 @@ ssl_certificate_key ~/certs/nginx.key;
 $ openssl x509 -text -noout -in cacert.crt
 ```
 
+## 错误
+
+### 错误1
+文件不存在
+```
+$ touch /etc/pki/CA/index.txt
+$ echo '1000' > /etc/pki/CA/serial
+```
+
+### 错误2
+```
+The mandatory stateOrProvinceName field was missing
+```
+`/etc/pki/tls/openssl.cnf`将 `match` 改为 `optional`
+```
+# For the CA policy
+[ policy_match ]
+countryName        = optional 
+stateOrProvinceName    = optional
+organizationName    = optional
+organizationalUnitName    = optional
+commonName        = supplied
+emailAddress        = optional
+```
+
+### 错误3
+升级openssl
+
+```
+ERROR:Serial number 01 has already been issued,
+      check the database/serial_file for corruption
+```
+### 错误4
+升级openssl
+```
+failed to update database
+TXT_DB error number 2
+```
+
 
 ## 浏览器
 
 ### Chrome需要签SAN（subjectAltName ）证书
 ```
+
 # CSR 文件
 $ openssl req -new -sha256 \
     -key nginx.key \
-    -subj "/C=CN/ST=/L=/O=/OU=/CN=www.domain.com" \
+    -subj "/CN=www.domain.com" \
     -reqexts SAN \
     -config <(cat /etc/pki/tls/openssl.cnf \
         <(printf "[SAN]\nsubjectAltName=DNS:www.domain1.com,DNS:www.domain2.com")) \
