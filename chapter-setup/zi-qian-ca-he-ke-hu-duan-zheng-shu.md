@@ -59,7 +59,7 @@ openssl req -x509 -out nginx.crt -keyout nginx.key \
    printf "[dn]\nCN=www.domain.com\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:www.domain.com\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth")
 ```
 
-## 浏览器证书
+## 普通证书
 
 简单的nginx的证书
 ```
