@@ -1,18 +1,22 @@
 ## ## 查看第一次安装的root密码
+
 ```
 $ grep "password" /var/log/mysqld.log
 ```
 
 ## ## 修改mysql密码
+
 ```
 $ mysqladmin -u root password -p
 ```
+
 或者
 ```
 $ /usr/bin/mysql_secure_installation
 ```
 
 ## ## 设置为空密码
+
 首先使用原密码`mysql -u root -p`登录进去
 ```
 # 设置policy为LOW

@@ -1,8 +1,10 @@
 # # 配置MariaDB
+
 主配置文件
 ```
 $ vim /etc/my.cnf.d/server.cnf
 ```
+
 ```
 [mysqld]
 datadir=/www/database/mysql
