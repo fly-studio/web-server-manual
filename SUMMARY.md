@@ -5,6 +5,7 @@
   * [基本属性](chapter-started/基本属性.md)
   * [Repo仓库](chapter-started/repo-仓库.md)
   * [服务器「必要组建」和「开放端口」](chapter-started/服务器「必要组建」和「开放端口」.md)
+    * [openSSL](chapter-started/服务器「必要组建」和「开放端口」/openssl.md)
 * [安装](setup.md)
   * [nginX安装与配置](chapter-setup/nginx-安装与配置.md)
     * [安装](chapter-setup/chapter-nginx/安装.md)

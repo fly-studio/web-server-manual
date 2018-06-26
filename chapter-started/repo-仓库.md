@@ -38,14 +38,7 @@ remi 软件库包含 PHP 5.4-5.6、PHP 7.0-7.1，以及其对应的扩展
 
 ##### 1. 安装
 
-```
-$ wget http://repository.it4i.cz/mirrors/repoforge/redhat/el6/en/x86_64/rpmforge/RPMS/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm
-# 7.0
-$ wget http://repository.it4i.cz/mirrors/repoforge/redhat/el7/en/x86_64/rpmforge/RPMS/rpmforge-release-0.5.3-1.el7.rf.x86_64.rpm
-$ rpm -ivh rpmforge-release-*.rpm
-```
-
-实在不行，用清华大学镜像
+用清华大学镜像
 
 > [https://mirror.tuna.tsinghua.edu.cn/help/repoforge/](https://mirror.tuna.tsinghua.edu.cn/help/repoforge/)
 
