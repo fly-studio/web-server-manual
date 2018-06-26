@@ -12,11 +12,11 @@ $ yum install epel-release
 
 //或者
 
-$ wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+$ wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
 
 # 7.0
 
-$ wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-10.noarch.rpm
+$ wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 $ rpm -ivh epel-release-*.rpm
 
 ```
