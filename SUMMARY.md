@@ -40,6 +40,8 @@
   * [PHP 扩展安装](chapter-setup/php-扩展安装.md)
     * [加速类扩展](chapter-setup/chapter-php-ext/加速类扩展.md)
     * [缓存类扩展](chapter-setup/chapter-php-ext/缓存类扩展.md)
+      * [Redis](chapter-setup/chapter-php-ext/缓存类扩展/redis.md)
+      * [Memcache](chapter-setup/chapter-php-ext/缓存类扩展/memcache.md)
     * [媒体扩展](chapter-setup/chapter-php-ext/媒体扩展.md)
     * [运行、调试类扩展](chapter-setup/chapter-php-ext/运行-调试类扩展.md)
   * [MySQL/MariaDB](chapter-setup/mysql.md)
