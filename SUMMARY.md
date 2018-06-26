@@ -7,6 +7,7 @@
   * [服务器「必要组建」和「开放端口」](chapter-started/服务器「必要组建」和「开放端口」.md)
     * [openSSL](chapter-started/服务器「必要组建」和「开放端口」/openssl.md)
     * [GCC](chapter-started/服务器「必要组建」和「开放端口」/gcc.md)
+    * [autoconf](chapter-started/服务器「必要组建」和「开放端口」/autoconf.md)
 * [安装](setup.md)
   * [nginX安装与配置](chapter-setup/nginx-安装与配置.md)
     * [安装](chapter-setup/chapter-nginx/安装.md)
