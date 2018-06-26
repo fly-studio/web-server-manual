@@ -1,27 +1,24 @@
-# 安装扩展包
-
-
-
 # 软件仓库
 
 手册中所有软件仓库都基于以下仓库
 
-## I 安装epel
+## I epel
+重要仓库
 ```
 $ yum install epel-release
 
 //或者
-
 $ wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
 
 # 7.0
-
 $ wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 $ rpm -ivh epel-release-*.rpm
 
 ```
 
-## I 安装epel remi软件仓库
+## II epel-remi软件仓库
+
+PHP、Redis等软件的新版本仓库
 ```
 $ wget http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
 
@@ -34,7 +31,7 @@ $ rpm -Uvh remi-release-*.rpm
 remi 软件库包含 PHP 5.4-5.6、PHP 7.0-7.1，以及其对应的扩展  
 并且默认情况下 remi 库是未激活状态
 
-## II 安装rpmforge仓库
+## III rpmforge仓库
 
 ##### 1. 安装
 
@@ -89,7 +86,9 @@ $ vim /etc/yum.repos.d/rpmforge.repo
 enabled = 0
 ```
 
-## III 安装 Sclo-RH 源
+## IV 安装 Sclo-RH 源
+
+这个仅仅在需要升级GCC的时候需要，按需安装
 
 ```
 $ vim /etc/yum.repos.d/CentOS-Sclo-RH.repo
