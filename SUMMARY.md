@@ -57,6 +57,8 @@
       * [YUM 安装](chapter-setup/chapter-mariadb/chapter-install/yum-安装.md)
       * [编译安装](chapter-setup/chapter-mariadb/chapter-install/编译安装.md)
     * [配置](chapter-setup/chapter-mysql/配置.md)
+      * [配置MySQL](chapter-setup/chapter-mysql/配置/pei-zhi-mysql.md)
+      * [配置MariaDB](chapter-setup/chapter-mysql/配置/pei-zhi-mariadb.md)
     * [操作](chapter-setup/chapter-mysql/操作.md)
     * [客户端](chapter-setup/chapter-mysql/客户端.md)
     * [用户和密码](chapter-setup/chapter-mysql/yong-hu-he-mi-ma.md)
