@@ -2,6 +2,7 @@
 ```
 $ yum --enablerepo=remi-php71,remi install php-opcache
 ```
+
 配置文件在：/etc/php.d/*-opcache.ini
 ```
 [opcache]
@@ -11,11 +12,13 @@ opcache.enable_cli=1
 opcache.huge_code_pages=1
 ;opcache.file_cache=/tmp
 ```
+
 还需要启用HugePage
 ```
 # 分配512个预留的大页内存
 $ sysctl vm.nr_hugepages=512
 ```
+
 查看HugePage结果
 ```
 cat /proc/meminfo  | grep Huge
