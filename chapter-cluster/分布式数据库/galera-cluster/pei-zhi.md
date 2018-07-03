@@ -60,12 +60,12 @@ general_log_file=/var/log/mysql-sql.log
 
 ; 其它配置，比如缓冲区、线程数、连接数等，酌情配置
 
-; 添加到[mysqld]末尾
-!includedir  /etc/my.cnf.d/
-
 [mysql_safe]
 log-error=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid
+
+; 添加到[mysqld]末尾
+!includedir /etc/my.cnf.d/
 ```
 
 
