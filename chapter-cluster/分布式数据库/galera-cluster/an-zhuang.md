@@ -25,17 +25,17 @@ gpgcheck = 1
 
 ## ## 安装软件
 
+本机一定不要安装MySQL
+
 ```
 $ yum install galera-3 mysql-wsrep-5.7
 ```
 
-这么直接安装会遇到`Transaction Check Error`的错误：
+本机一定不要安装MySQL，不然会遇到这个错误：`Transaction Check Error`：
 ```
 file /usr/share/mysql/bulgarian/errmsg.sys from install of mysql-wsrep-common-5.7-5.7.21-25.14.el7.x86_64 conflicts with file from package mysql-community-common-5.7.22-1.el7.x86_64
 ```
 
-这句话的意思是本地安装了最新的MySQL 5.7.22 但是mysql-wsrep-5.7还只支持5.7.21，解决这个问题，重装MySQL-5.7.21
-```
-yum remove mysql-*
-yum install mysql-community-server-5.7.21-1.el7.x86_64
-```
+卸载`yum remove mysql-*`
+
+
