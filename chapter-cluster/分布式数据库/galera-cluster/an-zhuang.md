@@ -26,7 +26,7 @@ gpgcheck = 1
 本机一定不要安装MySQL
 
 ```
-$ yum install galera-3 mysql-wsrep-5.7
+$ yum install rsync galera-3 mysql-wsrep-5.7
 ```
 
 本机一定不要安装MySQL，不然会遇到这个错误：`Transaction Check Error`：
