@@ -33,10 +33,9 @@ innodb_log_group_home_dir = /www/database/mysql
 
 
 ; 开启BinLog
-log_bin=ON
+log_bin=mysql-bin
 binlog_format=ROW
-log_bin_basename=/www/database/mysql/mysql-bin
-log_bin_index=/www/database/mysql/mysql-bin.index
+explicit_defaults_for_timestamp=true
 ; 在BinLog打开的时候需要设置一个ID，集群内唯一
 server-id=10
 
