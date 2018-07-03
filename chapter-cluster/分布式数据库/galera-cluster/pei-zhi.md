@@ -88,6 +88,7 @@ innodb_autoinc_lock_mode=2
 innodb_flush_log_at_trx_commit=0
 innodb_buffer_pool_size=122M
 
+[galera]
 wsrep_provider=/usr/lib64/galera-3/libgalera_smm.so
 wsrep_provider_options="gcache.size=300M; gcache.page_size=300M"
 ; 这个名字在集群中必须是统一的
