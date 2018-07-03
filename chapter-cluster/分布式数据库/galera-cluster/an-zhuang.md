@@ -36,6 +36,10 @@ $ yum install galera-3 mysql-wsrep-5.7
 file /usr/share/mysql/bulgarian/errmsg.sys from install of mysql-wsrep-common-5.7-5.7.21-25.14.el7.x86_64 conflicts with file from package mysql-community-common-5.7.22-1.el7.x86_64
 ```
 
-卸载`yum remove mysql-*`
+卸载MySQL
+
+```
+yum remove mysql-*
+```
 
 
