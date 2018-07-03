@@ -99,7 +99,7 @@ wsrep_sst_method=rsync
 ; 本机IP
 wsrep_node_address="192.168.1.10"
 ; 集群监听的IP和端口，设置本机IP和默认4567即可
-wsrep_provider_options ="gmcast.listen_addr=tcp://192.168.1.10:4567"
+wsrep_provider_options ="gmcast.listen_addr=tcp://0.0.0.0:4567"
 ; 节点名称，集群里唯一
 wsrep_node_name=db10
 ; 同步用的账号密码
