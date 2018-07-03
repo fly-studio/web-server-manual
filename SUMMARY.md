@@ -91,6 +91,7 @@
     * [Galera Cluster](chapter-cluster/分布式数据库/galera-cluster.md)
       * [安装](chapter-cluster/分布式数据库/galera-cluster/an-zhuang.md)
       * [配置](chapter-cluster/分布式数据库/galera-cluster/pei-zhi.md)
+      * [状态](chapter-cluster/分布式数据库/galera-cluster/zhuang-tai.md)
   * [分布式Cache](chapter-cluster/分布式-cache.md)
     * [Session同步](chapter-cluster/chapter-cache/上传文件同步.md)
   * [队列](chapter-cluster/队列.md)

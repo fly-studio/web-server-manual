@@ -22,7 +22,7 @@ $ vim /etc/my.cnf
 
 ## ## 主配置
 
-注意：按照下面的键修改你的配置文件，文件中默认存在的键可以不用更改
+注意：按照下面的键名修改你的配置文件，文件中存在其它键可以保留
 
 ```
 [mysqld]
@@ -47,8 +47,6 @@ innodb_data_file_path = ibdata1:200M;ibdata2:10M:autoextend
 ; 每个innodb的表的数据单独成文件，这个配置非常重要
 innodb_file_per_table = 1
 innodb_log_group_home_dir = /www/database/mysql
-
-
 
 
 ; 开启BinLog
@@ -83,7 +81,6 @@ innodb_autoinc_lock_mode=2
 innodb_flush_log_at_trx_commit=0
 innodb_buffer_pool_size=122M
 
-
 wsrep_provider=/usr/lib64/galera-3/libgalera_smm.so
 wsrep_provider_options="gcache.size=300M; gcache.page_size=300M"
 ; 这个名字在集群中必须是统一的
@@ -93,8 +90,13 @@ wsrep_cluster_address="gcomm://IP1,IP2,IP3"
 wsrep_sst_method=rsync
 ; 本机IP
 wsrep_node_address="192.168.1.10"
+; 集群监听的IP和端口，设置本机IP和默认4567即可
+wsrep_provider_options ="gmcast.listen_addr=tcp://192.168.1.10:4567"
 ; 节点名称，集群里唯一
 wsrep_node_name=db10
+; 同步用的账号密码
+wsrep_sst_auth=root:password
 ```
+
 
 
