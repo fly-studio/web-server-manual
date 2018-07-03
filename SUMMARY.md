@@ -88,6 +88,8 @@
   * [文件同步](chapter-cluster/文件同步.md)
     * [上传文件同步](chapter-cluster/chapter-file/上传文件同步.md)
   * [分布式数据库](chapter-cluster/分布式数据库.md)
+    * [Galera Cluster](chapter-cluster/分布式数据库/galera-cluster.md)
+      * [安装](chapter-cluster/分布式数据库/galera-cluster/an-zhuang.md)
   * [分布式Cache](chapter-cluster/分布式-cache.md)
     * [Session同步](chapter-cluster/chapter-cache/上传文件同步.md)
   * [队列](chapter-cluster/队列.md)
