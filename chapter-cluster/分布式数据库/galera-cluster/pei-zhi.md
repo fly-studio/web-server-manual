@@ -81,6 +81,8 @@ $ vim /etc/my.cnf.d/wsrep.cnf
 ```
 
 ```
+[mysqld]
+
 ; 必须设置为2 交错模式，才能在集群自增的时候不冲突
 innodb_autoinc_lock_mode=2
 innodb_flush_log_at_trx_commit=0
