@@ -1,12 +1,19 @@
-## ## 初始化数据库
-```
-$ mysqld --initialize  --user=mysql
-```
-
 ## ## 启动第一个节点
 
-如果启动第一个集群数据库，要保持`wsrep_cluster_address`的配置为空，等启动完毕之后，再填写了`restart`
+如果启动第一个集群数据库
 
 ```
-/usr/sbin/mysqld --wsrep-new-cluster --user=mysql &
+/usr/sbin/mysqld --wsrep-new-cluster --wsrep-cluster-address='gcomm://' --user=mysql
 ```
+
+其它集群数据库用`systemctl`、`service` 正常启动即可
+
+启动之后，可以关闭第一个数据库，使用`systemctl`、`service` 正常启动
+
+
+## ##
+```
+SHOW STATUS LIKE 'wsrep_%';
+```
+
+`wsrep_incoming_addresses` 是否有所有的IP，如果只有自己的IP，则表示加入失败

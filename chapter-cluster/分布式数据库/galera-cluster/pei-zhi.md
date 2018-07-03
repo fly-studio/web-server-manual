@@ -90,7 +90,7 @@ wsrep_provider=/usr/lib64/galera-3/libgalera_smm.so
 wsrep_provider_options="gcache.size=300M; gcache.page_size=300M"
 ; 这个名字在集群中必须是统一的
 wsrep_cluster_name="my-cluster"
-; 集群中其他IP，用逗号分隔
+; 集群中其他IP，用逗号分隔，自己的IP也要加
 wsrep_cluster_address="gcomm://IP1,IP2,IP3"
 wsrep_sst_method=rsync
 ; 本机IP
