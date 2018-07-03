@@ -30,8 +30,6 @@ innodb_data_file_path = ibdata1:200M;ibdata2:10M:autoextend
 ; 每个innodb的表的数据单独成文件，这个配置非常重要
 innodb_file_per_table = 1
 innodb_log_group_home_dir = /www/database/mysql
-innodb_flush_log_at_trx_commit=0
-innodb_buffer_pool_size=122M
 
 
 ; 开启BinLog
