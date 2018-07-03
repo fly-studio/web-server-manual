@@ -37,6 +37,9 @@ log_bin=ON
 binlog_format=ROW
 log_bin_basename=/www/database/mysql/mysql-bin
 log_bin_index=/www/database/mysql/mysql-bin.index
+; 在BinLog打开的时候需要设置一个ID，集群内唯一
+server-id=10
+
 
 ; 记录所有SQL语句，如果有BinLog，则可以不设定
 general_log = 1
