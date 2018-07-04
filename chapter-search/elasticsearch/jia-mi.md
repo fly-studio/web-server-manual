@@ -134,6 +134,21 @@ $ ./sgadmin.sh --enable-shard-allocation
 
 ## VIII 初始化Search Guard
 
+```
+```
 
+## IX 检查状态
 
+```
+GET https://<hostname>:9200/_searchguard/health
+```
+
+返回如下内容，即表示正常
+```
+{
+  message: null,
+  mode: "strict",
+  status: "UP"
+}
+```
 
