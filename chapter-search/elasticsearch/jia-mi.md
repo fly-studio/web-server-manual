@@ -9,7 +9,7 @@ X-Pack虽然开源，但是加密功能依旧收费，我们选择用[search-gua
 http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.floragunn%22%20AND%20a%3A%22search-guard-6%22
 ```
 
-## 关闭碎片分配
+## 关闭碎片分配(可选)
 
 此步骤是可选的，但特别推荐用于具有大量数据的大型群集。此步骤可确保在重新启动群集时不会移动分片，从而导致大量`I/O 消耗`。 在任意一台执行即可，可以`PUT请求`下面的`JSON`。
 ```
@@ -23,7 +23,7 @@ $ curl -Ss -XPUT 'https://localhost:9200/_cluster/settings?pretty' \
 '
 ```
 
-## 离线安装
+## ## 离线安装
 
 ```
 $ cd /usr/share/elasticsearch
@@ -37,7 +37,9 @@ $ bin/elasticsearch-plugin install -b file:///path/to/search-guard-6-<version>.z
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ```
 
-## 创建证书
+## ## 创建Node传输证书
+
+此证书是在集群之间通过9300端口传输数据的时候的证书，为强制的
 
 关于如何创建证书：[普通CN证书](/chapter-setup/zi-qian-ca-he-ke-hu-duan-zheng-shu/pu-tong-zheng-shu.md)
 
@@ -45,18 +47,26 @@ $ bin/elasticsearch-plugin install -b file:///path/to/search-guard-6-<version>.z
 
 将这些文件放到 `/etc/elasticsearch/` 下。
 
-## 配置
+## ## 配置
 
 编辑 `/etc/elasticsearch/elasticsearch.yaml`文件
+
+### ### 关闭企业版
+
+```
+searchguard.enterprise_modules_enabled: false
+```
+
+### ### 其它配置
 
 > 参考模板 https://github.com/floragunncom/search-guard-ssl/blob/master/searchguard-ssl-config-template.yml
 
 
 下文的路径必须是相对路径，因为证书需要放在`/etc/elasticsearch/` 下
 
+#### #### Node证书配置
 ```
-# 关闭企业版
-searchguard.enterprise_modules_enabled: false
+
 # 不校验hostname
 searchguard.ssl.transport.enforce_hostname_verification: false
 # 允许如下证书的Common Name，支持通配符和正则
@@ -74,7 +84,9 @@ searchguard.ssl.transport.pemtrustedcas_filepath: CA的公钥证书，按照上�
 xpack.security.enabled: false
 ```
 
-同理HTTPs的配置如下，
+#### #### 前端证书配置
+
+可以不开启，因为这个证书会被浏览器验证，所以需要签受信任的证书，比如使用`Let's Encrypt证书`
 
 ```
 searchguard.ssl.http.enabled: true
