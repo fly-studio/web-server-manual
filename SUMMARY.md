@@ -75,6 +75,7 @@
     * [普通CN证书](chapter-setup/zi-qian-ca-he-ke-hu-duan-zheng-shu/pu-tong-zheng-shu.md)
     * [临时证书](chapter-setup/zi-qian-ca-he-ke-hu-duan-zheng-shu/lin-shi-zheng-shu.md)
     * [SAN 多域名证书](chapter-setup/zi-qian-ca-he-ke-hu-duan-zheng-shu/san-duo-yu-ming-zheng-shu.md)
+    * [证书转换](chapter-setup/zi-qian-ca-he-ke-hu-duan-zheng-shu/zheng-shu-zhuan-huan.md)
 * [常用软件](tools.md)
   * [Git](chapter-tools/git.md)
   * [Supervisor](chapter-tools/supervisor.md)
