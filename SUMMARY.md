@@ -103,6 +103,7 @@
 * [搜索引擎](search.md)
   * [Elasticsearch](chapter-search/elasticsearch.md)
     * [search-guard](chapter-search/elasticsearch/jia-mi.md)
+      * [安装](chapter-search/elasticsearch/jia-mi/an-zhuang.md)
       * [sgadmin](chapter-search/elasticsearch/jia-mi/sgadmin.md)
       * [常见错误](chapter-search/elasticsearch/jia-mi/chang-jian-cuo-wu.md)
   * [Logstash](chapter-search/logstash.md)

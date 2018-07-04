@@ -1,5 +1,7 @@
 # 管理
 
+英文原版请见：https://docs.search-guard.com/latest/sgadmin
+
 ## 开启searchguard的前端管理接口（可选）
 
 ```
