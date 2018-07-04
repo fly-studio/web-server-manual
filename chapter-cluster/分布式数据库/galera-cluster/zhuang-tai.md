@@ -17,4 +17,4 @@
 SHOW STATUS LIKE 'wsrep_%';
 ```
 
-`wsrep_incoming_addresses` 是否有所有的IP，如果只有自己的IP，则表示加入失败
+`wsrep_incoming_addresses` 是否有所有的IP，如果只有自己的IP，则表示加入集群失败
