@@ -134,8 +134,7 @@ $ ./sgadmin.sh --enable-shard-allocation
 
 ## VIII 初始化Search Guard
 
-```
-```
+由于 Search Guard 默认情况下没有将任何配置加入到ES中，所以必须显示的使用`sgadmin`进行，具体请看下一章
 
 ## IX 检查状态
 
