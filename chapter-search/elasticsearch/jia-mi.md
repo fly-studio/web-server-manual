@@ -59,13 +59,17 @@ $ bin/elasticsearch-plugin install -b file:///path/to/search-guard-6-<version>.z
 searchguard.enterprise_modules_enabled: false
 ```
 
-### 其它配置
+### 所有配置
 
 > 参考模板 https://github.com/floragunncom/search-guard-ssl/blob/master/searchguard-ssl-config-template.yml
 
-#### Node证书配置
+### 证书配置
+
+> 证书配置参考: https://docs.search-guard.com/latest/configuring-tls
 
 下文的路径必须是相对路径，因为证书需要放在`/etc/elasticsearch/` 下
+
+#### Node通讯证书
 
 ```
 # 不校验hostname，因为要签SAN
@@ -103,16 +107,7 @@ searchguard.ssl.http.enabled_ciphers:
 searchguard.ssl.http.enabled_protocols:
   - "TLSv1.2"
 ```
-  
-### 开启searchguard的前端管理接口（可选）
 
-sgadmin是后端管理工具，但是也可以将这些开放到前端操作
-
-```
-searchguard.restapi.roles_enabled: ["sg_all_access"]
-```
-
-使用接口参考：https://docs.search-guard.com/latest/rest-api-access-control
 
 ## VI 启动ElasticSearch
 
