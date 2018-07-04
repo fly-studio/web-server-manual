@@ -23,14 +23,34 @@
 -----END PRIVATE KEY-----
 ```
 
+## ## 私钥 -> der
+
+```
+$ openssl rsa -in cakey.pem -outform der-out rsa_aes_private.der
+```
+
 
 ## ## PKCS1 -> PKCS8
 
+### 无密码
 ```
 $ openssl pkcs8 -topk8 -inform PEM -in cakey.pem -outform pem -nocrypt -out pkcs8.pem
 ```
 
-如果 cakey.pem 有密码，则在上面末尾加上 `-passout pass:密码`
+### 设置密码
+
+pkcs8默认采用des3 加密算法
+
+```
+$ openssl pkcs8 -topk8 -inform PEM -in cakey.pem -outform pem -out pkcs8.pem -passout pass:密码
+```
+生成的文件类似
+```
+-----BEGIN ENCRYPTED PRIVATE KEY-----
+
+-----END ENCRYPTED PRIVATE KEY-----
+```
+
 
 
 
