@@ -1,15 +1,15 @@
-# 加密
+# Search Guard
 
 X-Pack虽然开源，但是加密功能依旧收费，我们选择用[search-guard](https://search-guard.com/)的免费版本实现
 
-## 下载
+## I 下载
 
 打开下载地址，点击 zip，文件名类似：`search-guard-6-6.3.0-compliance-2.zip`
 ```
 http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.floragunn%22%20AND%20a%3A%22search-guard-6%22
 ```
 
-## 关闭碎片分配(可选)
+## II 关闭碎片分配(可选)
 
 此步骤是可选的，但特别推荐用于具有大量数据的大型群集。此步骤可确保在重新启动群集时不会移动分片，从而导致大量`I/O 消耗`。 在任意一台执行即可，可以`PUT请求`下面的`JSON`。
 ```
@@ -23,7 +23,7 @@ $ curl -Ss -XPUT 'https://localhost:9200/_cluster/settings?pretty' \
 '
 ```
 
-## ## 离线安装
+## III 离线安装
 
 ```
 $ cd /usr/share/elasticsearch
@@ -37,7 +37,7 @@ $ bin/elasticsearch-plugin install -b file:///path/to/search-guard-6-<version>.z
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ```
 
-## ## 创建Node传输证书
+## IV 创建Node传输证书
 
 此证书是在集群之间通过9300端口传输数据的时候的证书，为强制的
 
@@ -47,27 +47,26 @@ $ bin/elasticsearch-plugin install -b file:///path/to/search-guard-6-<version>.z
 
 将这些文件放到 `/etc/elasticsearch/` 下。
 
-## ## 配置
+## V 配置
 
 编辑 `/etc/elasticsearch/elasticsearch.yaml`文件
 
-### ### 关闭企业版
+### 关闭企业版
 
 ```
 searchguard.enterprise_modules_enabled: false
 ```
 
-### ### 其它配置
+### 其它配置
 
 > 参考模板 https://github.com/floragunncom/search-guard-ssl/blob/master/searchguard-ssl-config-template.yml
 
-#### #### Node证书配置
+#### Node证书配置
 
 下文的路径必须是相对路径，因为证书需要放在`/etc/elasticsearch/` 下
 
 ```
-
-# 不校验hostname
+# 不校验hostname，因为要签SAN
 searchguard.ssl.transport.enforce_hostname_verification: false
 # 允许如下证书的Common Name，支持通配符和正则
 searchguard.nodes_dn:
@@ -84,9 +83,9 @@ searchguard.ssl.transport.pemtrustedcas_filepath: CA的公钥证书，按照上�
 xpack.security.enabled: false
 ```
 
-#### #### 前端证书配置
+#### 前端HTTPs证书配置
 
-可以不开启，因为这个证书会被浏览器验证，所以需要签受信任的证书，比如使用`Let's Encrypt证书`
+可以不开启，因为这个证书会被浏览器/cURL验证，所以需要签受信任的CA证书签SAN才有效，比如使用`Let's Encrypt证书`
 
 ```
 searchguard.ssl.http.enabled: true
@@ -103,5 +102,38 @@ searchguard.ssl.http.enabled_protocols:
   - "TLSv1.2"
 ```
   
+### 开启searchguard的前端管理接口（可选）
+
+如果不想暴露出去，可以使用sgadmin作为后端管理工具
+
+```
+searchguard.restapi.roles_enabled: ["sg_all_access"]
+```
+
+## VI 启动ElasticSearch
+
+正常启动即可, 遇到问题可以查看日志去解决
+
+## VII 管理端
+
+```
+$ cd /usr/share/elasticsearch/plugins/search-guard-6/tools
+$ chmod +x sgadmin.sh
+```
+
+## VII 打开碎片分配(可选)
+
+如果之前关闭过，此时需要重新打开，但是此时仍然无法直接访问ES去打开，需要使用命令行
+
+然后Search Guard此时虽然处于活动状态，但是尚未初始化，所以需要使用 sgadmin 和 证书
+
+```
+$ ./sgadmin.sh --enable-shard-allocation
+ -cert /path/to/client.crt -key /path/to/client_pkcs8.pem -cacert /path/to/cacert.pem
+```
+
+## VIII 初始化Search Guard
+
+
 
 
