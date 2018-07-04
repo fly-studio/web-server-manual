@@ -51,17 +51,17 @@ $ bin/elasticsearch-plugin install -b file:///path/to/search-guard-6-<version>.z
 
 ## V 配置
 
-编辑 `/etc/elasticsearch/elasticsearch.y:qml`文件
+编辑 `/etc/elasticsearch/elasticsearch.yml`文件
+
+### 所有配置
+
+> 参考模板 https://github.com/floragunncom/search-guard-ssl/blob/master/searchguard-ssl-config-template.yml
 
 ### 关闭企业版
 
 ```
 searchguard.enterprise_modules_enabled: false
 ```
-
-### 所有配置
-
-> 参考模板 https://github.com/floragunncom/search-guard-ssl/blob/master/searchguard-ssl-config-template.yml
 
 ### 证书配置
 
