@@ -61,10 +61,10 @@ searchguard.enterprise_modules_enabled: false
 
 > 参考模板 https://github.com/floragunncom/search-guard-ssl/blob/master/searchguard-ssl-config-template.yml
 
+#### #### Node证书配置
 
 下文的路径必须是相对路径，因为证书需要放在`/etc/elasticsearch/` 下
 
-#### #### Node证书配置
 ```
 
 # 不校验hostname
