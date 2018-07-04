@@ -11,7 +11,8 @@
 启动之后，可以关闭第一个数据库，使用`systemctl`、`service` 正常启动
 
 
-## ##
+## ## 查看集群状态
+
 ```
 SHOW STATUS LIKE 'wsrep_%';
 ```

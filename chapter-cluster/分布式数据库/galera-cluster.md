@@ -1,3 +1,0 @@
-```
-show status like "wsrep%";
-```
