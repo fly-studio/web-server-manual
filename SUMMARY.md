@@ -104,7 +104,7 @@
   * [Elasticsearch](chapter-search/elasticsearch.md)
     * [search-guard](chapter-search/elasticsearch/jia-mi.md)
       * [sgadmin](chapter-search/elasticsearch/jia-mi/sgadmin.md)
-      * 常见错误
+      * [常见错误](chapter-search/elasticsearch/jia-mi/chang-jian-cuo-wu.md)
   * [Logstash](chapter-search/logstash.md)
     * [配置](chapter-search/chapter-logstash/配置.md)
     * [常见问题](chapter-search/chapter-logstash/常见问题.md)
