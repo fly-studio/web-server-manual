@@ -39,15 +39,15 @@ $ bin/elasticsearch-plugin install -b file:///path/to/search-guard-6-<version>.z
 
 ## IV 创建Node传输证书
 
-此证书是在集群之间通过9300端口传输数据的时候的证书，强制。
+此证书是在集群之间通过9300端口传输数据的时候的证书，**强制要求**。
 
-> 关于如何创建证书：[普通CN证书](/chapter-setup/zi-qian-ca-he-ke-hu-duan-zheng-shu/pu-tong-zheng-shu.md)
-> 如果可能，可以使用这些脚本生成： https://github.com/floragunncom/search-guard-ssl/tree/master/example-pki-scripts
+> 关于如何创建证书：参考本手册-[普通CN证书](/chapter-setup/zi-qian-ca-he-ke-hu-duan-zheng-shu/pu-tong-zheng-shu.md)
+> 如果可能，也可以使用这些脚本生成： https://github.com/floragunncom/search-guard-ssl/tree/master/example-pki-scripts
 
 
-`CA`正常创建，客户端证书需要将客户端的`私钥KEY`转换为`PKCS#8`的格式，参照 [证书转换](/chapter-setup/zi-qian-ca-he-ke-hu-duan-zheng-shu/zheng-shu-zhuan-huan.md)
+- `CA`正常创建，客户端证书需要将客户端的`私钥KEY`转换为`PKCS#8`的格式，参照 [证书转换](/chapter-setup/zi-qian-ca-he-ke-hu-duan-zheng-shu/zheng-shu-zhuan-huan.md)
 
-将这些文件放到 `/etc/elasticsearch/` 下。
+- 将这些文件放到 `/etc/elasticsearch/` 下。
 
 ## V 配置
 
@@ -106,7 +106,7 @@ searchguard.ssl.http.enabled_protocols:
   
 ### 开启searchguard的前端管理接口（可选）
 
-如果不想暴露出去，可以使用sgadmin作为后端管理工具
+sgadmin是后端管理工具，但是也可以将这些开放到前端操作
 
 ```
 searchguard.restapi.roles_enabled: ["sg_all_access"]
