@@ -51,7 +51,7 @@ $ bin/elasticsearch-plugin install -b file:///path/to/search-guard-6-<version>.z
 
 ## V 配置
 
-编辑 `/etc/elasticsearch/elasticsearch.yaml`文件
+编辑 `/etc/elasticsearch/elasticsearch.y:qml`文件
 
 ### 关闭企业版
 
@@ -116,7 +116,7 @@ searchguard.restapi.roles_enabled: ["sg_all_access"]
 
 ## VI 启动ElasticSearch
 
-正常启动即可, 遇到问题可以查看日志去解决
+正常启动1台，注意，**先启动一台**, 遇到问题可以查看日志去解决
 
 ## VII 配置管理端
 
@@ -136,32 +136,51 @@ $ chmod +x sgadmin.sh
 然后加入到主配置，标记只有使用这些证书才能操作`sgamin.sh`
 
 ```
-earchguard.authcz.admin_dn
-  - CN=name-1
-  - CN=name-2
+earchguard.authcz.admin_dn:
+  - 'CN=name-1'
+  - 'CN=name-2'
 ```
 
 ## VII 打开碎片分配(可选)
 
 如果之前关闭过，此时需要重新打开，但是此时仍然无法直接访问ES去打开，需要使用命令行
 
-Search Guard此时虽然处于活动状态，但是尚未初始化，所以需要使用 sgadmin 和 证书
-
-此证书，就是上文中签发的管理证书
+证书，就是上文中签发的管理证书
 
 ```
-$ ./sgadmin.sh --enable-shard-allocation
- -cert /path/to/manager.crt -key /path/to/manager_pkcs8.pem -cacert /path/to/cacert.pem
+$ /usr/share/elasticsearch/plugins/search-guard-6/tools/sgadmin.sh \
+  -cert /path/to/manager.crt \
+  -key /path/to/manager_pkcs8.pem \
+  -cacert /path/to/cacert.pem \
+  --ignore-clustername --disable-host-name-verification --disable-resolve-hostname \
+  --enable-shard-allocation
 ```
 
 ## VIII 初始化Search Guard
 
-由于 Search Guard 默认情况下没有将任何配置加入到ES中，所以必须使用`sgadmin`进行初始化，具体请看下一章
+由于 Search Guard 默认情况下没有将任何配置加入到ES中，所以必须使用`sgadmin`进行初始化
+
+```
+$ /usr/share/elasticsearch/plugins/search-guard-6/tools/sgadmin.sh \
+  -cert /path/to/manager.crt \
+  -key /path/to/manager_pkcs8.pem \
+  -cacert /path/to/cacert.pem \
+  --ignore-clustername --disable-host-name-verification --disable-resolve-hostname --enable-shard-allocation \
+  -cd /usr/share/elasticsearch/plugins/search-guard-6/sgconfig/
+```
+
+如果发生如下错误，表示当前ES的碎片分配未打开，请执行 VII 的步骤
+```
+UnavailableShardsException: [[searchguard][0] Primary shard is not active or isn't assigned is a known node. Timeout: [1m],
+```
+
+初始化结束，打开集群中的其它ES
+
 
 ## IX 检查状态
 
 ```
-GET https://<hostname>:9200/_searchguard/health
+$ curl -XGET 'http://127.0.0.1:9200/_searchguard/health'
 ```
 
 返回如下内容，即表示正常
