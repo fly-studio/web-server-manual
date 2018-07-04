@@ -1,3 +1,5 @@
+# 证书基本操作
+
 如何制作证书请参考下级分类
 
 
@@ -25,8 +27,13 @@ ssl_certificate_key ~/certs/nginx.key;
 # 其它
 
 ## 查看证书
+
 ```
 $ openssl x509 -text -noout -in cacert.crt
+```
+
+```
+$ openssl rsa -noout -text -in cacert.crt
 ```
 
 ## 错误
