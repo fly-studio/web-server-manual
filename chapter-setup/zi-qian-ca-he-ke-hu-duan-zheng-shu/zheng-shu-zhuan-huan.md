@@ -3,7 +3,7 @@
 
 ## ## PKCS1
 
-默认的`RSA证书` 就是 `PKCS1证书`，指令类似：`openssl genrsa -out private.key 1024`
+默认的`RSA证书` 就是 `PKCS1证书`，生成指令类似：`openssl genrsa -out private.key 1024`
 
 内容类似
 
@@ -21,6 +21,14 @@
 -----BEGIN PRIVATE KEY-----
 
 -----END PRIVATE KEY-----
+```
+
+加密的内容类似
+
+```
+-----BEGIN ENCRYPTED PRIVATE KEY-----
+
+-----END ENCRYPTED PRIVATE KEY-----
 ```
 
 ## ## 私钥 -> der
@@ -44,15 +52,6 @@ pkcs8默认采用des3 加密算法
 ```
 $ openssl pkcs8 -topk8 -inform PEM -in cakey.pem -outform pem -out pkcs8.pem -passout pass:密码
 ```
-生成的文件类似
-```
------BEGIN ENCRYPTED PRIVATE KEY-----
-
------END ENCRYPTED PRIVATE KEY-----
-```
-
-
-
 
 ## ## PKCS8 -> PKCS1
 
