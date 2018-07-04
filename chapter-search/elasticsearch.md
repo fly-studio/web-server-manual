@@ -67,3 +67,6 @@ network.publish_host: 192.168.0.1
 # 与其他节点交换数据用的端口
 transport.tcp.port: 9300  
 ```
+
+> 注意：如果服务器有多IP，那么最好指定 `network.publish_host`
+> 比如uCloud的负载均衡会让本地多一个lo.1的VIP，ES会优先发布到此VIP上导致无法集群，指定本机IP后可以解决无法启动的问题
