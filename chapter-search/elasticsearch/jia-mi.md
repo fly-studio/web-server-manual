@@ -110,31 +110,49 @@ searchguard.ssl.http.enabled_protocols:
 searchguard.restapi.roles_enabled: ["sg_all_access"]
 ```
 
+使用接口参考：https://docs.search-guard.com/latest/rest-api-access-control
+
 ## VI 启动ElasticSearch
 
 正常启动即可, 遇到问题可以查看日志去解决
 
-## VII 管理端
+## VII 配置管理端
+
+### 加入执行权限
 
 ```
 $ cd /usr/share/elasticsearch/plugins/search-guard-6/tools
 $ chmod +x sgadmin.sh
 ```
 
+### 配置中加入可以管理的证书
+
+为了安全，需要再签一套客户端证书，`Common Name`填写管理员的名称。
+
+然后加入到主配置，只有使用这些证书才能正常使用的操作`sgamin.sh`
+
+```
+earchguard.authcz.admin_dn
+  - CN=name-1
+  - CN=name-2
+```
+
 ## VII 打开碎片分配(可选)
 
 如果之前关闭过，此时需要重新打开，但是此时仍然无法直接访问ES去打开，需要使用命令行
 
-然后Search Guard此时虽然处于活动状态，但是尚未初始化，所以需要使用 sgadmin 和 证书
+Search Guard此时虽然处于活动状态，但是尚未初始化，所以需要使用 sgadmin 和 证书
+
+此证书，就是上文中签发的管理证书
 
 ```
 $ ./sgadmin.sh --enable-shard-allocation
- -cert /path/to/client.crt -key /path/to/client_pkcs8.pem -cacert /path/to/cacert.pem
+ -cert /path/to/manager.crt -key /path/to/manager_pkcs8.pem -cacert /path/to/cacert.pem
 ```
 
 ## VIII 初始化Search Guard
 
-由于 Search Guard 默认情况下没有将任何配置加入到ES中，所以必须显示的使用`sgadmin`进行，具体请看下一章
+由于 Search Guard 默认情况下没有将任何配置加入到ES中，所以必须使用`sgadmin`进行初始化，具体请看下一章
 
 ## IX 检查状态
 
