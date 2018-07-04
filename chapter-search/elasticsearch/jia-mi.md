@@ -39,9 +39,11 @@ $ bin/elasticsearch-plugin install -b file:///path/to/search-guard-6-<version>.z
 
 ## IV 创建Node传输证书
 
-此证书是在集群之间通过9300端口传输数据的时候的证书，为强制的
+此证书是在集群之间通过9300端口传输数据的时候的证书，强制。
 
-关于如何创建证书：[普通CN证书](/chapter-setup/zi-qian-ca-he-ke-hu-duan-zheng-shu/pu-tong-zheng-shu.md)
+> 关于如何创建证书：[普通CN证书](/chapter-setup/zi-qian-ca-he-ke-hu-duan-zheng-shu/pu-tong-zheng-shu.md)
+> 如果可能，可以使用这些脚本生成： https://github.com/floragunncom/search-guard-ssl/tree/master/example-pki-scripts
+
 
 `CA`正常创建，客户端证书需要将客户端的`私钥KEY`转换为`PKCS#8`的格式，参照 [证书转换](/chapter-setup/zi-qian-ca-he-ke-hu-duan-zheng-shu/zheng-shu-zhuan-huan.md)
 
