@@ -103,7 +103,7 @@
 * [搜索引擎](search.md)
   * [Elasticsearch](chapter-search/elasticsearch.md)
     * [search-guard](chapter-search/elasticsearch/jia-mi.md)
-      * sgadmin
+      * [sgadmin](chapter-search/elasticsearch/jia-mi/sgadmin.md)
       * 常见错误
   * [Logstash](chapter-search/logstash.md)
     * [配置](chapter-search/chapter-logstash/配置.md)

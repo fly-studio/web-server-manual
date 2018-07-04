@@ -174,10 +174,11 @@ $ /usr/share/elasticsearch/plugins/search-guard-6/tools/sgadmin.sh \
 UnavailableShardsException: [[searchguard][0] Primary shard is not active or isn't assigned is a known node. Timeout: [1m],
 ```
 
+## IX 启动集群
 初始化结束，打开集群中的其它ES
 
 
-## IX 检查状态
+## X 检查状态
 
 ```
 $ curl -XGET 'http://127.0.0.1:9200/_searchguard/health'
