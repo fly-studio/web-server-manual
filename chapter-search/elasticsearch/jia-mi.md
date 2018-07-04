@@ -129,9 +129,11 @@ $ chmod +x sgadmin.sh
 
 ### 配置中加入可以管理的证书
 
-为了安全，需要再签一套客户端证书，`Common Name`填写管理员的名称。
+为了安全，需要再签一套客户端证书，`Common Name`填写管理员的名称
 
-然后加入到主配置，只有使用这些证书才能正常使用的操作`sgamin.sh`
+> 比如：笔者直接使用上文node用的ca和客户端私钥，颁发这套证书
+
+然后加入到主配置，标记只有使用这些证书才能操作`sgamin.sh`
 
 ```
 earchguard.authcz.admin_dn
