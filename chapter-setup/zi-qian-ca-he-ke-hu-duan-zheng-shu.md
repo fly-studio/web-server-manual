@@ -50,10 +50,13 @@ $ echo '1000' > /etc/pki/CA/serial
 ```
 
 ### 错误2
+
 ```
 The mandatory stateOrProvinceName field was missing
 ```
+
 `/etc/pki/tls/openssl.cnf`将 `match` 改为 `optional`
+
 ```
 # For the CA policy
 [ policy_match ]
@@ -66,14 +69,17 @@ emailAddress        = optional
 ```
 
 ### 错误3
-升级openssl
+
+如下错误请升级openssl
 
 ```
 ERROR:Serial number 01 has already been issued,
       check the database/serial_file for corruption
 ```
 ### 错误4
-升级openssl
+
+如下错误请升级openssl
+
 ```
 failed to update database
 TXT_DB error number 2
