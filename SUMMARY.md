@@ -72,7 +72,7 @@
     * [客户端](chapter-setup/chapter-postgresql/客户端.md)
     * [常见问题](chapter-setup/chapter-postgresql/常见问题.md)
   * [自签CA和客户端证书](chapter-setup/zi-qian-ca-he-ke-hu-duan-zheng-shu.md)
-    * [普通CN证书](chapter-setup/zi-qian-ca-he-ke-hu-duan-zheng-shu/pu-tong-zheng-shu.md)
+    * [普通证书](chapter-setup/zi-qian-ca-he-ke-hu-duan-zheng-shu/pu-tong-zheng-shu.md)
     * [临时证书](chapter-setup/zi-qian-ca-he-ke-hu-duan-zheng-shu/lin-shi-zheng-shu.md)
     * [SAN 多域名证书](chapter-setup/zi-qian-ca-he-ke-hu-duan-zheng-shu/san-duo-yu-ming-zheng-shu.md)
     * [有密码的证书](chapter-setup/zi-qian-ca-he-ke-hu-duan-zheng-shu/you-mi-ma-de-zheng-shu.md)
