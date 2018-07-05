@@ -21,6 +21,7 @@ $ /usr/share/elasticsearch/plugins/search-guard-6/tools/sgadmin.sh \
   -cert /path/to/manager.crt \
   -key /path/to/manager_pkcs8.pem \
   -cacert /path/to/cacert.pem \
+  -keypass 密码,没有就删除本行 \
   --ignore-clustername --disable-host-name-verification --disable-resolve-hostname \
   --目标指令见下文
 ```
