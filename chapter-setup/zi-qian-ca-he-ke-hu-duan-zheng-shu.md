@@ -21,7 +21,6 @@ $ cat ~/ca/cacert.pem >> /etc/pki/tls/certs/ca-bundle.crt
 ![](/assets/ie_certificate_pathpng.png)
 
 
-
 ## nginx配置示例
 ```
 ssl on;
