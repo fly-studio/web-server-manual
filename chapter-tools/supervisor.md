@@ -193,9 +193,13 @@ $ supervisorctl update
 
 ```bash
 # 重启此任务的所有进程
-$ supervisorctl start laravel-worker:*
+$ supervisorctl restart laravel-worker:*
 # 重启此任务的0号进程
 $ supervisorctl restart laravel-worker:laravel-worker_00
+
+# 启动/停止
+$ supervisorctl start xxx:xxx
+$ supervisorctl stop xxx:xxx
 ```
 
 
