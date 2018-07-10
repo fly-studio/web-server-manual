@@ -189,10 +189,15 @@ $ supervisorctl update
 
 针对指定任务，启动、重启
 
+可以先使用`supervisorctl status`查看任务名称和序号
+
 ```bash
-$ supervisorctl start laravel-worker
-$ supervisorctl restart laravel-worker
+# 重启此任务的所有进程
+$ supervisorctl start laravel-worker:*
+# 重启此任务的0号进程
+$ supervisorctl restart laravel-worker:laravel-worker_00
 ```
+
 
 
 
