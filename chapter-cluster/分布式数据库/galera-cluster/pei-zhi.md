@@ -52,7 +52,7 @@ log_bin=mysql-bin
 binlog_format=ROW
 explicit_defaults_for_timestamp=true
 ; 保证同步的数据都要记录，不开启这个会导致单台binlog不完整
-log-slave-updates=true
+log-slave-updates=1
 ; 在BinLog打开的时候需要设置一个ID，集群内唯一
 server-id=10
 
