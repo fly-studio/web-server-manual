@@ -50,6 +50,7 @@ innodb_log_group_home_dir = /www/database/mysql
 ; 开启BinLog
 log_bin=mysql-bin
 binlog_format=ROW
+binlog_row_image=FULL
 explicit_defaults_for_timestamp=true
 ; 保证同步的数据都要记录，不开启这个会导致单台binlog不完整
 log-slave-updates=1

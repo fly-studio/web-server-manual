@@ -35,6 +35,7 @@ innodb_log_group_home_dir = /www/database/mysql
 ; 开启BinLog
 log_bin=mysql-bin
 binlog_format=ROW
+binlog_row_image=FULL
 explicit_defaults_for_timestamp=true
 ; 在BinLog打开的时候需要设置一个ID，集群内唯一
 server-id=10
