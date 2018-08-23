@@ -81,30 +81,51 @@ $ iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -o eth0 -j MASQUERADE
 
 保存
 ```
-service iptables save
+$ service iptables save
 ```
 
 ## firewall
 
 ```
-firewall-cmd --zone=public --add-interface=ppp+ --permanent
-firewall-cmd --permanent --new-service=pptp
-cat >/etc/firewalld/services/pptp.xml<<EOF
+$ firewall-cmd --zone=public --add-interface=ppp+ --permanent
+$ firewall-cmd --permanent --new-service=pptp
+$ cat >/etc/firewalld/services/pptp.xml<<EOF
 <?xml version="1.0" encoding="utf-8"?>
 <service>
   <port protocol="tcp" port="1723"/>
 </service>
 EOF
-firewall-cmd --permanent --zone=public --add-service=pptp
-firewall-cmd --permanent --zone=public --add-masquerade
+$ firewall-cmd --permanent --zone=public --add-service=pptp
+$ firewall-cmd --permanent --zone=public --add-masquerade
 # firewall-cmd --zone=public --permanent --direct --add-rule ipv4 filter INPUT 0 -i eth0 -p tcp --dport 1723 -j ACCEPT 
-firewall-cmd --zone=public --permanent --direct --add-rule ipv4 filter INPUT 0 -p gre -j ACCEPT 
-firewall-cmd --zone=public --permanent --direct --add-rule ipv4 filter POSTROUTING 0 -t nat -o eth0 -j MASQUERADE 
-firewall-cmd --zone=public --permanent --direct --add-rule ipv4 filter FORWARD 0 -i ppp+ -o eth0 -j ACCEPT 
-firewall-cmd --zone=public --permanent --direct --add-rule ipv4 filter FORWARD 0 -i eth0 -o ppp+ -j ACCEPT
+$ firewall-cmd --zone=public --permanent --direct --add-rule ipv4 filter INPUT 0 -p gre -j ACCEPT 
+$ firewall-cmd --zone=public --permanent --direct --add-rule ipv4 filter POSTROUTING 0 -t nat -o eth0 -j MASQUERADE 
+$ firewall-cmd --zone=public --permanent --direct --add-rule ipv4 filter FORWARD 0 -i ppp+ -o eth0 -j ACCEPT 
+$ firewall-cmd --zone=public --permanent --direct --add-rule ipv4 filter FORWARD 0 -i eth0 -o ppp+ -j ACCEPT
 ```
 
 生效
 ```
 firewall-cmd --reload
 ```
+
+
+# 问题
+
+## 无法访问百度，亚马逊等，但是其它网站正常
+
+这是因为MTU太大导致包被丢弃的问题
+
+在 `/etc/ppp/options.pptpd`加入这个并重启pptpd
+```
+mtu 1496
+```
+
+在iptables设定MSS
+
+```
+iptables -A FORWARD -p tcp -syn -s 192.168.0.0/24 -j TCPMSS -set-mss 1496
+```
+
+
+
