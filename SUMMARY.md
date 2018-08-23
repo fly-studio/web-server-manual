@@ -84,6 +84,7 @@
   * [Go](chapter-tools/go.md)
   * [Aria2](chapter-tools/aria2.md)
   * [NFS](chapter-tools/nfs.md)
+  * [VPN](chapter-tools/vpn.md)
 * [分布式服务器](cluster.md)
   * [网络结构](chapter-cluster/网络结构.md)
   * [负载均衡](chapter-cluster/负载均衡.md)
