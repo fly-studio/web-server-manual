@@ -77,6 +77,7 @@ CentOS中使用如下配置
 $ iptables -A INPUT -p tcp -m tcp --dport 1723 -j ACCEPT
 $ iptables -A FORWARD -i ppp+ -j ACCEPT
 $ iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -o eth0 -j MASQUERADE
+$ iptables -A FORWARD -p tcp -syn -s 192.168.0.0/24 -j TCPMSS -set-mss 1496
 ```
 
 保存
@@ -102,11 +103,12 @@ $ firewall-cmd --zone=public --permanent --direct --add-rule ipv4 filter INPUT 0
 $ firewall-cmd --zone=public --permanent --direct --add-rule ipv4 filter POSTROUTING 0 -t nat -o eth0 -j MASQUERADE 
 $ firewall-cmd --zone=public --permanent --direct --add-rule ipv4 filter FORWARD 0 -i ppp+ -o eth0 -j ACCEPT 
 $ firewall-cmd --zone=public --permanent --direct --add-rule ipv4 filter FORWARD 0 -i eth0 -o ppp+ -j ACCEPT
+$ firewall-cmd --zone=public --permanent --direct --add-rule ipv4 filter FORWARD 0 -p tcp -i ppp+ -j TCPMSS --syn --set-mss 1496
 ```
 
 生效
 ```
-firewall-cmd --reload
+$ firewall-cmd --reload
 ```
 
 
@@ -121,11 +123,8 @@ firewall-cmd --reload
 mtu 1496
 ```
 
-在iptables设定MSS
+上面的iptables 和 firewall都有加
 
-```
-iptables -A FORWARD -p tcp -syn -s 192.168.0.0/24 -j TCPMSS -set-mss 1496
-```
 
 
 
