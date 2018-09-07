@@ -2,7 +2,7 @@ Chrome等浏览器已经强制校验SAN证书的多域名
 
 # SAN + CA 证书
 
-## 新建req.conf 申请CA根证书的配置文件
+## 新建req.cnf 申请CA根证书的配置文件
 ```
 [ req ]
 distinguished_name  = req_distinguished_name
@@ -44,7 +44,7 @@ IP.2 = 127.0.0.1
 openssl req -x509 -newkey rsa:2048 -out ca.crt -outform PEM -keyout ca.key -days 10000 -verbose -config req.cnf -nodes -sha256 -subj "/CN=MyCompany CA"
 
 # nginx的 key 和 csr
-openssl req -newkey rsa:2048 -keyout nginx.key -out nginx.csr -subj /CN=domain.com 
+openssl req -nodes -newkey rsa:2048 -keyout nginx.key -out nginx.csr -subj /CN=domain.com 
  -sha256 -nodes
     
 # 和CA一起颁发 CRT 证书
