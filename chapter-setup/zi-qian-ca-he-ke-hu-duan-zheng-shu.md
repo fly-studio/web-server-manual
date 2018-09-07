@@ -24,8 +24,8 @@ $ cat ~/ca/cacert.pem >> /etc/pki/tls/certs/ca-bundle.crt
 ## nginx配置示例
 ```
 ssl on;
-ssl_certificate ~/certs/nginx.crt;
-ssl_certificate_key ~/certs/nginx.key;
+ssl_certificate /root/certs/nginx.crt;
+ssl_certificate_key /root/certs/nginx.key;
 ```
 
 # 其它
