@@ -60,6 +60,7 @@
       * [配置MySQL](chapter-setup/chapter-mysql/配置/pei-zhi-mysql.md)
       * [配置MariaDB](chapter-setup/chapter-mysql/配置/pei-zhi-mariadb.md)
     * [操作](chapter-setup/chapter-mysql/操作.md)
+    * [增量备份MySQL](chapter-setup/chapter-mysql/zeng-liang-bei-fen-mysql.md)
     * [客户端](chapter-setup/chapter-mysql/客户端.md)
     * [用户和密码](chapter-setup/chapter-mysql/yong-hu-he-mi-ma.md)
     * [常见问题](chapter-setup/chapter-mysql/常见问题.md)
