@@ -51,29 +51,29 @@ password=password
 ```
 backup_type = full-backuped
 from_lsn = 0
-...
 ```
 
 之后运行时，则是增量备份，内容类似
 ```
 backup_type = incremental
-...
 ```
 
 每次备份都会以当前时间为文件夹
 
 ### 脚本内容
 
+比如文件名：
 ```
 $ vim xtrabackup.sh
 ```
 
-#### 路径解释
+#### 变量解释
 
-- base_path：备份目的地
+- base_path：备份目录
 - config_path：配置文件路径，参照上文
 - log_file：日志文件路径
-- lsn_path：最后一次成功备份的数据起始点文件
+- lsn_path：最后一次成功备份的数据起始点文件，（无需修改）
+- processors：CPU核数（无需修改）
 
 ```bash
 #!/bin/bash
@@ -81,7 +81,8 @@ $ vim xtrabackup.sh
 base_path="/data/mysql_backup/"
 config_path="/data/backup.conf"
 log_file="/data/backup.log"
-lsn_path="/data/mysql_backup/xtrabackup_checkpoints"
+
+lsn_path="${base_path}/xtrabackup_checkpoints"
 processors="$(nproc --all)"
 
 innobackupex_args=(
