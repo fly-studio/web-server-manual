@@ -1,12 +1,10 @@
-# 增量备份
+# Percona Xtrabackup
 
 > 部分文档参考来源: https://qizhanming.com/blog/2017/05/10/install-percona-xtrabackup-on-centos-7
 
-使用`Percona Xtrabackup`进行备份和增量备份。
-
 ## 前提
 
-- MySQL > 5.1.23
+- MySQL 5.5 +
 - 足够的空间
 
 
@@ -47,18 +45,18 @@ password=password
 
 ### 原理解释
 
-本脚本第一次运行会生成一个全备份，`lsn_path`文件中的格式类似于
+本脚本第一次运行会生成一个全备份，生成的`lsn_path`文件中的内容类似于
 ```
 backup_type = full-backuped
 from_lsn = 0
 ```
 
-之后运行时，则是增量备份，内容类似
+之后运行时，则是增量备份，`lsn_path`文件内容类似
 ```
 backup_type = incremental
 ```
 
-每次备份都会以当前时间为文件夹
+每次备份都会以当前时间为文件夹，所以可以将本脚本加入到`crontab`
 
 ### 脚本内容
 
