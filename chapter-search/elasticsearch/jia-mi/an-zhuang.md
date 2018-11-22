@@ -4,10 +4,9 @@
 
 ## I 下载
 
-打开下载地址，点击 zip，文件名类似：`search-guard-6-6.3.0-compliance-2.zip`
-```
-http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.floragunn%22%20AND%20a%3A%22search-guard-6%22
-```
+打开下载地址，下载适合的版本，文件名类似：`search-guard-6-6.4.3-**.zip`
+
+> 下载地址 https://docs.search-guard.com/latest/search-guard-versions
 
 ## II 关闭碎片分配(可选)
 

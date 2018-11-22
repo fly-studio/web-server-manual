@@ -11,9 +11,9 @@ $ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 $ vim /etc/yum.repos.d/elasticsearch.repo
 ```
 ```
-[elasticsearch-5.x]
-name=Elasticsearch repository for 5.x packages
-baseurl=https://artifacts.elastic.co/packages/5.x/yum
+[elasticsearch-6.x]
+name=Elasticsearch repository for 6.x packages
+baseurl=https://artifacts.elastic.co/packages/6.x/yum
 gpgcheck=1
 gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
 enabled=1
@@ -24,7 +24,7 @@ type=rpm-md
 ## ## 安装
 安装java(如果有则跳过)
 ```
-$ yum install java
+$ yum install java java-devel
 ```
 安装
 ```
@@ -53,9 +53,14 @@ bootstrap.memory_lock: true
 network.host: _local_
 # 端口
 http.port: 9200
+# 内存占比
+indices.memory.index_buffer_size: 50%
+indices.queries.cache.size: 50%
 # 可跨域请求
 http.cors.enabled: true
 http.cors.allow-origin: "*"
+http.cors.allow-methods: OPTIONS, HEAD, GET, POST, PUT, DELETE
+http.cors.allow-headers: X-Requested-With, Content-Type, Content-Length, Authorization
 ```
 
 其他配置
