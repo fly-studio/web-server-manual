@@ -51,5 +51,12 @@ $ ln -fs /opt/rh/devtoolset-3/root/usr/bin/gcc /usr/bin/cc
 $ ln -fs /opt/rh/devtoolset-3/root/usr/bin/g++ /usr/bin/g++
 ```
 
+#### - 7.X
+
+按照上例4.9中的指令, 将 3 替换成 7 就行，比如：
+```
+$ yum install devtoolset-7-binutils devtoolset-7-gcc devtoolset-7-gcc-c++
+$ ln -fs /opt/rh/devtoolset-7/root/usr/bin/gcc /usr/bin/gcc
+```
 
 
