@@ -107,6 +107,7 @@
 * [搜索引擎](search.md)
   * [Elasticsearch](chapter-search/elasticsearch.md)
     * [安装](chapter-search/elasticsearch/an-zhuang.md)
+    * [配置](chapter-search/elasticsearch/pei-zhi.md)
     * [search-guard](chapter-search/elasticsearch/jia-mi.md)
       * [安装](chapter-search/elasticsearch/jia-mi/an-zhuang.md)
       * [sgadmin](chapter-search/elasticsearch/jia-mi/sgadmin.md)
