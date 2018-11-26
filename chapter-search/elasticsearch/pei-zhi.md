@@ -1,10 +1,13 @@
-## ## 配置
-设置运行目录
+# # 配置
+
+## 设置运行目录
 ```
 $ mkdir /www/database/elasticsearch
 $ chown -R elasticsearch:elasticsearch /www/database/elasticsearch
 ```
-编辑配置
+
+## 编辑配置
+
 ```
 $ vim /etc/elasticsearch/elasticsearch.yml
 ```
@@ -31,7 +34,11 @@ http.cors.allow-methods: OPTIONS, HEAD, GET, POST, PUT, DELETE
 http.cors.allow-headers: X-Requested-With, Content-Type, Content-Length, Authorization
 ```
 
-其他配置
+> bootstrap.memory_lock 开启之后无法启动的问题见
+
+
+
+## 其他配置
 ```
 # 设置绑定的ip地址，可以是ipv4或ipv6的，默认为0.0.0.0
 network.bind_host: 0.0.0.0
