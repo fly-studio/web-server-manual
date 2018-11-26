@@ -106,6 +106,7 @@
     * [虚拟合并多个文件的内容](chapter-cluster/chapter-fs/虚拟合并多个文件的内容.md)
 * [搜索引擎](search.md)
   * [Elasticsearch](chapter-search/elasticsearch.md)
+    * [安装](chapter-search/elasticsearch/an-zhuang.md)
     * [search-guard](chapter-search/elasticsearch/jia-mi.md)
       * [安装](chapter-search/elasticsearch/jia-mi/an-zhuang.md)
       * [sgadmin](chapter-search/elasticsearch/jia-mi/sgadmin.md)
