@@ -1,6 +1,10 @@
 # 常见错误
 
 ## bootstrap.memory_lock 导致无法启动的问题
+
+CentOS 7下会存在此问题
+
+
 ### 1. 
 
 ```
