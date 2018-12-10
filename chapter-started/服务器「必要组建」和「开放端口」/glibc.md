@@ -7,13 +7,13 @@ MySQL 5.7 需要glibc 2.17 +
 ## Yum 方式安装(推荐)
 
 ```
-wget http://copr-be.cloud.fedoraproject.org/results/mosquito/myrepo-el6/epel-6-x86_64/glibc-2.17-55.fc20/glibc-2.17-55.el6.x86_64.rpm \
+$ wget http://copr-be.cloud.fedoraproject.org/results/mosquito/myrepo-el6/epel-6-x86_64/glibc-2.17-55.fc20/glibc-2.17-55.el6.x86_64.rpm \
 http://copr-be.cloud.fedoraproject.org/results/mosquito/myrepo-el6/epel-6-x86_64/glibc-2.17-55.fc20/glibc-common-2.17-55.el6.x86_64.rpm \
 http://copr-be.cloud.fedoraproject.org/results/mosquito/myrepo-el6/epel-6-x86_64/glibc-2.17-55.fc20/glibc-devel-2.17-55.el6.x86_64.rpm \
 http://copr-be.cloud.fedoraproject.org/results/mosquito/myrepo-el6/epel-6-x86_64/glibc-2.17-55.fc20/glibc-headers-2.17-55.el6.x86_64.rpm \
 http://copr-be.cloud.fedoraproject.org/results/mosquito/myrepo-el6/epel-6-x86_64/glibc-2.17-55.fc20/nscd-2.17-55.el6.x86_64.rpm
 
-rpm -Uvh glibc-2.17-55.el6.x86_64.rpm \
+$ rpm -Uvh glibc-2.17-55.el6.x86_64.rpm \
 glibc-common-2.17-55.el6.x86_64.rpm \
 glibc-devel-2.17-55.el6.x86_64.rpm \
 glibc-headers-2.17-55.el6.x86_64.rpm \
@@ -26,7 +26,7 @@ nscd-2.17-55.el6.x86_64.rpm
 如果没有一定动手能力，会严重导致系统命令无法访问。
 
 
-> 注意：CentOS 6 下很难编译通过，如果要使用MySQL的最新版，建议使用MySQL的仓库`yum install`
+> 注意：CentOS 6 下很难编译通过
 
 分别运行下面的两个命令可以查看系统的版本
 ```
