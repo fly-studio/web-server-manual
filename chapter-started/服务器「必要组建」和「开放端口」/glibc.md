@@ -1,7 +1,9 @@
 # # GLIBC
 
-MySQL 5.7 需要glibc 2.17 +
-以下是CentOS 6.x 安装方法
+`MySQL 5.7` 需要`glibc 2.17 +` 以及 `libstdc++ 3.4.15 +`
+> 以下是`CentOS 6.x` 安装方法，但是即使安装了完毕
+> `MySQL 5.7` 仍然提示需要 `libstdc++.so.6(GLIBCXX_3.4.15)(64bit)` 
+> 所以不建议在CentOS 6.5下安装`MySQL 5.7`
 
 分别运行下面的两个命令可以查看系统的版本
 ```
@@ -93,3 +95,5 @@ $ /usr/lib64/libstdc++.so.6 -> libstdc++.so.6.0.13
 $ find / -name "libstdc++.so.6*"
 ```
 库中没有更高的版本
+
+笔者在CentOS 6.x下做了多种尝试，建议升级系统，别无它法。
