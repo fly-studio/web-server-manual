@@ -1,6 +1,8 @@
-# MongoDB sharding
+# MongoDB Shard Cluster
 
-分片式 MongoDB 将自动根据相关规则将数据放入每个服务器的分片中，服务器之间有多重备份，共同承担读写压力，并且保证数据的一致性，并且随时可以新增服务器来进行水平扩展。
+分片式 MongoDB 将自动根据相关规则将数据放入每个服务器的分片中，服务器之间有多重备份，共同承担读写压力，并且保证数据的一致性，并且随时可以**新增服务器来进行水平扩展**。
+
+> 本篇主要内容来自于：https://docs.mongodb.com/manual/tutorial/deploy-shard-cluster/
 
 整个架构是
 
@@ -23,8 +25,10 @@
 
 在这三台机器上正常安装
 
+> 安装之前需要设置repo文件，请参见 https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/，下同
+
 ```
-$ yum install mongo-repo
+$ yum install mongodb-org
 ```
 
 ### 建立库的文件夹
@@ -180,7 +184,7 @@ rs.initiate(
 在这三台机器上正常安装
 
 ```
-$ yum install mongo-repo
+$ yum install mongodb-org
 ```
 
 ### 建立库的文件夹
@@ -253,7 +257,52 @@ rs.initiate(
 成功后可以使用 `rs.status()` 查看具体的集群情况，正常情况下会返回一长串结果，包含每个节点的主次信息：`PRIMARY` `SECONDARY`
 
 
+## III 路由端
 
+`mongos`官方推荐是1~N台，并不需要和上面台数相同，这里只用一台来实现
+
+### 安装
+
+```
+$ yum install mongodb-org-mongos
+```
+
+如果你已经安装过完整的`mongodb-org`，以下指令无需执行
+```
+$ mkdir -p /var/log/mongodb/
+$ mkdir -p /var/run/mongodb/
+$ chown mongod:mongod /var/log/mongodb/
+$ chown mongod:mongod /var/run/mongodb/
+```
+
+### 配置
+
+```
+$ vim /etc/mongos.conf
+```
+
+内容
+
+```
+systemLog:
+  destination: file
+  logAppend: true
+  path: /var/log/mongodb/mongos.log
+
+sharding:
+  configDB: mongoc/mongoc1:27018,mongoc2:27018,mongoc3:27018
+# 这里必须按照这个格式<configReplSetName>/ip1:port,ip2:port,
+# <configReplSetName>就是上文设置的Config集群名称
+
+net:
+  port: 27017
+  bindIp: 0.0.0.0
+
+processManagement:
+  fork: true
+  pidFilePath: /var/run/mongodb/mongos.pid
+
+```
 
 
 
