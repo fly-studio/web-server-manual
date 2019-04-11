@@ -126,8 +126,17 @@ $ mongo --port 27017
 sh.addShard("mongod/mongod1:27019,mongod2:27019,mongod3:27019")
 ```
 
+> 这里加入1个集群，只会让路由有一个分片，所以建议新建多个集群。
+> 如果Shard端并没有激活集群（也是单独服务），这里需要多次添加单台`sh.addShard("ip:port")
+`
+
 返回的结果中 `ok: 1` 即成功，其它情况查看`errmsg`
 
+## 启动分片负载均衡
+
+```
+sh.enableSharding('<database>')
+```
 
 
 

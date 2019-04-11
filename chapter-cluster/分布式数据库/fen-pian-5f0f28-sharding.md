@@ -8,6 +8,9 @@
 
 ![](/assets/sharded-cluster-production-architecture.bakedsvg.svg)
 
+- 其中Config Server存储的是Meta数据，也就是分片的一些元数据，如果这个集群数据丢失，则是灾难性的。
+- 1个Shard可以有多个台构成集群，也可以是单台服务器
+
 
 安装步骤见下级文档
 
