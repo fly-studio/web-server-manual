@@ -116,9 +116,9 @@ TasksAccounting=false
 WantedBy=multi-user.target
 ```
 
-#### 这样启动方法就是
+#### 启动方法
 ```
-# 开机启动项
+# 设置为开机启动项
 systemctl enable mongoc
 # 启动
 systemctl start mongoc
@@ -126,3 +126,31 @@ systemctl start mongoc
 systemctl stop mongoc
 ```
 
+
+### 激活集群
+
+启动三台之后，连接到任意一台，**注意以下命令只能在一台执行**
+
+```
+$ mongo -host mongoc1 -port 27018
+```
+
+执行下面的指令
+
+```
+rs.initiate(
+  {
+    _id: "mongoc", // 这里就是上面设置的replication.replSetName的集群唯一名字
+    configsvr: true,
+    members: [
+      { _id : 0, host : "mongoc1:27018" },
+      { _id : 1, host : "mongoc2:27018" },
+      { _id : 2, host : "mongoc3:27018" }
+    ]
+  }
+)
+```
+
+返回的结果中 `ok: 1` 即成功，其它情况查看`errmsg`
+
+成功后可以使用 `rs.status()` 查看具体的集群情况，正常情况下会返回一长串结果，包含每个节点的主次信息：`PRIMARY` `SECONDARY`
