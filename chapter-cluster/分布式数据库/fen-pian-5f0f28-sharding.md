@@ -2,6 +2,11 @@
 
 分片式 MongoDB 将自动根据相关规则将数据放入每个服务器的分片中，服务器之间有多重备份，共同承担读写压力，并且保证数据的一致性，并且随时可以新增服务器来进行水平扩展。
 
+整个架构是
+
+![](/assets/sharded-cluster-production-architecture.bakedsvg.svg)
+
+
 ## I 安装 Config 端
 
 比如现在有三台机器，IP 为 192.168.1.101 ~ 192.168.1.103
@@ -156,7 +161,7 @@ rs.initiate(
 成功后可以使用 `rs.status()` 查看具体的集群情况，正常情况下会返回一长串结果，包含每个节点的主次信息：`PRIMARY` `SECONDARY`
 
 
-## II 安装数据端
+## II 安装数据Shards端
 
 这里举例另外三台机器，IP 为 192.168.1.201 ~ 192.168.1.203
 
@@ -203,7 +208,7 @@ net:
   bindIp: 0.0.0.0
   
 replication:
-  replSetName: mongod # 这个自定义，但是集群中此名字要保持一致
+  replSetName: mongod # 这个自定义，但是集群中此名字要保持一致，并且不能与Config的名称相同
 
 sharding:
   clusterRole: shardsvr
@@ -234,7 +239,6 @@ $ mongo --host mongod1 --port 27019
 rs.initiate(
   {
     _id: "mongod", // 这里就是上面设置的replication.replSetName的集群唯一名字
-    configsvr: true,
     members: [
       { _id : 0, host : "mongod1:27019" },
       { _id : 1, host : "mongod2:27019" },
