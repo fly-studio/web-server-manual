@@ -134,9 +134,13 @@ sh.addShard("mongod/mongod1:27019,mongod2:27019,mongod3:27019")
 
 ## 启动分片负载均衡
 
+如果您想为哪个数据库、集合启用分片
+
 ```
-sh.enableSharding('<database>')
+sh.enableSharding("<database>")
+sh.shardCollection()
 ```
+> sh.shardCollection() 请查看https://docs.mongodb.com/manual/reference/method/sh.shardCollection/
 
 
 
