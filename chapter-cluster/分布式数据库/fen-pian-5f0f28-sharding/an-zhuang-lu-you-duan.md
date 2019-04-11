@@ -5,10 +5,11 @@
 ## 安装
 
 ```
-$ yum install mongodb-org-mongos
+$ yum install mongodb-org-mongos mongodb-org-shell
 ```
 
 如果你已经安装过完整的`mongodb-org`，以下指令无需执行
+
 ```
 $ groupadd mongod
 $ useradd -g mongod mongod -s /sbin/nologin
@@ -104,6 +105,28 @@ systemctl start mongos
 # 关闭
 systemctl stop mongos
 ```
+
+## 外部访问
+
+启动后，`27017`便是对外服务的端口
+
+> **注意：**请不要对外开放Config、Shard集群的端口，也不允许直接对这两个集群进行操作
+
+## 添加Shard集群到路由
+
+启动之后，还需要将Shard集群加入到路由中，如果你有多个路由，以下指令需要重复在每台路由上执行
+
+连接到路由
+```
+$ mongo --port 27017
+```
+
+注意下文的格式是`<replSetName>/ip1:port,ip2:port,ip3:port`，其中`<replSetName>`就是上文Shard集群的名字
+```
+sh.addShard("mongod/mongod1:27019,mongod2:27019,mongod3:27019")
+```
+
+返回的结果中 `ok: 1` 即成功，其它情况查看`errmsg`
 
 
 
