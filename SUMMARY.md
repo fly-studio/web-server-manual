@@ -102,6 +102,7 @@
       * [分片式\(Shard\)集群](chapter-cluster/分布式数据库/fen-pian-5f0f28-sharding.md)
         * [安装 Config 端](chapter-cluster/分布式数据库/fen-pian-5f0f28-sharding/an-zhuang-config-duan.md)
         * [安装数据Shards端](chapter-cluster/分布式数据库/fen-pian-5f0f28-sharding/an-zhuang-shu-ju-shards-duan.md)
+        * [安装路由端](chapter-cluster/分布式数据库/fen-pian-5f0f28-sharding/an-zhuang-lu-you-duan.md)
   * [分布式Cache](chapter-cluster/分布式-cache.md)
     * [Session同步](chapter-cluster/chapter-cache/上传文件同步.md)
   * [队列](chapter-cluster/队列.md)
