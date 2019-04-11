@@ -138,9 +138,9 @@ sh.addShard("mongod/mongod1:27019,mongod2:27019,mongod3:27019")
 
 ```
 sh.enableSharding("<database>")
-sh.shardCollection()
+sh.shardCollection(namespace, key, unique, options)
 ```
-> sh.shardCollection() 请查看https://docs.mongodb.com/manual/reference/method/sh.shardCollection/
+> sh.shardCollection() 用法请查看https://docs.mongodb.com/manual/reference/method/sh.shardCollection/
 
 
 
