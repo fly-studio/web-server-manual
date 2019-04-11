@@ -1,8 +1,8 @@
-# III 路由端
+# 路由端
 
 `mongos`官方推荐是1~N台，并不需要和上面台数相同，这里只用一台来实现
 
-### 安装
+## 安装
 
 ```
 $ yum install mongodb-org-mongos
@@ -17,7 +17,7 @@ $ mkdir -p /var/log/mongodb/
 $ chown mongod:mongod /var/log/mongodb/
 ```
 
-### 配置
+## 配置
 
 ```
 $ vim /etc/mongos.conf
@@ -46,7 +46,7 @@ processManagement:
 
 ```
 
-### 设置启动项
+## 设置启动项
 
 在三台上均配置
 
@@ -94,7 +94,7 @@ TasksAccounting=false
 WantedBy=multi-user.target
 ```
 
-### 启动方法
+## 启动方法
 
 ```
 # 设置为开机启动项

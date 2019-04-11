@@ -1,8 +1,8 @@
-# I 安装 Config 端
+# 安装 Config 端
 
 比如现在有三台机器，IP 为 192.168.1.101 ~ 192.168.1.103
 
-### 现在将这些IP加入/etc/hosts
+## 现在将这些IP加入/etc/hosts
 
 ```
 192.168.1.101 mongoc1
@@ -10,7 +10,7 @@
 192.168.1.103 mongoc3
 ```
 
-### 安装
+## 安装
 
 在这三台机器上正常安装
 
@@ -20,7 +20,7 @@
 $ yum install mongodb-org
 ```
 
-### 建立库的文件夹
+## 建立库的文件夹
 
 在三台上均创建
 
@@ -29,7 +29,7 @@ $ mkdir -p /www/database/mongoc
 $ chown mongod:mongod /www/database/mongoc
 ```
 
-### 配置
+## 配置
 
 在三台上均配置
 
@@ -65,7 +65,7 @@ processManagement:
   pidFilePath: /var/run/mongodb/mongoc.pid
 ```
 
-### 设置启动项
+## 设置启动项
 
 在三台上均配置
 
@@ -113,7 +113,7 @@ TasksAccounting=false
 WantedBy=multi-user.target
 ```
 
-### 启动方法
+## 启动方法
 
 ```
 # 设置为开机启动项
@@ -125,7 +125,7 @@ systemctl stop mongoc
 ```
 
 
-### 激活集群
+## 激活集群
 
 启动三台之后，连接到任意一台，**注意以下命令只能在一台执行**
 

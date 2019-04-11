@@ -1,10 +1,10 @@
-# II 安装数据Shards端
+# 安装数据Shards端
 
 这里举例另外三台机器，IP 为 192.168.1.201 ~ 192.168.1.203
 
 > 如果服务器有限，可以将数据端也安装到上面的服务器中，但是官方不推荐。
 
-### 现在将这些IP加入/etc/hosts
+## 现在将这些IP加入/etc/hosts
 
 ```
 192.168.1.201 mongod1
@@ -12,7 +12,7 @@
 192.168.1.203 mongod3
 ```
 
-### 安装
+## 安装
 
 在这三台机器上正常安装
 
@@ -20,7 +20,7 @@
 $ yum install mongodb-org
 ```
 
-### 建立库的文件夹
+## 建立库的文件夹
 
 在三台上均创建
 
@@ -29,7 +29,7 @@ $ mkdir -p /www/database/mongod
 $ chown mongod:mongod /www/database/mongod
 ```
 
-### 修改配置
+## 修改配置
 ```
 $ vim /etc/mongod.conf
 ```
@@ -51,7 +51,7 @@ sharding:
   clusterRole: shardsvr
 ```
 
-### 启动方法
+## 启动方法
 
 ```
 # 设置为开机启动项
@@ -62,7 +62,7 @@ systemctl start mongod
 systemctl stop mongod
 ```
 
-### 激活集群
+## 激活集群
 
 启动三台之后，连接到任意一台，**注意以下命令只能在一台执行**
 
