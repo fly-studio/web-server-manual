@@ -98,8 +98,9 @@
       * [启动](chapter-cluster/分布式数据库/galera-cluster/zhuang-tai.md)
     * [大数据](chapter-cluster/分布式数据库/da-shu-ju.md)
       * [Online DDL](chapter-cluster/分布式数据库/online-ddl.md)
-    * MongoDB
+    * [MongoDB](chapter-cluster/分布式数据库/mongodb.md)
       * [分片式\(Shard\)集群](chapter-cluster/分布式数据库/fen-pian-5f0f28-sharding.md)
+        * [安装 Config 端](chapter-cluster/分布式数据库/fen-pian-5f0f28-sharding/an-zhuang-config-duan.md)
   * [分布式Cache](chapter-cluster/分布式-cache.md)
     * [Session同步](chapter-cluster/chapter-cache/上传文件同步.md)
   * [队列](chapter-cluster/队列.md)
