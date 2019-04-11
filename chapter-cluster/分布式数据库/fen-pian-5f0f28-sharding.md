@@ -3,14 +3,47 @@
 
 
 
-# 安装 Config 端
+## 安装 Config 端
 
 比如现在有三台机器，IP 为 192.168.1.101 ~ 192.168.1.103
-现在将这些IP加入/etc/hosts
+
+### 现在将这些IP加入/etc/hosts
 
 ```
 192.168.1.101 mongoc1
 192.168.1.102 mongoc2
 192.168.1.102 mongoc2
 ```
+
+### 在这三台机器上正常安装`yum install mongo-repo`
+
+```
+$ vim /etc/mongoc.conf
+```
+```
+storage:
+  dbPath: /www/database/mongoc
+  journal:
+    enabled: true
+
+systemLog:
+  destination: file
+  logAppend: true
+  path: /var/log/mongodb/mongoc.log
+
+sharding:
+   clusterRole: configsvr
+
+replication:
+  replSetName: mongoc
+
+net:
+  port: 27018
+  bindIp: 0.0.0.0
+
+processManagement:
+  fork: true
+  pidFilePath: /var/run/mongodb/mongoc.pid
+```
+
 
