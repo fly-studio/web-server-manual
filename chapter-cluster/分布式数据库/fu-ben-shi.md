@@ -1,8 +1,9 @@
 # Replication 副本集
 
-采用3~N台MongoDB组成的一个副本集，集群中所有节点的数据**完全相同**，为了便于选举主节点，建议由奇数台构成。
+采用`3~N`台`MongoDB`组成的一个副本集，集群中所有节点的数据**完全相同**，为了便于选举主节点，建议由奇数台构成。
 
 架构如下：
+
 ![](/assets/replica-set-read-write-operations-primary.bakedsvg.svg)
 
 
@@ -18,14 +19,13 @@
 
 3. 故障转移
 
-    集群中所有节点保持心跳连接，如果10s内（electionTimeoutMillis）没有收到心跳回复，则判定为下线。如果是主节点下线，最迟12s（包含之前的10s）重新选举新的主节点。但是在选举中，集群无法提供服务。
+    集群中所有节点保持心跳连接，如果`10s`内（`electionTimeoutMillis`）没有收到心跳回复，则判定为下线。如果是主节点下线，最迟`12s`（包含之前的`10s`）重新选举新的主节点。但是在选举中，集群无法提供服务。
 
 4. 多点读取
 
-    一般情况下，主节点对外提供读写服务，也可以通过[配置读取首选项](https://docs.mongodb.com/manual/core/read-preference/)让副本节点提供读取服务。但是，副本节点因为存在同步延迟，所以返回的数据可能不是最新的，这点和MySQL主从同步类似。
+    一般情况下，主节点对外提供读写服务，也可以通过[配置读取首选项](https://docs.mongodb.com/manual/core/read-preference/)让副本节点提供读取服务。但是，副本节点因为存在同步延迟，所以返回的数据可能不是最新的，这点和`MySQL`主从同步类似。
     
     
-
 如果服务器充裕，或者是集群节点数是偶数，可以在架构中加入单独一台`仲裁者`节点，此节点不提供数据存储服务器，仅仅提供选举主节点的功能。
 
 ![](/assets/replica-set-primary-with-secondary-and-arbiter.bakedsvg.svg)

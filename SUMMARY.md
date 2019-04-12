@@ -99,15 +99,14 @@
     * [大数据](chapter-cluster/分布式数据库/da-shu-ju.md)
       * [Online DDL](chapter-cluster/分布式数据库/online-ddl.md)
     * [MongoDB](chapter-cluster/分布式数据库/mongodb.md)
-      * 安装的Repo
-      * [副本式\(Replication\)](chapter-cluster/分布式数据库/fu-ben-shi.md)
+      * [用于安装的Repo 仓库](chapter-cluster/分布式数据库/an-zhuang-de-repo.md)
+      * [副本集群\(Replication\)](chapter-cluster/分布式数据库/fu-ben-shi.md)
         * [安装节点](chapter-cluster/分布式数据库/fu-ben-shi/an-zhuang-jie-dian.md)
-      * [分片式\(Shard\)集群](chapter-cluster/分布式数据库/fen-pian-5f0f28-sharding.md)
+      * [分片集群\(Shard\)](chapter-cluster/分布式数据库/fen-pian-5f0f28-sharding.md)
         * [安装 Config 端](chapter-cluster/分布式数据库/fen-pian-5f0f28-sharding/an-zhuang-config-duan.md)
         * [安装数据Shards端](chapter-cluster/分布式数据库/fen-pian-5f0f28-sharding/an-zhuang-shu-ju-shards-duan.md)
         * [安装路由端](chapter-cluster/分布式数据库/fen-pian-5f0f28-sharding/an-zhuang-lu-you-duan.md)
         * 如何设置分片
-    
   * [分布式Cache](chapter-cluster/分布式-cache.md)
     * [Session同步](chapter-cluster/chapter-cache/上传文件同步.md)
   * [队列](chapter-cluster/队列.md)
