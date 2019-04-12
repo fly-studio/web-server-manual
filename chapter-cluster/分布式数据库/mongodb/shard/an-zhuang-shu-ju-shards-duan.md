@@ -2,11 +2,11 @@
 
 Shard集群至少由2台Shard节点组成
 
-## 副本集构成的Shard
+## 多个副本集构成的Shard
 
-如果有充足的服务器，并且架构是1个副本集群构成1个Shard，这样可以参见[副本集的节点安装](/chapter-cluster/分布式数据库/mongodb/replication/an-zhuang-jie-dian.md)
+如果有充足的服务器，并且架构是1个副本集群构成1个Shard节点，这样可以参见[副本集的安装](/chapter-cluster/分布式数据库/mongodb/replication/an-zhuang-jie-dian.md)
 
-> 这里再次重申，1个副本集只构成一个Shard，因为副本集中每个节点的数据是完全一致的
+> 这里再次重申，1个副本集只构成一个Shard节点，因为副本集中每个节点的数据是完全一致的
 
 配置有如下区别
 

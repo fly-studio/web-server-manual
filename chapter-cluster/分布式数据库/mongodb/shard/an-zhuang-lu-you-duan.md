@@ -1,6 +1,8 @@
 # 路由端
 
-`mongos`官方推荐是1~N台，并不需要和上面台数相同，这里只用一台来实现
+路由是对外提供服务的唯一窗口，客户端只需要接入到路由便可以进行CRUD的操作
+
+`mongos`官方推荐路由是`1~N`个节点，这里只用一个节点来实现
 
 ## 安装
 
@@ -24,7 +26,7 @@ $ chown mongod:mongod /var/log/mongodb/
 $ vim /etc/mongos.conf
 ```
 
-内容
+全部内容
 
 ```
 systemLog:
@@ -36,6 +38,7 @@ sharding:
   configDB: mongoc/mongoc1:27018,mongoc2:27018,mongoc3:27018
 # 这里必须按照这个格式<configReplSetName>/ip1:port,ip2:port,
 # <configReplSetName>就是上文设置的Config集群名称
+# 4.x中Config Server必须由副本集群提供
 
 net:
   port: 27017
@@ -48,8 +51,6 @@ processManagement:
 ```
 
 ## 设置启动项
-
-在三台上均配置
 
 ```
 $ vim /usr/lib/systemd/system/mongos.service
@@ -110,38 +111,41 @@ systemctl stop mongos
 
 启动后，`27017`便是对外服务的端口
 
-> **注意：**请不要对外开放Config、Shard集群的端口，也不允许直接对这两个集群进行操作
+> **注意：**请不要对外开放Config、Shard端的端口，也不允许直接对这两个端进行操作
 
-## 添加Shard集群到路由
+## 添加Shard节点到路由
 
-启动之后，还需要将Shard集群加入到路由中，如果你有多个路由，以下指令需要重复在每台路由上执行
+启动之后，还需要将Shard节点加入到路由中，如果你有多个路由，以下指令需要重复在每台路由上执行
 
 连接到路由
 ```
 $ mongo --port 27017
 ```
 
+### 由副本集群构成的Shard节点
+
 注意下文的格式是`<replSetName>/ip1:port,ip2:port,ip3:port`，其中`<replSetName>`就是上文Shard集群的名字
+
 ```
 sh.addShard("mongod/mongod1:27019,mongod2:27019,mongod3:27019")
 ```
 
-> 这里加入1个集群，只会让路由有一个分片，所以建议新建多个集群。
-> 如果Shard端并没有激活集群（也是单独服务），这里需要多次添加单台`sh.addShard("ip:port")
-`
-
 返回的结果中 `ok: 1` 即成功，其它情况查看`errmsg`
 
-## 启动分片负载均衡
+> **注意：**这里只演示加入1个副本集群，这只会让集群拥有一个Shard节点，这对项目并没有帮助，因为只有1个Shard节点的情况下无法分片
 
-如果您想为哪个数据库、集合启用分片
+需要再次加入多个副本集群，比如：
 
 ```
-sh.enableSharding("<database>")
-sh.shardCollection(namespace, key, unique, options)
+sh.addShard("其它集群名/mongod3:27019,mongod4:27019,mongod5:27019")
 ```
-> sh.shardCollection() 用法请查看https://docs.mongodb.com/manual/reference/method/sh.shardCollection/
 
+### 由单个数据节点构成的Shard节点
+
+多次添加即可
+```
+sh.addShard("ip:port")
+```
 
 
 

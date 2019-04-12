@@ -1,6 +1,6 @@
 # 安装 Config 端
 
-比如现在有三台机器，IP 为 192.168.1.101 ~ 192.168.1.103
+比如现在有三台节点，IP 为 192.168.1.101 ~ 192.168.1.103
 
 ## 将这些IP加入/etc/hosts
 
@@ -12,9 +12,7 @@
 
 ## 安装
 
-在这三台机器上正常安装
-
-> 安装之前需要设置repo文件，请参见 https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/，下同
+在这三台节点上正常安装
 
 ```
 $ yum install mongodb-org
@@ -22,7 +20,7 @@ $ yum install mongodb-org
 
 ## 建立库的文件夹
 
-在三台上均创建
+在三节点上均创建
 
 ```
 $ mkdir -p /www/database/mongoc
@@ -31,7 +29,7 @@ $ chown mongod:mongod /www/database/mongoc
 
 ## 配置
 
-在三台上均配置
+在三节点上均配置
 
 ```
 $ vim /etc/mongoc.conf
@@ -67,7 +65,7 @@ processManagement:
 
 ## 设置启动项
 
-在三台上均配置
+在三节点上均配置
 
 ```
 $ vim /usr/lib/systemd/system/mongoc.service
@@ -127,7 +125,7 @@ systemctl stop mongoc
 
 ## 激活集群
 
-启动三台之后，连接到任意一台，**注意以下命令只能在一台执行**
+启动三节点之后，连接到任意一节点，**注意以下命令只能在一节点执行**
 
 ```
 $ mongo --host mongoc1 --port 27018
