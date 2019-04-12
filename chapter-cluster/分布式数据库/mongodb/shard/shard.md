@@ -29,7 +29,7 @@
 
 ![](/assets/sharded-cluster-test-architecture.bakedsvg.svg)
 
-- 路由器1个
+- 1个路由
 - Config Server副本集群
 - 单数据节点构成的Shard节点
 

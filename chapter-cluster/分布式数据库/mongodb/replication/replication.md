@@ -2,7 +2,7 @@
 
 采用`3~N`台`MongoDB`组成的一个副本集，集群中所有节点的数据**完全相同**，为了便于选举主节点，建议由奇数台构成。
 
-架构如下：
+## 架构：
 
 ![](/assets/replica-set-read-write-operations-primary.bakedsvg.svg)
 
