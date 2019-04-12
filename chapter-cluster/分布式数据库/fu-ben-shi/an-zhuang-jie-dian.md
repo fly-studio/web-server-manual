@@ -12,32 +12,19 @@
 
 ## 安装
 
-在这三台机器上正常安装
-
-```
-$ yum install mongodb-org
-```
-
-## 建立库的文件夹
-
-在三台上均创建
-
-```
-$ mkdir -p /www/database/mongod
-$ chown mongod:mongod /www/database/mongod
-```
+安装方法请参见[MongoDB Yum 安装](/chapter-setup/an-zhuang/yum-an-zhuang.md)
 
 ## 修改配置
+
 ```
 $ vim /etc/mongod.conf
 ```
 
+配置请参见MongoDB 配置
+
 需要修改的内容如下，注意保持其它内容不变
 
-```
-storage:
-  dbPath: /www/database/mongod
-  
+```  
 net:
   port: 27019
   bindIp: 0.0.0.0
