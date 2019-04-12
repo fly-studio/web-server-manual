@@ -72,6 +72,10 @@
     * [配置](chapter-setup/chapter-postgresql/配置.md)
     * [客户端](chapter-setup/chapter-postgresql/客户端.md)
     * [常见问题](chapter-setup/chapter-postgresql/常见问题.md)
+  * MongoDB
+    * [安装](chapter-setup/an-zhuang.md)
+      * [Yum 安装](chapter-setup/an-zhuang/yum-an-zhuang.md)
+    * [配置](chapter-setup/pei-zhi.md)
   * [自签CA和客户端证书](chapter-setup/zi-qian-ca-he-ke-hu-duan-zheng-shu.md)
     * [普通证书](chapter-setup/zi-qian-ca-he-ke-hu-duan-zheng-shu/pu-tong-zheng-shu.md)
     * [临时证书](chapter-setup/zi-qian-ca-he-ke-hu-duan-zheng-shu/lin-shi-zheng-shu.md)
@@ -104,7 +108,7 @@
         * [安装节点](chapter-cluster/分布式数据库/fu-ben-shi/an-zhuang-jie-dian.md)
       * [分片集群\(Shard\)](chapter-cluster/分布式数据库/fen-pian-5f0f28-sharding.md)
         * [安装 Config 端](chapter-cluster/分布式数据库/fen-pian-5f0f28-sharding/an-zhuang-config-duan.md)
-        * [安装数据Shards端](chapter-cluster/分布式数据库/fen-pian-5f0f28-sharding/an-zhuang-shu-ju-shards-duan.md)
+        * [安装Shard端](chapter-cluster/分布式数据库/fen-pian-5f0f28-sharding/an-zhuang-shu-ju-shards-duan.md)
         * [安装路由端](chapter-cluster/分布式数据库/fen-pian-5f0f28-sharding/an-zhuang-lu-you-duan.md)
         * 如何设置分片
   * [分布式Cache](chapter-cluster/分布式-cache.md)
