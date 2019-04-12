@@ -76,6 +76,7 @@
     * [安装](chapter-setup/chapter-mongodb/an-zhuang.md)
       * [Yum 安装](chapter-setup/chapter-mongodb/an-zhuang/yum-an-zhuang.md)
     * [配置](chapter-setup/chapter-mongodb/pei-zhi.md)
+    * [启动方法](chapter-setup/chapter-mongodb/qi-dong-fang-fa.md)
   * [自签CA和客户端证书](chapter-setup/chapter-ca/zi-qian-ca-he-ke-hu-duan-zheng-shu.md)
     * [普通证书](chapter-setup/chapter-ca/pu-tong-zheng-shu.md)
     * [临时证书](chapter-setup/chapter-ca/lin-shi-zheng-shu.md)

@@ -12,7 +12,7 @@
 
 ## 安装
 
-安装方法请参见[MongoDB Yum 安装](/chapter-setup/an-zhuang/yum-an-zhuang.md)
+安装方法请参见[MongoDB Yum 安装](/chapter-setup/chapter-mongodb/an-zhuang/yum-an-zhuang.md)
 
 ## 修改配置
 
@@ -20,7 +20,7 @@
 $ vim /etc/mongod.conf
 ```
 
-配置请参见MongoDB 配置
+配置请参见[MongoDB 配置](/chapter-setup/chapter-mongodb/pei-zhi.md)
 
 需要修改的内容如下，注意保持其它内容不变
 
@@ -34,16 +34,7 @@ replication:
 
 ```
 
-## 启动方法
 
-```
-# 设置为开机启动项
-systemctl enable mongod
-# 启动
-systemctl start mongod
-# 关闭
-systemctl stop mongod
-```
 
 ## 激活集群
 
