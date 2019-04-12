@@ -110,7 +110,7 @@
         * [安装 Config 端](chapter-cluster/分布式数据库/mongodb/shard/an-zhuang-config-duan.md)
         * [安装Shard端](chapter-cluster/分布式数据库/mongodb/shard/an-zhuang-shu-ju-shards-duan.md)
         * [安装路由端](chapter-cluster/分布式数据库/mongodb/shard/an-zhuang-lu-you-duan.md)
-        * [如何设置分片](chapter-cluster/分布式数据库/mongodb/shard/ru-he-she-zhi-fen-pian.md)
+        * [如何启用分片](chapter-cluster/分布式数据库/mongodb/shard/ru-he-she-zhi-fen-pian.md)
   * [分布式Cache](chapter-cluster/分布式-cache.md)
     * [Session同步](chapter-cluster/chapter-cache/上传文件同步.md)
   * [队列](chapter-cluster/队列.md)
