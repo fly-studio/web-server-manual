@@ -6,7 +6,7 @@
 
 > 本篇主要内容来自于：https://docs.mongodb.com/manual/tutorial/deploy-shard-cluster/
 
-架构是
+## 生产环境架构
 
 ![](/assets/sharded-cluster-production-architecture.bakedsvg.svg)
 
@@ -21,6 +21,17 @@
 - Shard可以由多个副本集群组成，注意1个副本集群仅仅代表一个Shard节点（因为副本集群中每个节点的数据是完全相同的），如果要设置多个Shard，就需要多个副本集群。
 
     如果服务器毕竟紧张，可以由多个的MongoDB节点来构成多个Shard，也就是这些节点不组成副本集群
+    
+
+## 开发环境架构
+
+服务器有限，也可以使用这个配置
+
+![](/assets/sharded-cluster-test-architecture.bakedsvg.svg)
+
+- 路由器1个
+- Config Server副本集群
+- 单数据节点构成的Shard节点
 
 
 安装步骤见下级文档
