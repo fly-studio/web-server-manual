@@ -1,6 +1,6 @@
 # 安装Shard端
 
-Shard集群至少由2台Shard节点组成
+Shard集群至少由2台Shard节点组成，从3.6开始，分片必须为副本集
 
 ## 多个副本集构成的Shard
 
