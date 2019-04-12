@@ -124,7 +124,7 @@ $ mongo --port 27017
 
 ### 由副本集群构成的Shard节点
 
-服务器富余，Shard节点由副本集群构成，按照下面操作
+服务器充足，Shard节点由副本集群构成，按照下面操作
 
 注意下文的格式是`<replSetName>/ip1:port,ip2:port,ip3:port`，其中`<replSetName>`就是上文Shard集群的名字
 
@@ -144,12 +144,14 @@ sh.addShard("其它集群名/mongod3:27019,mongod4:27019,mongod5:27019")
 
 ### 由单个数据节点构成的Shard节点
 
-服务器紧张，Shard节点由单独的数据节点构成，按照下面的操作
+服务器有限，Shard节点由单独的数据节点构成，按照下面的操作
 
 多次添加即可
 ```
 sh.addShard("ip:port")
 ```
+
+以上添加可以混合进行，但是请勿将副本集群中的节点服务器单独添加
 
 
 
