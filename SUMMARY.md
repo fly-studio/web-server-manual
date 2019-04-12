@@ -100,6 +100,7 @@
       * [Online DDL](chapter-cluster/分布式数据库/online-ddl.md)
     * [MongoDB](chapter-cluster/分布式数据库/mongodb.md)
       * [副本式\(Replication\)](chapter-cluster/分布式数据库/fu-ben-shi.md)
+        * [安装节点](chapter-cluster/分布式数据库/fu-ben-shi/an-zhuang-jie-dian.md)
       * [分片式\(Shard\)集群](chapter-cluster/分布式数据库/fen-pian-5f0f28-sharding.md)
         * [安装 Config 端](chapter-cluster/分布式数据库/fen-pian-5f0f28-sharding/an-zhuang-config-duan.md)
         * [安装数据Shards端](chapter-cluster/分布式数据库/fen-pian-5f0f28-sharding/an-zhuang-shu-ju-shards-duan.md)
