@@ -145,7 +145,7 @@ sh.addShard("mongod/mongod1:27019,mongod2:27019,mongod3:27019")
 sh.addShard("其它集群名/mongod3:27019,mongod4:27019,mongod5:27019")
 ```
 
-### 添加由单个数据节点构成的Shard节点
+### 添加由数据节点构成的Shard节点
 
 服务器有限，Shard节点由单独的数据节点构成，按照下面的操作
 

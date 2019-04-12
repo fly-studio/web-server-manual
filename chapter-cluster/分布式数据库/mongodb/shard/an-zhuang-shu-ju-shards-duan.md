@@ -36,7 +36,7 @@ sharding:
   clusterRole: shardsvr
 ```
 
-## 单节点构成的Shard
+## 数据节点构成的Shard
 
 如果服务器有限，那就将1的MongoDB节点设置成为1个Shard，安装方法请参见[MongoDB Yum 安装](/chapter-setup/chapter-mongodb/an-zhuang/yum-an-zhuang.md)，配置请参见[MongoDB 配置](/chapter-setup/chapter-mongodb/pei-zhi.md)
 
