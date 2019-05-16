@@ -1,9 +1,11 @@
 # # GLIBC
 
 `MySQL 5.7` 需要`glibc 2.17 +` 以及 `libstdc++ 3.4.15 +`
-> 以下是`CentOS 6.x` 安装方法，但是即使安装了完毕
-> `MySQL 5.7` 仍然提示需要 `libstdc++.so.6(GLIBCXX_3.4.15)(64bit)` 
-> 所以不建议在CentOS 6.5下安装`MySQL 5.7`
+
+> 注意：以下是`CentOS 6.x` 安装方法，但是即使安装了完毕，`MySQL 5.7` 仍然提示需要`libstdc++.so.6(GLIBCXX_3.4.15)(64bit)` 
+> 所以不建议在`CentOS 6.5`下安装`MySQL 5.7`
+
+> `CentOS 7`下默认就是`glibc 2.17` 无需更新
 
 分别运行下面的两个命令可以查看系统的版本
 ```
@@ -36,7 +38,6 @@ $ yum install http://centos.biz.net.id/7/os/x86_64/Packages/compat-libstdc++-33-
 
 谨慎选择是否编译安装
 如果没有一定动手能力，会严重导致系统命令无法访问。
-
 
 > 注意：CentOS 6 下很难编译通过
 

@@ -52,12 +52,12 @@ server {
 # 子目录支持RESTful
 比如： http://127.0.0.1/dir_name/
 
-> L+ 框架中，已有.htaccess文件，这个文件支持apache的重写URL，但是nginX中需要做如下配置，如果不加入这个配置，则只能通过 **http://127.0.0.1/dir_name/index.php/controller/action** 这种类似的方式访问页面
+> L+ 框架中，已有Apache下的.htaccess文件，但是在nginX环境下，还需要做如下配置，如果不加入这个配置，只能通过 **http://127.0.0.1/dir_name/index.php/controller/action** 这种类似的方式访问页面
 
 
 新建子目录配置
 ```
-$ mkdir -m 777 -p /etc/nginx/alias.d
+$ mkdir -m 755 -p /etc/nginx/alias.d
 $ vim /etc/nginx/default.d/alias.conf
 ```
 ```
