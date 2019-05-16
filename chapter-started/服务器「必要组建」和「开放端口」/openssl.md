@@ -1,5 +1,12 @@
+# OpenSSL
+
+查看现在版本：
+```
+$ openssl version
+```
+
+
 ## ## openSSL 1.1.0
-如果条件不允许，请参照下文openSSL 1.0.2
 
 1.1.0 [下载地址](https://www.openssl.org/source/openssl-1.1.0-latest.tar.gz "下载地址")
 ```
@@ -13,7 +20,9 @@ $ make install
 ```
 
 ## ## openSSL 1.0.2
-一般情况下，安装 1.1.0 即可
+
+> 注意：1.0.2是一个过时的版本，除非软件明确要求安装1.0.2，其它情况下，安装 1.1.0 即可
+
 
 - 1.0.2需要打ChaCha20/Poly1305的补丁，这两个加密算法对手机支持友好 [cloudflare补丁](https://github.com/travislee8964/sslconfig/tree/master/patches "cloudflare补丁")
 - 由于默认 gcc 版本为 4.4.7，在添加 Chacha 20 补丁之后，编译会报错：[#11](https://github.com/cloudflare/sslconfig/issues/11 "#11")，需要将 gcc 升级到 4.8 以上版本：
