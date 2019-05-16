@@ -1,14 +1,12 @@
 # # GCC
 
-
 ## 默认版本
 
 > CentOS 6 中默认的gcc版本为： gcc (GCC) 4.4.7 20120313 (Red Hat 4.4.7-17)
 > CentOS 7.3 中默认的gcc版本为： gcc-v4.8.5 (GCC) 4.8.5 20150623 (Red Hat 4.8.5-11)
 
-
 ### - 4.8 
-> 因为CentOS 7 自带仓库的GCC就是4.8，需要升级可以选择安装 4.9
+> 注意：CentOS 7 自带仓库的GCC就是4.8
 
 安装源
 ```
@@ -30,9 +28,7 @@ $ ln -fs /opt/rh/devtoolset-2/root/usr/bin/gcc /usr/bin/cc
 $ ln -fs /opt/rh/devtoolset-2/root/usr/bin/g++ /usr/bin/g++
 ```
 ### - 4.9 ~ 7.x
-安装源
-
-如果下面面的包不存在，请先安装[Sclo-RH源](/chapter-started/repo-仓库.md)
+安装源，如果下面面的包不存在，请先安装[Sclo-RH源](/chapter-started/repo-仓库.md)
 ```
 $ yum install centos-release-scl-rh
 ```
@@ -61,7 +57,8 @@ $ mv /usr/bin/gcc /usr/bin/gcc-old
 $ mv /usr/bin/g++ /usr/bin/g++-old
 $ mv /usr/bin/cc /usr/bin/cc-old
 
-# 将新版的gcc链接到系统目录
+# 将新版的gcc链接到系统目录，
+# 注意，下面的 3 请替换成上面安装的对应版本
 $ ln -fs /opt/rh/devtoolset-3/root/usr/bin/gcc /usr/bin/gcc
 $ ln -fs /opt/rh/devtoolset-3/root/usr/bin/gcc /usr/bin/cc
 $ ln -fs /opt/rh/devtoolset-3/root/usr/bin/g++ /usr/bin/g++
