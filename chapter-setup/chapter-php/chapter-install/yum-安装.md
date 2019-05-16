@@ -1,7 +1,7 @@
 # Yum 安装
 
 ```
-$ yum --enablerepo=remi-php71,remi install php php-cgi php-fastcgi pcre pcre-devel php-fpm gd php-gd libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel zlib zlib-devel  php-pecl-zip glibc glibc-devel glib2 glib2-devel bzip2 bzip2-devel curl curl-devel openssl openssl-devel openldap openldap-devel nss_ldap openldap-clients openldap-servers libmcrypt libmcrypt-devel mcrypt mhash php-mcrypt libidn libidn-devel php-mbstring libxml2 libxml2-devel php-xmlrpc php-xml php-bcmath php-gmp php-ssh2 php-pecl-libsodium  php-pthreads php-pecl-swoole php-pecl-swoole-serialize
+$ yum --enablerepo=remi-php73,remi install php php-cgi pcre pcre-devel php-fpm gd php-gd libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel zlib zlib-devel  php-pecl-zip glibc glibc-devel glib2 glib2-devel bzip2 bzip2-devel curl curl-devel openssl openssl-devel openldap openldap-devel nss_ldap openldap-clients openldap-servers libmcrypt libmcrypt-devel mcrypt mhash php-mcrypt libidn libidn-devel php-mbstring libxml2 libxml2-devel php-xmlrpc php-xml php-bcmath php-gmp php-ssh2 php-pecl-swoole
 
 ```
 - **php-cgi**：
@@ -28,7 +28,7 @@ cURL HTTP下载上传组件
 SSL组件
 - **openldap openldap-devel nss_ldap openldap-clients openldap-servers**：
 LDAP Windows域验证组件
-- **libmcrypt libmcrypt-devel mcrypt mhash php-mcrypt php-pecl-libsodium**：
+- **libmcrypt libmcrypt-devel mcrypt mhash php-mcrypt**：
 加解密、Hash组件
 - **libidn libidn-devel**：
 国际域名（IDN）实施字符串预处理库
@@ -45,3 +45,10 @@ SSH客户端组件
 - **php-pecl-swoole**：
 网络通讯组件
 
+## 注意
+
+PHP 7.3 之后无法安装这两个扩展
+
+```
+php-pecl-libsodium php-pthreads
+```
