@@ -17,7 +17,7 @@ $ yum --enablerepo=remi install redis
 
 PHP 服务器 需安装
 ```
-$ yum --enablerepo=remi-php71,remi install php-redis
+$ yum --enablerepo=remi-php73,remi install php-redis
 ```
 
 ## 配置
@@ -39,7 +39,7 @@ appendonly yes
 ```
 $ chkconfig --level 2345 redis on
 # 7.0
-$ systemctl enable redis.service
+$ systemctl enable redis
 
 ```
 

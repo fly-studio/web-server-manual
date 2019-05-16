@@ -1,6 +1,6 @@
 # # Opcache（PHP 5.5以上）
 ```
-$ yum --enablerepo=remi-php71,remi install php-opcache
+$ yum --enablerepo=remi-php73,remi install php-opcache
 ```
 
 配置文件在：/etc/php.d/*-opcache.ini
