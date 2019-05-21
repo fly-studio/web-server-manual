@@ -12,7 +12,7 @@ server {
 	# 根目录
 	root /www/website/path/to/project_name/;
 	# 如果使用L+ 需要禁止这些文件的访问
-	location ~ /(\.|artisan$|((?!index).)*\.php($|/)|storage|resources) {
+	location ~ /(\.|artisan$|((?!index).)*\.php($|/)|storage/.*\.php$|resources) {
 	    deny all;
 	}
 
