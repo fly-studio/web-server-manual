@@ -8,12 +8,17 @@ $ git clone https://github.com/derickr/xdebug.git
 $ cd xdebug
 $ phpize
 $ ./configure --enable-xdebug
+$ make
 $ cp modules/xdebug.so /usr/lib64/php/modules/
 $ echo 'zend_extension="/usr/lib64/php/modules/xdebug.so"' > /etc/php.d/xdebug.ini
 ```
 
 ## 配置
 > 详细配置请查看 http://www.xdebug.com/docs/all_settings
+
+```
+$ mkdir -p /www/website/xdebug
+```
 
 ```
 zend_extension="/usr/lib64/php/modules/xdebug.so"
@@ -30,4 +35,5 @@ xdebug.profiler_output_dir="/www/website/xdebug/profiler" ;性能分析文件的
 ```
 $ rm -rf /usr/lib64/php/modules/xdebug.so
 $ rm -rf /etc/php.d/xdebug.ini
+$ rm -rf /www/website/xdebug
 ```
