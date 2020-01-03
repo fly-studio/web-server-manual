@@ -33,7 +33,7 @@ $ ln -fs /opt/rh/devtoolset-2/root/usr/bin/gcc /usr/bin/gcc
 $ ln -fs /opt/rh/devtoolset-2/root/usr/bin/gcc /usr/bin/cc
 $ ln -fs /opt/rh/devtoolset-2/root/usr/bin/g++ /usr/bin/g++
 ```
-## - 4.9 ~ 7.x
+## - 4.9 ~ 8.x
 安装源，如果下面面的包不存在，请先安装[Sclo-RH源](/chapter-started/repo-仓库.md)
 ```
 $ yum install centos-release-scl-rh
@@ -54,6 +54,10 @@ $ yum install devtoolset-6-binutils devtoolset-6-gcc devtoolset-6-gcc-c++
 ```
 $ yum install devtoolset-7-binutils devtoolset-7-gcc devtoolset-7-gcc-c++
 ```
+安装 8.x
+```
+$ yum install devtoolset-8-binutils devtoolset-8-gcc devtoolset-8-gcc-c++
+```
 
 ### 安装之后
 
@@ -64,9 +68,12 @@ $ mv /usr/bin/g++ /usr/bin/g++-old
 $ mv /usr/bin/cc /usr/bin/cc-old
 
 # 将新版的gcc链接到系统目录，
-# 注意，下面的 3 请替换成上面安装的对应版本
-$ ln -fs /opt/rh/devtoolset-3/root/usr/bin/gcc /usr/bin/gcc
-$ ln -fs /opt/rh/devtoolset-3/root/usr/bin/gcc /usr/bin/cc
-$ ln -fs /opt/rh/devtoolset-3/root/usr/bin/g++ /usr/bin/g++
+# 注意，下面的 8 请替换成上面安装的对应版本
+$ ln -fs /opt/rh/devtoolset-8/root/usr/bin/gcc /usr/bin/gcc
+$ ln -fs /opt/rh/devtoolset-8/root/usr/bin/gcc /usr/bin/cc
+$ ln -fs /opt/rh/devtoolset-8/root/usr/bin/g++ /usr/bin/g++
 ```
 
+## - 9.x
+
+需要编译安装
