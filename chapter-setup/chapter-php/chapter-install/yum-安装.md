@@ -47,7 +47,7 @@ SSH客户端组件
 
 ## 注意
 
-PHP 7.3 之后无法安装这两个扩展
+PHP 7.3 以及之后无法安装这两个扩展
 
 ```
 php-pecl-libsodium php-pthreads
