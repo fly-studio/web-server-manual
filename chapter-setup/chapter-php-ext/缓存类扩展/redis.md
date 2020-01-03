@@ -49,7 +49,7 @@ $ systemctl enable redis
 # 6.x
 $ service redis start
 # 7.x
-$ systemctl start redis.service
+$ systemctl start redis
 ```
 
 ### 停止
@@ -57,7 +57,7 @@ $ systemctl start redis.service
 # 6.x
 $ service redis stop
 # 7.x
-$ systemctl stop redis.service
+$ systemctl stop redis
 ```
 
 ### 卸载
