@@ -28,14 +28,16 @@ $ yum install ffmpeg ffmpeg-devel
 
 
 
-## 安装扩展
+## 安装PHP扩展 (不是必须的)
 
-> **此扩展不是必须的**，下面两个项目都使用PHP实现了相关函数和方法
+> 推荐使用PHP代码实现了功能包
+>
 > https://github.com/PHP-FFMpeg/PHP-FFMpeg
 > https://github.com/CodeScaleInc/ffmpeg-php
-> 其中第二个项目，函数名称和本so扩展一致
+>
+> 第二个项目，函数名称和本so扩展一致
 
-### 如果安装的ffmpeg为v0.6，则可执行下面的安装，否则参照上面！
+### 如果安装的ffmpeg为v0.6，则可安装下面的扩展，否则参照上面！
 
 ```
 $ wget http://downloads.sourceforge.net/project/ffmpeg-php/ffmpeg-php/0.6.0/ffmpeg-php-0.6.0.tbz2
