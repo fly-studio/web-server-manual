@@ -5,9 +5,32 @@
 > 这是php-ffmpeg扩展的必要程序
 > 可以通过命令行调取本程序，下文中的PHP类便是使用命令行调取程序得到的结果
 
+ CentOS 6 仓库
+```
+$ wget http://li.nux.ro/download/nux/dextop/el6/x86_64/nux-dextop-release-0-2.el6.nux.noarch.rpm
+$ rpm --import http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro
+$ rpm -Uvh nux-dextop-release-*.rpm
+```
+CentOS 7 仓库
+
+```
+$ wget http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm
+$ rpm --import http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro
+$ rpm -Uvh nux-dextop-release-*.rpm
+
+```
+
+安装
+
+```
+$ yum install ffmpeg ffmpeg-devel
+```
+
+
+
 ## 安装扩展
 
-> 此扩展不是必须的，下面两个项目都使用PHP实现了相关函数和方法
+> **此扩展不是必须的**，下面两个项目都使用PHP实现了相关函数和方法
 > https://github.com/PHP-FFMpeg/PHP-FFMpeg
 > https://github.com/CodeScaleInc/ffmpeg-php
 > 其中第二个项目，函数名称和本so扩展一致
