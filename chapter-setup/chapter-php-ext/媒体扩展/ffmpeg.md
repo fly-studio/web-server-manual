@@ -28,7 +28,7 @@ $ yum install ffmpeg ffmpeg-devel
 
 ## PHP 中使用
 
-> 推荐使用PHP代码实现的功能包，以下两个package基本涵盖了常用的ffmpeg的功能，比如：获取视频属性、截图、截取gif、转换格式、合并、缩放分辨率、按照时间截取、按照画面截取
+> 推荐使用PHP代码实现的功能包，以下两个package基本涵盖了常用的ffmpeg的功能，比如：获取视频属性、截图、截取gif、转换格式、合并、缩放分辨率、压缩码率、按照时间剪辑、截取部分画面
 
 - https://github.com/PHP-FFMpeg/PHP-FFMpeg  这个项目作者实测，非常方便
 - https://github.com/CodeScaleInc/ffmpeg-php 函数名和下面so扩展一致
