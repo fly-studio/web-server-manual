@@ -15,9 +15,15 @@ $ mysqladmin -u root password -p
 $ /usr/bin/mysql_secure_installation
 ```
 
-## ## 设置为空密码
+## ## 降低密码复杂度
 
-首先使用原密码`mysql -u root -p`登录进去
+> 如果使用上面的方法配置密码出现 
+> `Your password does not satisfy the current policy requirements`
+> 表示设置的密码过于简单可以使用以下方法降低密码的复杂度。当然了，简单密码一般用于开发环境。
+
+
+使用原密码`mysql -u root -p`登录进去
+
 ```
 # 设置policy为LOW
 set global validate_password_policy=0;
@@ -29,29 +35,34 @@ set global validate_password_special_char_count=0;
 set global validate_password_length=0;
 ```
 
-### ### 设置空密码
+## ## 通过SQL设置密码
 ```
-# 当前用户
+# 当前用户 （空密码）
 SET PASSWORD = PASSWORD('');
 # 指定用户
-SET PASSWORD FOR 'root'@'localhost' = PASSWORD('123');
+SET PASSWORD FOR 'root'@'localhost' = PASSWORD('123456');
 ```
 
 ## ## 密码永不过期
+
 比如`root@localhost`用户
+
 ```
 ALTER USER 'root'@'localhost' PASSWORD EXPIRE NEVER;
 flush privileges;
 ```
 
 ## ## 添加root用户
+
 先使用`mysql -u root -p ` 在服务器上进入MYSQL控制台
+
 ```
 CREATE USER 'root'@'%' IDENTIFIED BY '密码';
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
 ```
 
 ## ## 普通用户
+
 - 不包含`DROP`的权限，有需要可以自己添加
 - `%` 代表所有主机，`localhost`、`127.0.0.1`表示本地
 
@@ -61,7 +72,9 @@ GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, REFERENCES, INDEX, ALTER, SHOW DAT
 ```
 
 ## ## 刷新权限表
+
 修改任意用户权限之后，需要刷新权限表
+
 ```
 flush privileges;
 ```
