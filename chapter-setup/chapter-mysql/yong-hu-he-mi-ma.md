@@ -15,6 +15,14 @@ $ mysqladmin -u root password -p
 $ /usr/bin/mysql_secure_installation
 ```
 
+通过SQL设置密码
+```
+# 当前用户 （空密码）
+SET PASSWORD = PASSWORD('');
+# 指定用户
+SET PASSWORD FOR 'root'@'localhost' = PASSWORD('123456');
+```
+
 ## ## 降低密码复杂度
 
 > 如果使用上面的方法配置密码出现 
@@ -33,14 +41,6 @@ set global validate_password_number_count=0;
 set global validate_password_special_char_count=0;
 # 下面的值是上面3个的总数。
 set global validate_password_length=0;
-```
-
-## ## 通过SQL设置密码
-```
-# 当前用户 （空密码）
-SET PASSWORD = PASSWORD('');
-# 指定用户
-SET PASSWORD FOR 'root'@'localhost' = PASSWORD('123456');
 ```
 
 ## ## 密码永不过期
