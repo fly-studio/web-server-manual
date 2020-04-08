@@ -26,16 +26,15 @@ $ rpm -Uvh nux-dextop-release-*.rpm
 $ yum install ffmpeg ffmpeg-devel
 ```
 
+## PHP 中使用
+
+> 推荐使用PHP代码实现的功能包，以下两个package基本涵盖了常用的ffmpeg的功能，比如：获取视频属性、截图、截取gif、转换格式、合并、缩放分辨率、按照时间截取、按照画面截取
+
+- https://github.com/PHP-FFMpeg/PHP-FFMpeg  这个项目作者实测，非常方便
+- https://github.com/CodeScaleInc/ffmpeg-php 函数名和下面so扩展一致
 
 
-## 安装PHP扩展 (不是必须的)
-
-> 推荐使用PHP代码实现了功能包
->
-> https://github.com/PHP-FFMpeg/PHP-FFMpeg
-> https://github.com/CodeScaleInc/ffmpeg-php
->
-> 第二个项目，函数名称和本so扩展一致
+## PHP扩展 (不是必须的)
 
 ### 如果安装的ffmpeg为v0.6，则可安装下面的扩展，否则参照上面！
 
