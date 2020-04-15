@@ -22,11 +22,11 @@ yum remove git
 ```
 # 下载解压
 $ cd /usr/src
-$ wget https://www.kernel.org/pub/software/scm/git/git-2.10.1.tar.gz
-$ tar -zxvf git-2.10.1.tar.gz
+$ wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.26.1.tar.gz
+$ tar -zxvf git-*.tar.gz
 
 # 编译
-$ cd git-2.10.1
+$ cd git-*
 $ make prefix=/usr/local/git all
 $ make prefix=/usr/local/git install
 #
