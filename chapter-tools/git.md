@@ -15,16 +15,22 @@ $ yum install http://opensource.wandisco.com/centos/6/git/x86_64/wandisco-git-re
 $ yum install git
 ```
 ## ## 源代码编译
+
 依赖安装
+
 ```
 $ yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel
 $ yum install  gcc perl-ExtUtils-MakeMaker
 ```
+
 卸载旧版本
+
 ```
 yum remove git
 ```
+
 下载/编译
+
 ```
 # 下载解压
 $ wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.26.1.tar.gz
@@ -37,6 +43,7 @@ $ make prefix=/usr/ install
 ```
 
 ## ## 查看版本
+
 ```
 $ git --version
 ```
