@@ -1,11 +1,12 @@
 # # 配置MySQL
 
 主配置文件
+
 ```
 $ vim /etc/my.cnf
 ```
 
-注意：按照下面的键名修改你的配置文件，文件中存在其它的键可以保留
+**注意：**按照下面的键名修改你的配置文件，文件中存在其它的键可以保留
 
 ```
 [mysqld]
@@ -24,13 +25,15 @@ socket=/var/lib/mysql/mysql.sock
 user=mysql
 bind-address=0.0.0.0
 
+log-error=/var/log/mysqld.log
+pid-file=/var/run/mysqld/mysqld.pid
+
 ; innodb
 innodb_data_home_dir = /www/database/mysql
 innodb_data_file_path = ibdata1:200M;ibdata2:10M:autoextend
 ; 每个innodb的表的数据单独成文件，这个配置非常重要
 innodb_file_per_table = 1
 innodb_log_group_home_dir = /www/database/mysql
-
 
 ; 开启BinLog
 log_bin=mysql-bin
@@ -47,8 +50,5 @@ general_log_file=/var/log/mysql-sql.log
 
 ; 其它配置，比如缓冲区、线程数、连接数等，酌情配置
 
-[mysql_safe]
-log-error=/var/log/mysqld.log
-pid-file=/var/run/mysqld/mysqld.pid
 ```
 
