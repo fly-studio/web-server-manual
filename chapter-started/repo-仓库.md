@@ -10,10 +10,10 @@ $ mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
 ```
 
 ```
-# 6.0
+# 6.x
 $ wget -O /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-6.repo
 
-# 7.0 
+# 7.x
 $ wget -O /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-7.repo
 ```
 
@@ -32,10 +32,10 @@ $ yum install epel-release
 ```
 
 ```
-# 6.0
+# 6.x
 $ wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-6.repo
 
-# 7.0
+# 7.x
 $ wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
 ```
 
@@ -44,10 +44,10 @@ $ wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
 PHP、Redis等软件的新版本仓库
 
 ```
-# 6.0
+# 6.x
 $ wget https://mirrors.aliyun.com/remi/enterprise/remi-release-6.rpm
 
-# 7.0
+# 7.x
 $ wget https://mirrors.aliyun.com/remi/enterprise/remi-release-7.rpm
 ```
 

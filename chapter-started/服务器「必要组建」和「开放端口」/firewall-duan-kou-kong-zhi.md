@@ -2,28 +2,30 @@
 > https://access.redhat.com/documentation/zh-CN/Red_Hat_Enterprise_Linux/7/html/Security_Guide/sec-Using_Firewalls.html
 
 ## ## 安装firewall
+
 CentOS 7 自带，无需单独安装
+
 ```
 $ yum install firewalld firewall-config
 ```
+
 ## ## 操作
-启动：
+
+启动/停止/重启/开机启动/取消自启：
+
 ```
-$ systemctl start firewalld
+$ systemctl start/stop/restart/enable/disable firewalld
 ```
+
 查看状态：
+
 ```
 $ systemctl status firewalld 或者 firewall-cmd --state
 ```
-停止：
-```
-$ systemctl disable firewalld
-```
-禁用：
-```
-$ systemctl stop firewalld
-```
+
+
 查看版本
+
 ```
 $ firewall-cmd --version
 ```

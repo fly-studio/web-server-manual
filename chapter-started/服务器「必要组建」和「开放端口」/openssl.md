@@ -13,6 +13,7 @@ $ openssl version
 $ wget https://www.openssl.org/source/openssl-1.1.1-latest.tar.gz
 $ tar -zxvf openssl-*-latest.tar.gz
 $ cd openssl-*
+
 # 安装
 $ ./config --prefix=/usr
 $ make -j4
