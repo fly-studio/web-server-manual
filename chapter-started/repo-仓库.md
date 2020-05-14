@@ -55,6 +55,12 @@ $ wget https://mirrors.aliyun.com/remi/enterprise/remi-release-7.rpm
 $ rpm -Uvh remi-release-*.rpm
 ```
 
+替换成aliyun的源网址
+
+```
+$ sed -i -e 's/\#baseurl\=http:\/\/rpms.remirepo.net\//baseurl\=https:\/\/mirrors.aliyun.com\/remi\//g' /etc/yum.repos.d/remi-*.repo
+```
+
 remi 软件库包含 PHP 5.4-5.6、PHP 7.0-7.1，以及其对应的扩展  
 并且默认情况下 remi 库是未激活状态
 
