@@ -5,13 +5,15 @@
 > 这是php-ffmpeg扩展的必要程序
 > 可以通过命令行调取本程序，下文中的PHP类便是使用命令行调取程序得到的结果
 
- CentOS 6 仓库
+CentOS 6 
+ 
 ```
 $ wget http://li.nux.ro/download/nux/dextop/el6/x86_64/nux-dextop-release-0-2.el6.nux.noarch.rpm
 $ rpm --import http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro
 $ rpm -Uvh nux-dextop-release-*.rpm
 ```
-CentOS 7 仓库
+
+CentOS 7 
 
 ```
 $ wget http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm
@@ -30,11 +32,11 @@ $ yum install ffmpeg ffmpeg-devel
 
 > 推荐使用PHP代码实现的功能包，以下两个package基本涵盖了常用的ffmpeg的功能，比如：获取视频属性、截图、截取gif、转换格式、合并、缩放分辨率、压缩码率、按照时间剪辑、截取部分画面
 
-- https://github.com/PHP-FFMpeg/PHP-FFMpeg  这个项目作者实测，非常方便
+- https://github.com/PHP-FFMpeg/PHP-FFMpeg  这个项目作者**实测**，非常方便
 - https://github.com/CodeScaleInc/ffmpeg-php 函数名和下面so扩展一致
 
 
-## PHP扩展 (不是必须的)
+## PHP扩展 (不推荐)
 
 ### 如果安装的ffmpeg为v0.6，则可安装下面的扩展，否则参照上面！
 
