@@ -5,17 +5,20 @@
 ## 安装
 
 缓存服务器上安装
+
 ```
 # 如果可能，执行下面语句安装memcached，基于rpmforge库
 $ yum --enablerepo=rpmforge install libevent memcached
 ```
 
 PHP 服务器上需安装
+
 ```
 $ yum --enablerepo=remi-php74,remi install php-pecl-memcache php-pecl-memcached
 ```
 
 验证是否安装成功
+
 ```
 $ memcached -h
 ```
@@ -23,34 +26,35 @@ $ memcached -h
 ## 操作
 
 ### 开机自动运行
+
 ```
-$ chkconfig --level 2345 memcached on
+# 6.x
+$ chkconfig --level 2345 memcached on/off
+
 # 7.0
-$ systemctl enable memcached.service
+$ systemctl enable/disable memcached
 ```
 
-### 启动
-```
-$ service memcached start
-# 7.0
-$ systemctl start memcache.service
-```
+### 启动/停止/重启
 
-### 关闭
 ```
-$ service memcached stop
-# 7.0
-$ systemctl stop memcached.service
+# 6.x
+$ service memcached start/stop/restart
+
+# 7.x
+$ systemctl start memcache
 ```
 
 ### 卸载
 
 缓存服务器
+
 ```
 $ yum remove memcached
 ```
 
 PHP服务器
+
 ```
 $ yum remove php-pecl-memcache php-pecl-memcached
 ```

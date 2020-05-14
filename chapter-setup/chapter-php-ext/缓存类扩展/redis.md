@@ -36,28 +36,24 @@ appendonly yes
 
 ## 操作
 ### 开机启动
-```
-# 6.x
-$ chkconfig --level 2345 redis on
-# 7.x
-$ systemctl enable redis
 
 ```
-
-### 启动
-```
 # 6.x
-$ service redis start
+$ chkconfig --level 2345 redis on/off
+
 # 7.x
-$ systemctl start redis
+$ systemctl enable/disable redis
 ```
 
-### 停止
+### 启动/停止/重启
+
 ```
 # 6.x
-$ service redis stop
+$ service redis start/stop/restart
+
 # 7.x
-$ systemctl stop redis
+$ systemctl start/stop/restart
+redis
 ```
 
 ### 卸载
