@@ -75,7 +75,7 @@ $ vim /etc/yum.repos.d/rpmforge.repo
 name = RHEL $releasever - RPMforge.net - dag
 baseurl = https://mirrors.aliyun.com/repoforge/redhat/el$releasever/en/$basearch/rpmforge
 mirrorlist = http://mirrorlist.repoforge.org/el$releasever/mirrors-rpmforge
-enabled = 1
+enabled = 0
 protect = 0
 gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmforge-dag
 gpgcheck = 1
