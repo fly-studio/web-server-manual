@@ -2,17 +2,13 @@
 
 
 ## CentOS 7
+
 ```
-# 设置为开机启动项
-systemctl enable mongod
+# 开机启动/取消
+systemctl enable/disable mongod
 
-# 启动
-systemctl start mongod
+# 启动/停止/重启
+systemctl start/stop/restart mongod
 
-# 关闭
-systemctl stop mongod
-
-# 重启
-systemctl restart mongod
 ```
 
