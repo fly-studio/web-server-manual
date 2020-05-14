@@ -16,6 +16,7 @@ $ /usr/bin/mysql_secure_installation
 ```
 
 通过SQL设置密码
+
 ```
 # 当前用户 （空密码）
 SET PASSWORD = PASSWORD('');

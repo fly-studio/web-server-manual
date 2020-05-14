@@ -17,7 +17,7 @@ $ yum --enablerepo=remi install redis
 
 PHP 服务器 需安装
 ```
-$ yum --enablerepo=remi-php74install php-redis
+$ yum --enablerepo=remi-php74 install php-redis
 ```
 
 ## 配置
@@ -26,12 +26,10 @@ $ vim /etc/redis.conf
 ```
 
 ```
-...
 daemonize yes # 后台运行模式
-bind client1-lan-ip client2-lan-ip # 注释本行表示接受全部，也可以指定IP，用半角空格分隔
+bind 0.0.0.0 # 可以指定IP，用半角空格分隔
 dir /www/database/redis/
 appendonly yes
-....
 ```
 
 ## 操作
