@@ -14,6 +14,8 @@ $ strings /lib64/libc.so.6 | grep GLIBC
 $ strings /usr/lib64/libstdc++.so.6 | grep GLIBC
 ```
 
+**笔者在CentOS 6.x下做了多种尝试，建议升级系统，别无它法。**
+
 ## Yum 方式安装(推荐)
 
 ```
