@@ -6,7 +6,6 @@
 
 ```
 # 备份原仓库，记得先安装wget
-
 $ mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
 ```
 
@@ -55,35 +54,33 @@ $ rpm -Uvh remi-release-*.rpm
 remi 软件库包含 PHP 5.4-5.6、PHP 7.0-7.1，以及其对应的扩展  
 并且默认情况下 remi 库是未激活状态
 
-## rpmforge 仓库
+## RepoForge 仓库
 
 ```
 $ vim /etc/yum.repos.d/rpmforge.repo
 ```
 
-如果是`CentOS 6`把下面的`el7`换成`el6`
-
 ```
 [rpmforge]
 name = RHEL $releasever - RPMforge.net - dag
-baseurl = https://mirrors.aliyun.com/repoforge/redhat/el7/en/$basearch/rpmforge
-mirrorlist = http://mirrorlist.repoforge.org/el7/mirrors-rpmforge
+baseurl = https://mirrors.aliyun.com/repoforge/redhat/el$releasever/en/$basearch/rpmforge
+mirrorlist = http://mirrorlist.repoforge.org/el$releasever/mirrors-rpmforge
 enabled = 1
 protect = 0
 gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmforge-dag
 gpgcheck = 1
 [rpmforge-extras]
 name = RHEL $releasever - RPMforge.net - extras
-baseurl = https://mirrors.aliyun.com/repoforge/redhat/el7/en/$basearch/extras
-mirrorlist = http://mirrorlist.repoforge.org/el7/mirrors-rpmforge-extras
+baseurl = https://mirrors.aliyun.com/repoforge/redhat/el$releasever/en/$basearch/extras
+mirrorlist = http://mirrorlist.repoforge.org/el$releasever/mirrors-rpmforge-extras
 enabled = 0
 protect = 0
 gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmforge-dag
 gpgcheck = 1
 [rpmforge-testing]
 name = RHEL $releasever - RPMforge.net - testing
-baseurl = https://mirrors.aliyun.com/repoforge/redhat/el7/en/$basearch/testing
-mirrorlist = http://mirrorlist.repoforge.org/el7/mirrors-rpmforge-testing
+baseurl = https://mirrors.aliyun.com/repoforge/redhat/el$releasever/en/$basearch/testing
+mirrorlist = http://mirrorlist.repoforge.org/el$releasever/mirrors-rpmforge-testing
 enabled = 0
 protect = 0
 gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmforge-dag
@@ -133,15 +130,4 @@ gpgcheck=0
 enabled=0
 #gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-SCLo
 ```
-
-# 其它版本的软件仓库
-
-将上例的资源网址，去掉文件名，即可显示其它版本的仓库  
-比如：
-
-* [http://dl.fedoraproject.org/pub/epel/7/x86\_64/e/](http://dl.fedoraproject.org/pub/epel/7/x86_64/e/)
-* [http://rpms.famillecollet.com/enterprise/](http://rpms.famillecollet.com/enterprise/)
-* [http://repository.it4i.cz/mirrors/repoforge/redhat/](http://repository.it4i.cz/mirrors/repoforge/redhat/)
-
-可以自行选择对应系统版本的仓库
 
