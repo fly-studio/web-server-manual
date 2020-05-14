@@ -2,24 +2,30 @@
 
 ## ## 安装官网源
 
-> CentOS 6.x 需要 glibc 2.17以上
-> 查看 [glibc的安装教程](/chapter-started/服务器「必要组建」和「开放端口」/glibc.md "glibc的安装教程")
-
-### ### 5.7 repo库
+### ### 5.7
 
 ```bash
 # CentOS 7
 $ wget http://repo.mysql.com/mysql57-community-release-el7-10.noarch.rpm
+
 # CentOS 6
 $ wget http://repo.mysql.com/mysql57-community-release-el6-10.noarch.rpm
+```
 
+```
 $ rpm -ivh mysql*-community-release-*.noarch.rpm
 ```
 
+> `MySQL 5.7`在`CentOS 6.x`下安装，需要`glibc 2.17`以上
+> 查看 [glibc的安装教程](/chapter-started/服务器「必要组建」和「开放端口」/glibc.md "glibc的安装教程")
+
+
 ### ### 5.5 
+
 ```bash
 # CentOS 7
 $ wget http://repo.mysql.com/yum/mysql-5.5-community/el/7/x86_64/mysql-community-release-el7-5.noarch.rpm
+
 # CentOS 6
 $ wget http://repo.mysql.com/yum/mysql-5.5-community/el/6/x86_64/mysql-community-release-el6-5.noarch.rpm
 
@@ -48,15 +54,13 @@ enabled=0
 $ yum install mysql-server
 ```
 
-> 无需启用remi-php55或php70 会导致mysql的版本过低
-
 ## ## PHP 服务器端需安装
 
 ```bash
-$ yum --enablerepo=remi-php71,remi install php-mysqli
+$ yum --enablerepo=remi-php74,remi install php-mysqli
 ```
 
-> 配合php的版本，需启用remi-php55或php71
+> 配合php的版本，需启用remi-php55或php74
 
 
 

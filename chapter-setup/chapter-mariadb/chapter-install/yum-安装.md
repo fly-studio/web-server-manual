@@ -1,6 +1,6 @@
 # YUM 安装
 
-> MariaDB 是MySQL的分支，拥有MySQL的全部功能，并且有些功能较之更强大
+> MariaDB 是MySQL的分支，拥有MySQL的绝大部分功能。
 
 ## ## 添加源
 
@@ -8,7 +8,7 @@
 $ vim /etc/yum.repos.d/MariaDB.repo
 ```
 
-输入如下内容保存，下面的内容来源于[https://downloads.mariadb.org/mariadb/repositories/](https://downloads.mariadb.org/mariadb/repositories/)
+输入如下内容保存，下面的内容来源于[https://downloads.mariadb.org/mariadb/repositories/](https://downloads.mariadb.org/mariadb/repositories/)，请注意最新版本
 
 ```
 # MariaDB 10.2 CentOS repository list - created 2017-06-28 07:07 UTC
