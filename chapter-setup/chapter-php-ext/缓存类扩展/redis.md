@@ -17,7 +17,7 @@ $ yum --enablerepo=remi install redis
 
 PHP 服务器 需安装
 ```
-$ yum --enablerepo=remi-php73,remi install php-redis
+$ yum --enablerepo=remi-php74install php-redis
 ```
 
 ## 配置

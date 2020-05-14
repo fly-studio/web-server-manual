@@ -28,6 +28,10 @@ $ sed -i -e '/mirrors.cloud.aliyuncs.com/d' -e '/mirrors.aliyuncs.com/d' /etc/yu
 重要仓库
 
 ```
+$ yum install epel-release
+```
+
+```
 # 6.0
 $ wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-6.repo
 

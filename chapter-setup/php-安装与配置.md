@@ -2,7 +2,7 @@
 
 # # PHP版本
 ## ## remi库
-remi库包含这些PHP版本：5.4 5.5 5.6 7.0 7.1 7.2 7.3
+remi库包含这些PHP版本：5.4，5.5，5.6，7.0，7.1，7.2，7.3，7.4
 #### - PHP 5.4
 ```
 $ yum --enablerepo=remi install xxx
@@ -31,10 +31,14 @@ $ yum --enablerepo=remi-php72,remi install xxx
 ```
 $ yum --enablerepo=remi-php73,remi install xxx
 ```
+#### - PHP 7.4
+```
+$ yum --enablerepo=remi-php74,remi install xxx
+```
 
 
 以上命令表示分别启用特定版本PHP、PHP扩展的安装
-比如<code>yum --enablerepo=remi-php73,remi install php</code>表示安装PHP 7.3
+比如<code>yum --enablerepo=remi-php74,remi install php</code>表示安装PHP 7.4
 
 
 # # 工作目录

@@ -1,7 +1,7 @@
 # Yum 安装
 
 ```
-$ yum --enablerepo=remi-php73,remi install php php-cgi pcre pcre-devel php-fpm gd php-gd libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel zlib zlib-devel  php-pecl-zip glibc glibc-devel glib2 glib2-devel bzip2 bzip2-devel curl curl-devel openssl openssl-devel openldap openldap-devel nss_ldap openldap-clients openldap-servers libmcrypt libmcrypt-devel mcrypt mhash php-mcrypt libidn libidn-devel php-mbstring libxml2 libxml2-devel php-xmlrpc php-xml php-bcmath php-gmp php-ssh2 php-pecl-swoole
+$ yum --enablerepo=remi-php74,remi install php php-cgi pcre pcre-devel php-fpm gd php-gd libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel zlib zlib-devel  php-pecl-zip glibc glibc-devel glib2 glib2-devel bzip2 bzip2-devel curl curl-devel openssl openssl-devel openldap openldap-devel nss_ldap openldap-clients openldap-servers libmcrypt libmcrypt-devel mcrypt mhash php-mcrypt libidn libidn-devel php-mbstring libxml2 libxml2-devel php-xmlrpc php-xml php-bcmath php-gmp php-ssh2 php-pecl-swoole
 
 ```
 - **php-cgi**：

@@ -12,7 +12,7 @@ $ yum --enablerepo=rpmforge install libevent memcached
 
 PHP 服务器上需安装
 ```
-$ yum --enablerepo=remi-php71,remi install php-pecl-memcache php-pecl-memcached
+$ yum --enablerepo=remi-php74,remi install php-pecl-memcache php-pecl-memcached
 ```
 
 验证是否安装成功
