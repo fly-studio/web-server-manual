@@ -5,10 +5,10 @@
 ### ### 5.7
 
 ```bash
-# CentOS 7
+# 7.x
 $ wget http://repo.mysql.com/mysql57-community-release-el7-10.noarch.rpm
 
-# CentOS 6
+# 6.x
 $ wget http://repo.mysql.com/mysql57-community-release-el6-10.noarch.rpm
 ```
 
@@ -23,10 +23,10 @@ $ rpm -ivh mysql*-community-release-*.noarch.rpm
 ### ### 5.5 
 
 ```bash
-# CentOS 7
+# 7.x
 $ wget http://repo.mysql.com/yum/mysql-5.5-community/el/7/x86_64/mysql-community-release-el7-5.noarch.rpm
 
-# CentOS 6
+# 6.x
 $ wget http://repo.mysql.com/yum/mysql-5.5-community/el/6/x86_64/mysql-community-release-el6-5.noarch.rpm
 
 $ rpm -ivh mysql*-community-release-*.noarch.rpm

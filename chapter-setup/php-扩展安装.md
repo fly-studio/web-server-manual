@@ -3,8 +3,9 @@
 # # 必要组件
 
 ## ## 安装phpize
+
 > 需要编译的php扩展，需安装phpize来编译
 
 ```
-$ yum --enablerepo=remi-php73,remi install php-pear php-devel
+$ yum --enablerepo=remi-php74,remi install php-pear php-devel
 ```
