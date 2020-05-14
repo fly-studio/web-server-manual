@@ -14,6 +14,7 @@ $ yum install http://opensource.wandisco.com/centos/6/git/x86_64/wandisco-git-re
 ```
 $ yum install git
 ```
+
 ## ## 源代码编译
 
 依赖安装

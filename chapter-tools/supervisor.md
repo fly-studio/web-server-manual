@@ -1,6 +1,6 @@
-# \# supervisor
+# # supervisor
 
-## \#\# 安装
+## ## 安装
 
 ```bash
 # 如果没有 easy_install 需要安装 python-setuptools
@@ -48,7 +48,7 @@ stdout_logfile=/www/website/base/worker.log
 
 > --timeout 应该永远都要比 `config/queue.php`- `retry_after` 短至少几秒钟的时间。这样就能保证任务进程总能在失败重试前就被杀死了。如果你的 --timeout 选项大于 retry\_after 配置选项，你的任务可能被执行两次
 
-## \#\# 操作
+## ## 操作
 
 ### 设置服务脚本
 

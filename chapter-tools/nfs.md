@@ -1,20 +1,24 @@
 NFS 可以让所有服务共享一个文件夹，这样在任意服务器上面上传的文件都可以共享使用。
 
 NFS安装分为服务端和客户端，一个服务端提供服务，可供N个客户端共同使用。
+
 # # 服务端
 
 假设IP是：192.168.1.100
 
 ## ## 安装
+
 ```
 $ yum install nfs-utils rpcbind
 ```
 
 ## ## 开启服务
+
 ```
 $ systemctl enable nfs-server
 $ systemctl enable rpcbind
 ```
+
 ```
 $ sytemctl start nfs-server
 $ sytemctl start rpcbind
