@@ -51,18 +51,19 @@ $ systemctl enable/disable redis
 $ service redis start/stop/restart
 
 # 7.x
-$ systemctl start/stop/restart
-redis
+$ systemctl start/stop/restart redis
 ```
 
 ### 卸载
 
 缓存服务器
+
 ```
 $ yum remove redis
 ```
 
 PHP 服务器
+
 ```
 $ yum remove php-redis
 ```

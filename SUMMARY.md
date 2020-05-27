@@ -53,7 +53,8 @@
     * [RabbitMQ](chapter-setup/rabbitmq.md)
       * [安装](chapter-setup/rabbitmq/an-zhuang.md)
         * [Yum 安装](chapter-setup/rabbitmq/an-zhuang/yum-an-zhuang.md)
-      * 配置
+      * [配置](chapter-setup/rabbitmq/pei-zhi.md)
+      * [操作](chapter-setup/rabbitmq/cao-zuo.md)
   * [MySQL/MariaDB](chapter-setup/mysql.md)
     * [安装 MySQL](chapter-setup/chapter-mysql/安装.md)
       * [YUM 安装](chapter-setup/chapter-mysql/chapter-install/yum-安装.md)
