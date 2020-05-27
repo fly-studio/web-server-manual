@@ -49,6 +49,11 @@
   * [缓存类](chapter-setup/chapter-cache/缓存.md)
     * [Redis](chapter-setup/chapter-cache/redis.md)
     * [Memcache](chapter-setup/chapter-cache/memcache.md)
+  * [队列类](chapter-setup/dui-lie-lei.md)
+    * [RabbitMQ](chapter-setup/rabbitmq.md)
+      * [安装](chapter-setup/rabbitmq/an-zhuang.md)
+        * [Yum 安装](chapter-setup/rabbitmq/an-zhuang/yum-an-zhuang.md)
+      * 配置
   * [MySQL/MariaDB](chapter-setup/mysql.md)
     * [安装 MySQL](chapter-setup/chapter-mysql/安装.md)
       * [YUM 安装](chapter-setup/chapter-mysql/chapter-install/yum-安装.md)
