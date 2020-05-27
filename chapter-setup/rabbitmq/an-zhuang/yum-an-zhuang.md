@@ -39,3 +39,19 @@ $ rpm --import https://packages.erlang-solutions.com/rpm/erlang_solutions.asc
 ```
 $ yum install erlang
 ```
+
+## 安装RabbitMQ
+
+去`https://github.com/rabbitmq/rabbitmq-server/releases`找到最新版的rpm包
+比如CentOS 7是el7.noarch.rpm
+
+```
+wget https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.8.4/rabbitmq-server-3.8.4-1.el7.noarch.rpm
+```
+
+安装
+
+```
+$ yum install rabbitmq-server-*.noarch.rpm
+```
+
