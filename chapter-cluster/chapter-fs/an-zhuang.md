@@ -16,16 +16,41 @@
 
 ## 准备工作
 
+### Host 修改
+
+每一台都需要添加如下hosts，自行修改为对应IP
+
+```
+ceph-deploy 10.0.0.2
+ceph-node1 10.0.0.11
+ceph-node2 10.0.0.12
+ceph-node3 10.0.0.13
+```
+
+### 修改hostname
+
+每个node都需要修改hostname，比如`ceph-node1`
+
+> hostname 不能有 .
+>
+> 只能有 _ -
+
+
+
+```
+$ vim /etc/hostname
+```
+
 ### 创建用户
 
-每一个Node上创建一个用户
+#### 每一个Node上创建一个用户
 
 ```
 $ useradd -d /home/ceph-node -m ceph-node
 $ passwd ceph-node
 ```
 
-可无密码登陆
+设置本用户无密码登录状态
 
 ```
 $ echo "ceph-node ALL = (root) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/ceph-node
@@ -34,8 +59,10 @@ $ sudo chmod 0440 /etc/sudoers.d/ceph-node
 
 ### 免密登录
 
-```
+在部署机上配置
 
+```
+ssh-keygen
 ```
 
 ### 创建一个部署文件夹
