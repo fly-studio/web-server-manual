@@ -145,6 +145,17 @@ kolla_external_vip_address: "{{ kolla_internal_vip_address }}"
 enable_*: "yes"
 ```
 
+## 创建lvm
+
+在 compute机器上面执行这个
+
+```
+$ dd if=/dev/zero of=/cinder-volumes bs=1 count=0 seek=5G
+$ losetup -fv /cinder-volumes
+$ losetup -l
+$ vgcreate cinder-volumes /dev/loop0
+$ vgdisplay cinder-volumes
+```
 
 
 ## 开始部署
