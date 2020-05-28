@@ -188,3 +188,12 @@ kolla-ansible -i ./multinode prechecks -vvvv
 ```
 kolla-ansible -i ./multinode deploy -vvvv
 ```
+
+
+### 离线备份镜像
+
+得到所有镜像名
+
+```
+grep "docker_namespace }" kolla-ansible/ -R | while read line ; do line=${line##*\}-};line=${line%\"};  echo $line >> images ;done
+```
