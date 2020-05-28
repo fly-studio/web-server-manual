@@ -150,7 +150,7 @@ enable_*: "yes"
 在 compute机器上面执行这个
 
 ```
-$ dd if=/dev/zero of=/cinder-volumes bs=1 count=0 seek=5G
+$ dd if=/dev/zero of=/cinder-volumes bs=1 count=0 seek=100G
 $ losetup -fv /cinder-volumes
 $ losetup -l
 $ vgcreate cinder-volumes /dev/loop0
