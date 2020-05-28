@@ -192,8 +192,97 @@ kolla-ansible -i ./multinode deploy -vvvv
 
 ### 离线备份镜像
 
-得到所有镜像名
+#### 添加hosts
 
 ```
-grep "docker_namespace }" kolla-ansible/ -R | while read line ; do line=${line##*\}-};line=${line%\"};  echo $line >> images ;done
+127.0.0.1 registryserver
+```
+
+#### 启动容器
+
+```
+docker run -d -p 5001:5000 --name registry registry
+```
+
+#### 得到所有镜像名
+
+```
+$ grep "docker_namespace }" kolla-ansible/ -R | while read line ; do line=${line##*\}-};line=${line%\"};  echo $line >> images ;done
+```
+
+### 拉取镜像脚本
+
+```
+$ vim get_images.sh
+```
+
+```
+#!/bin/bash
+IMAGEFILE=images
+DOCKER_NAMESPACE="kolla"
+KOLLA_BASE_DISTRO="centos"
+INSTALL_TYPE="source"
+TAG="rocky"
+images=`cat $IMAGEFILE`
+count=`cat $IMAGEFILE |wc -l`
+icount=1
+for image in $images
+do
+  echo [$icount/$count]: $image
+  docker pull $DOCKER_NAMESPACE/${KOLLA_BASE_DISTRO}-${INSTALL_TYPE}-$image:$TAG
+  ((icount++))
+done
+```
+
+```
+$ chmod +x get_images.sh
+$ ./get_images.sh
+```
+
+#### TAG镜像
+
+```
+#!/bin/bash
+IMAGEFILE=images
+DOCKER_NAMESPACE="kolla"
+KOLLA_BASE_DISTRO="centos"
+INSTALL_TYPE="source"
+DES_REGISTRY="registryserver:5001"
+TAG="rocky"
+images=`cat $IMAGEFILE`
+count=`cat $IMAGEFILE |wc -l`
+icount=1
+for image in $images
+do
+  echo [$icount/$count]: $image
+  docker tag $DOCKER_NAMESPACE/${KOLLA_BASE_DISTRO}-${INSTALL_TYPE}-$image:$TAG $DES_REGISTRY/$DOCKER_NAMESPACE/${KOLLA_BASE_DISTRO}- ${INSTALL_TYPE}-$image:$TAG
+  ((icount++))
+done
+```
+
+#### 上传镜像
+
+```
+#!/bin/bash
+IMAGEFILE=images
+DOCKER_NAMESPACE="kolla"
+KOLLA_BASE_DISTRO="centos"
+INSTALL_TYPE="source"
+DES_REGISTRY="registryserver:5001"
+TAG="rocky"
+images=`cat $IMAGEFILE`
+count=`cat $IMAGEFILE |wc -l`
+icount=1
+for image in $images
+do
+  echo [$icount/$count]: $image
+  docker push $DES_REGISTRY/$DOCKER_NAMESPACE/${KOLLA_BASE_DISTRO}-${INSTALL_TYPE}-$image:$TAG
+  ((icount++))
+done
+```
+
+#### 打包镜像
+
+```
+$ docker inspect registry
 ```
