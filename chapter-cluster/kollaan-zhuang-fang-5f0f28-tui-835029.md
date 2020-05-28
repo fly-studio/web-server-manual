@@ -131,7 +131,7 @@ neutron_external_interface: "eth1"
 
 kolla_internal_vip_address: "10.1.0.250"
 
-# 按需启动相关组件
+# 按需启动相关组件 https://docs.openstack.org/kolla-ansible/latest/reference/index.html
 enable_*: "yes"
 ```
 
@@ -139,7 +139,20 @@ enable_*: "yes"
 
 ## 开始部署
 
+Bootstrap服务器部署依赖项
+
 ```
-kolla-ansible deploy
+kolla-ansible -i ./multinode bootstrap-servers
 ```
 
+对主机进行部署前检查
+
+```
+kolla-ansible -i ./multinode prechecks
+```
+
+开始部署
+
+```
+kolla-ansible -i ./multinode deploy
+```
