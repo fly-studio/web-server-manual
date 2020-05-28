@@ -6,6 +6,7 @@
     * [设置低权限用户](chapter-started/基本属性/she-zhi-di-quan-xian-yong-hu.md)
     * [完善环境变量](chapter-started/基本属性/wan-shan-huan-jing-bian-liang.md)
   * [Repo仓库](chapter-started/repo-仓库.md)
+  * [时间同步](chapter-started/shi-jian-tong-bu.md)
   * [服务器「必要组建」和「开放端口」](chapter-started/服务器「必要组建」和「开放端口」.md)
     * [openSSL](chapter-started/服务器「必要组建」和「开放端口」/openssl.md)
     * [GCC](chapter-started/服务器「必要组建」和「开放端口」/gcc.md)
