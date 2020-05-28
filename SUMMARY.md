@@ -124,6 +124,8 @@
   * [文件系统](chapter-cluster/文件系统.md)
     * [TFS](chapter-cluster/chapter-fs/tfs.md)
     * [虚拟合并多个文件的内容](chapter-cluster/chapter-fs/虚拟合并多个文件的内容.md)
+    * [Ceph](chapter-cluster/chapter-fs/ceph.md)
+      * [安装](chapter-cluster/chapter-fs/an-zhuang.md)
   * Openstack
     * 安装
       * [Kolla安装方式\(推荐\)](chapter-cluster/kollaan-zhuang-fang-5f0f28-tui-835029.md)
