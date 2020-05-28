@@ -63,7 +63,7 @@ $ echo "ceph-node ALL = (root) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/ceph-node
 $ sudo chmod 0440 /etc/sudoers.d/ceph-node
 ```
 
-### 部署机可免密登录到节点
+### 部署机可免密登录到node
 
 在部署机上配置
 
@@ -98,16 +98,7 @@ Host ceph-node3
 ```
 
 
-### 部署机上导入镜像
-
-执行
-
-```
-$ export CEPH_DEPLOY_REPO_URL=http://mirrors.163.com/ceph/rpm-luminous/el7
-$ export CEPH_DEPLOY_GPG_URL=http://mirrors.163.com/ceph/keys/release.asc
-```
-
-安装仓库
+## 部署机上安装仓库
 
 ```
 $ vim /etc/yum.repos.d/ceph.repo
@@ -158,6 +149,13 @@ $ cd /ceph/cluster
 
 ```
 $ yum install ceph-deploy
+```
+
+## 为安装参数导入镜像仓库
+
+```
+$ export CEPH_DEPLOY_REPO_URL=http://mirrors.163.com/ceph/rpm-luminous/el7
+$ export CEPH_DEPLOY_GPG_URL=http://mirrors.163.com/ceph/keys/release.asc
 ```
 
 ## 出错后如何处理
