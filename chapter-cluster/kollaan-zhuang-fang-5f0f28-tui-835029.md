@@ -9,7 +9,7 @@ $ yum install python-devel libffi-devel gcc openssl-devel libselinux-python pyth
 
 $ python -m pip install --upgrade pip
 
-$ yum install ansible
+$ pip install ansible
 ```
 
 ## 安装Kolla
@@ -17,7 +17,9 @@ $ yum install ansible
 ```
 $ cd ~
 
-$ pip install kolla-ansible
+# CentOS 7 使用 9.1.1 
+# CentOS 8 可以使用最新的版本
+$ pip install kolla-ansible==9.1.1
 
 $ mkdir -p /etc/kolla
 $ cp -r /usr/local/share/kolla-ansible/etc_examples/kolla/* /etc/kolla
@@ -125,11 +127,19 @@ kolla_install_type: "binary"
 # openstack 的版本
 openstack_release: ""
 
+# 网卡名，比如enp3s0
 network_interface: "eth0"
 
 neutron_external_interface: "eth1"
 
+
+kolla_enable_tls_internal: "no"
+
+kolla_enable_tls_external: "no"
+
 kolla_internal_vip_address: "10.1.0.250"
+
+kolla_external_vip_address: "{{ kolla_internal_vip_address }}"
 
 # 按需启动相关组件 https://docs.openstack.org/kolla-ansible/latest/reference/index.html
 enable_*: "yes"
@@ -139,19 +149,22 @@ enable_*: "yes"
 
 ## 开始部署
 
-Bootstrap服务器部署依赖项
+配置文件在 /usr/local/share/kolla-ansible/ansible/roles/
+
+
+### Bootstrap服务器部署依赖项
 
 ```
-kolla-ansible -i ./multinode bootstrap-servers
+kolla-ansible -i ./multinode bootstrap-servers -vvv
 ```
 
-对主机进行部署前检查
+### 对主机进行部署前检查
 
 ```
 kolla-ansible -i ./multinode prechecks
 ```
 
-开始部署
+### 开始部署
 
 ```
 kolla-ansible -i ./multinode deploy

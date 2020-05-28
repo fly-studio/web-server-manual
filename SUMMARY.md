@@ -131,7 +131,7 @@
       * [文件系统 Filesystem](chapter-cluster/chapter-fs/wen-jian-xi-tong-filesystem.md)
       * [块设备 Block Device](chapter-cluster/chapter-fs/kuai-she-bei-block-device.md)
   * Openstack
-    * 安装
+    * [安装](chapter-cluster/an-zhuang.md)
       * [Kolla安装方式\(推荐\)](chapter-cluster/kollaan-zhuang-fang-5f0f28-tui-835029.md)
 * [搜索引擎](search.md)
   * [Elasticsearch](chapter-search/elasticsearch.md)
