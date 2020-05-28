@@ -18,10 +18,18 @@
 
 ### 创建用户
 
-在每一个Node上创建一个用户
+每一个Node上创建一个用户
 
 ```
+$ useradd -d /home/ceph-node -m ceph-node
+$ passwd ceph-node
+```
 
+可无密码登陆
+
+```
+$ echo "ceph-node ALL = (root) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/ceph-node
+$ sudo chmod 0440 /etc/sudoers.d/ceph-node
 ```
 
 ### 免密登录
@@ -32,7 +40,9 @@
 
 ### 创建一个部署文件夹
 
-下文`ceph-deploy`开头的指令，均指在部署机器上执行
+
+
+
 
 
 ### 部署机上导入镜像
@@ -80,7 +90,13 @@ gpgkey=http://mirrors.163.com/ceph/keys/release.asc
 priority=1
 ```
 
+### 安装部署工具
 
+部署机上执行
+
+```
+$ yum install ceph-deploy
+```
 
 
 ## 出错后如何处理
