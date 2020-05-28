@@ -1,12 +1,12 @@
 # 时间同步
 
-安装
+## 安装
 
 ```
 $ yum install -y chrony
 ```
 
-修改为阿里云时间服务器
+## 修改为阿里云时间服务器
 
 ```
 $ sed -i 's/server 0.centos.pool.ntp.org iburst/server ntp.aliyun.com iburst/g' /etc/chrony.conf
@@ -16,14 +16,14 @@ $ sed -i '/^server 3.centos.pool.ntp.org iburst/d' /etc/chrony.conf
 $ sed -i 's/^#allow 192.168.0.0\/16/allow 10.0.7.0\/24/g' /etc/chrony.conf
 ```
 
-启动
+## 启动
 
 ```
 $ systemctl enable chronyd.service
 $ systemctl restart chronyd.service
 ```
 
-查看同步状态
+## 查看同步状态
 
 ```
 $ chronyc sourcestats -v
