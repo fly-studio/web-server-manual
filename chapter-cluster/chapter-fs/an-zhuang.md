@@ -68,7 +68,7 @@ $ sudo chmod 0440 /etc/sudoers.d/ceph-node
 在部署机上配置
 
 ```
-ssh-keygen
+$ ssh-keygen
 ```
 
 配置免密登录
@@ -167,16 +167,16 @@ $ export CEPH_DEPLOY_GPG_URL=http://mirrors.163.com/ceph/keys/release.asc
 删除所有节点数据和本地配置文件
 
 ```
-ceph-deploy --username=ceph-node purge ceph-node1 ceph-node2 ceph-node3
-ceph-deploy --username=ceph-node purgedata ceph-node1 ceph-node2 ceph-node3
-ceph-deploy --username=ceph-node forgetkeys
-rm -rf *
+$ ceph-deploy --username=ceph-node purge ceph-node1 ceph-node2 ceph-node3
+$ ceph-deploy --username=ceph-node purgedata ceph-node1 ceph-node2 ceph-node3
+$ ceph-deploy --username=ceph-node forgetkeys
+$ rm -rf *
 ```
 
 ## Monitor 初始化
 
 ```
-ceph-deploy --username=ceph-node new ceph-node1 ceph-node2 ceph-node3
+$ ceph-deploy --username=ceph-node new ceph-node1 ceph-node2 ceph-node3
 ```
 
 ##  安装ceph
@@ -184,7 +184,7 @@ ceph-deploy --username=ceph-node new ceph-node1 ceph-node2 ceph-node3
 安装的版本为 `luminous`
 
 ```
-ceph-deploy --username=ceph-node install --release luminous ceph-node1 ceph-node2 ceph-node3
+$ ceph-deploy --username=ceph-node install --release luminous ceph-node1 ceph-node2 ceph-node3
 ```
 
 ### 管理机安装
@@ -192,7 +192,7 @@ ceph-deploy --username=ceph-node install --release luminous ceph-node1 ceph-node
 如果部署机和管理是同一台
 
 ```
-ceph-deploy --release luminous localhost
+$ ceph-deploy --release luminous localhost
 ```
 
 其它服务器可修改localhost为对应的ip
@@ -202,58 +202,61 @@ ceph-deploy --release luminous localhost
 每台node均执行
 
 ```
-firewall-cmd --zone=public --add-service=ceph-mon --permanent
-firewall-cmd --zone=public --add-service=ceph --permanent
-firewall-cmd --reload
-setenforce 0
+$ firewall-cmd --zone=public --add-service=ceph-mon --permanent
+$ firewall-cmd --zone=public --add-service=ceph --permanent
+$ firewall-cmd --reload
+$ setenforce 0
 ```
 
 ## 安装Monitor
 
 ```
-ceph-deploy --username=ceph-node mon create-initial
+$ ceph-deploy --username=ceph-node mon create-initial
 ```
 
 ## 推送配置文件、密钥到各个node
 
 ```
-ceph-deploy --username=ceph-node admin ceph-node1 ceph-node2 ceph-node3
+$ ceph-deploy --username=ceph-node admin ceph-node1 ceph-node2 ceph-node3
 ```
 
 ## 管理员(含http后台)
 
 ```
-ceph-deploy --username=ceph-node mgr create ceph-node1 ceph-node2 ceph-node3
+$ ceph-deploy --username=ceph-node mgr create ceph-node1 ceph-node2 ceph-node3
 ```
 
 ## 创建磁盘OSD
 
 > 下文的`/dev/sdb`表示需要设置为`ceph`的盘，需要根据具体的情况修改
+>
+> 一定要再三确认磁盘的设备路径，一时大意会造成灾难
 
-如果node上的磁盘有格式，则在node上抹去磁盘信息
-
-```
-wipefs -a /dev/sdb
-ceph-volume lvm zap /dev/sdb
-```
 
 创建并添加磁盘
 
 ```
 
-ceph-deploy --username=ceph-node osd create ceph-node1 --data /dev/sdb
-ceph-deploy --username=ceph-node osd create ceph-node2 --data /dev/sdb
-ceph-deploy --username=ceph-node osd create ceph-node3 --data /dev/sdb
+$ ceph-deploy --username=ceph-node osd create ceph-node1 --data /dev/sdb
+$ ceph-deploy --username=ceph-node osd create ceph-node2 --data /dev/sdb
+$ ceph-deploy --username=ceph-node osd create ceph-node3 --data /dev/sdb
  ```
+ 
+如果node上的这个磁盘有数据，下面的指令可以抹去这个磁盘信息
+
+```
+$ wipefs -a /dev/sdb
+$ ceph-volume lvm zap /dev/sdb
+```
 
 ## Meta 源数据
 
 ```
-ceph-deploy --username=ceph-node mds create ceph-node1 ceph-node2 ceph-node3
+$ ceph-deploy --username=ceph-node mds create ceph-node1 ceph-node2 ceph-node3
 ```
 
 ## 网关(对外接口)
 
 ```
-ceph-deploy --username=ceph-node rgw create ceph-node1 ceph-node2 ceph-node3
+$ ceph-deploy --username=ceph-node rgw create ceph-node1 ceph-node2 ceph-node3
 ```
