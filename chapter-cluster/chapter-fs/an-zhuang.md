@@ -151,7 +151,9 @@ $ cd /ceph/cluster
 $ yum install ceph-deploy
 ```
 
-## 为安装参数导入镜像仓库
+## 为安装参数导入仓库镜像
+
+这个参数表示安装时，会在node上会使用如下仓库镜像
 
 ```
 $ export CEPH_DEPLOY_REPO_URL=http://mirrors.163.com/ceph/rpm-luminous/el7
@@ -178,6 +180,8 @@ ceph-deploy --username=ceph-node new ceph-node1 ceph-node2 ceph-node3
 ```
 
 ##  安装ceph等
+
+安装的版本为 `luminous`
 
 ```
 ceph-deploy --username=ceph-node install --release luminous ceph-node1 ceph-node2 ceph-node3
@@ -210,13 +214,13 @@ setenforce 0
 ceph-deploy --username=ceph-node mon create-initial
 ```
 
-## 拷贝配置文件、密钥到各个节点
+## 推送配置文件、密钥到各个node
 
 ```
 ceph-deploy --username=ceph-node admin ceph-node1 ceph-node2 ceph-node3
 ```
 
-## 管理员(含http)
+## 管理员(含http后台)
 
 ```
 ceph-deploy --username=ceph-node mgr create ceph-node1 ceph-node2 ceph-node3
@@ -224,21 +228,22 @@ ceph-deploy --username=ceph-node mgr create ceph-node1 ceph-node2 ceph-node3
 
 ## 创建磁盘OSD
 
+> 下文的`/dev/sdb`表示需要设置为`ceph`的盘，需要根据具体的情况修改
 
-如果磁盘有格式
+如果node上的磁盘有格式，则在node上抹去磁盘信息
 
 ```
-wipefs -a /dev/vdb
-ceph-volume lvm zap /dev/vdb
+wipefs -a /dev/sdb
+ceph-volume lvm zap /dev/sdb
 ```
 
 创建并添加磁盘
 
 ```
 
-ceph-deploy --username=ceph-node osd create ceph-node1 --data /dev/vdb
-ceph-deploy --username=ceph-node osd create ceph-node2 --data /dev/vdb
-ceph-deploy --username=ceph-node osd create ceph-node3 --data /dev/vdb
+ceph-deploy --username=ceph-node osd create ceph-node1 --data /dev/sdb
+ceph-deploy --username=ceph-node osd create ceph-node2 --data /dev/sdb
+ceph-deploy --username=ceph-node osd create ceph-node3 --data /dev/sdb
  ```
 
 ## Meta 源数据
