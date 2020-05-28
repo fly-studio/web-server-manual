@@ -148,7 +148,7 @@ $ cd /ceph/cluster
 部署机上执行
 
 ```
-$ yum install ceph-deploy
+$ yum install yum-plugin-priorities ceph-deploy
 ```
 
 ## 为安装参数导入仓库镜像
