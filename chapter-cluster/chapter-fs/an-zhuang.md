@@ -1,25 +1,20 @@
 # 安装
 
-## 同步时间
-
-在每一台上安装时间同步服务，参照 [时间同步](/chapter-started/shi-jian-tong-bu.md)
+本文以安装`luminous`为例，参照：https://docs.ceph.com/docs/luminous/start/
 
 ## 结构
 
 - 部署机 x 1 
 
+ 下文`ceph-deploy`开头的指令，均指在部署机器上执行
+
 - CEPH Node x 3 (至少)
 
-## 预备工作
+## 同步时间
 
-下文`ceph-deploy`开头的指令，均指在部署机器上执行
+在每一台上安装时间同步服务，参照 [时间同步](/chapter-started/shi-jian-tong-bu.md)
 
-### 部署机上导入镜像
-
-```
-export CEPH_DEPLOY_REPO_URL=http://mirrors.163.com/ceph/rpm-luminous/el7
-export CEPH_DEPLOY_GPG_URL=http://mirrors.163.com/ceph/keys/release.asc
-```
+## 准备工作
 
 ### 创建用户
 
@@ -33,6 +28,70 @@ export CEPH_DEPLOY_GPG_URL=http://mirrors.163.com/ceph/keys/release.asc
 
 ```
 
+```
+
+### 创建一个部署文件夹
+
+下文`ceph-deploy`开头的指令，均指在部署机器上执行
+
+
+### 部署机上导入镜像
+
+执行
+
+```
+$ export CEPH_DEPLOY_REPO_URL=http://mirrors.163.com/ceph/rpm-luminous/el7
+$ export CEPH_DEPLOY_GPG_URL=http://mirrors.163.com/ceph/keys/release.asc
+```
+
+安装窗口
+
+```
+$ vim /etc/yum.repos.d/ceph.repo
+```
+
+```
+
+[ceph]
+name=Ceph packages for $basearch
+baseurl=http://mirrors.163.com/ceph/rpm-luminous/el7/$basearch
+enabled=1
+gpgcheck=1
+priority=1
+type=rpm-md
+gpgkey=http://mirrors.163.com/ceph/keys/release.asc
+
+[ceph-noarch]
+name=Ceph noarch packages
+baseurl=http://mirrors.163.com/ceph/rpm-luminous/el7/noarch
+enabled=1
+gpgcheck=1
+priority=1
+type=rpm-md
+gpgkey=http://mirrors.163.com/ceph/keys/release.asc
+
+[ceph-source]
+name=Ceph source packages
+baseurl=http://mirrors.163.com/ceph/rpm-luminous/el7/SRPMS
+enabled=0
+gpgcheck=1
+type=rpm-md
+gpgkey=http://mirrors.163.com/ceph/keys/release.asc
+priority=1
+```
+
+
+
+
+## 出错后如何处理
+
+如果安装不顺利，需要从头开始，则删除所有节点数据和本地配置文件
+
+```
+ceph-deploy --username=ceph-node purge ceph-node1 ceph-node2 ceph-node3
+ceph-deploy --username=ceph-node purgedata ceph-node1 ceph-node2 ceph-node3
+ceph-deploy --username=ceph-node forgetkeys
+rm -rf *
 ```
 
 ## Monitor 初始化
