@@ -1,5 +1,7 @@
 # Kolla 安装Openstack
 
+> 参考：https://docs.openstack.org/kolla-ansible/latest/user/quickstart.html
+
 ## 安装ansible等必要组件
 
 ```
@@ -114,5 +116,30 @@ $ ./generate_passwords.py
 $ vim /etc/kolla/globals.yml
 ```
 
+```
+kolla_base_distro: "centos"
+
+# 表示yum安装
+kolla_install_type: "binary"
+
+# openstack 的版本
+openstack_release: ""
+
+network_interface: "eth0"
+
+neutron_external_interface: "eth1"
+
+kolla_internal_vip_address: "10.1.0.250"
+
+# 按需启动相关组件
+enable_*: "yes"
+```
+
+
+
 ## 开始部署
+
+```
+kolla-ansible deploy
+```
 
