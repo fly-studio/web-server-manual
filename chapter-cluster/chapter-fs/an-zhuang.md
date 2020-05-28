@@ -35,29 +35,35 @@ ceph-node3 10.0.0.13
 >
 > 只能有 _ -
 
-
-
 ```
 $ vim /etc/hostname
 ```
 
+一定要重启
+
+```
+$ init 6
+```
+
 ### 创建用户
 
-#### 每一个Node上创建一个用户
+#### 每一个node上创建用户
+
+比如下文都使用的`ceph-node`
 
 ```
 $ useradd -d /home/ceph-node -m ceph-node
 $ passwd ceph-node
 ```
 
-设置本用户无密码登录状态
+设置用户无密码登录状态
 
 ```
 $ echo "ceph-node ALL = (root) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/ceph-node
 $ sudo chmod 0440 /etc/sudoers.d/ceph-node
 ```
 
-### 免密登录
+### 部署机可免密登录到节点
 
 在部署机上配置
 
@@ -65,11 +71,31 @@ $ sudo chmod 0440 /etc/sudoers.d/ceph-node
 ssh-keygen
 ```
 
-### 创建一个部署文件夹
+配置免密登录
 
+```
+$ ssh-copy-id ceph-node@ceph-node1
+$ ssh-copy-id ceph-node@ceph-node2
+$ ssh-copy-id ceph-node@ceph-node3
+```
 
+设置免密hosts
 
+```
+$ vim ~/.ssh/config
+```
 
+```
+Host ceph-node1
+   Hostname ceph-node1
+   User ceph-node
+Host ceph-node2
+   Hostname ceph-node2
+   User ceph-node
+Host ceph-node3
+   Hostname ceph-node3
+   User ceph-node
+```
 
 
 ### 部署机上导入镜像
@@ -81,7 +107,7 @@ $ export CEPH_DEPLOY_REPO_URL=http://mirrors.163.com/ceph/rpm-luminous/el7
 $ export CEPH_DEPLOY_GPG_URL=http://mirrors.163.com/ceph/keys/release.asc
 ```
 
-安装窗口
+安装仓库
 
 ```
 $ vim /etc/yum.repos.d/ceph.repo
@@ -117,7 +143,16 @@ gpgkey=http://mirrors.163.com/ceph/keys/release.asc
 priority=1
 ```
 
-### 安装部署工具
+## 创建一个部署文件夹
+
+部署机上执行
+
+```
+$ mkdir -p /ceph/cluster
+$ cd /ceph/cluster
+```
+
+## 安装部署工具
 
 部署机上执行
 
@@ -125,10 +160,11 @@ priority=1
 $ yum install ceph-deploy
 ```
 
-
 ## 出错后如何处理
 
-如果安装不顺利，需要从头开始，则删除所有节点数据和本地配置文件
+如果安装不顺利，需要从头开始，在部署上执行如下
+
+删除所有节点数据和本地配置文件
 
 ```
 ceph-deploy --username=ceph-node purge ceph-node1 ceph-node2 ceph-node3
