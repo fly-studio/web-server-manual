@@ -179,7 +179,7 @@ rm -rf *
 ceph-deploy --username=ceph-node new ceph-node1 ceph-node2 ceph-node3
 ```
 
-##  安装ceph等
+##  安装ceph
 
 安装的版本为 `luminous`
 
