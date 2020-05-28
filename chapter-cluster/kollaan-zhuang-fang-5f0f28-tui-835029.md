@@ -174,17 +174,17 @@ vgremove cinder-volumes
 ### Bootstrap服务器部署依赖项
 
 ```
-kolla-ansible -i ./multinode bootstrap-servers -vvv
+kolla-ansible -i ./multinode bootstrap-servers -vvvv
 ```
 
 ### 对主机进行部署前检查
 
 ```
-kolla-ansible -i ./multinode prechecks
+kolla-ansible -i ./multinode prechecks -vvvv
 ```
 
 ### 开始部署
 
 ```
-kolla-ansible -i ./multinode deploy
+kolla-ansible -i ./multinode deploy -vvvv
 ```
