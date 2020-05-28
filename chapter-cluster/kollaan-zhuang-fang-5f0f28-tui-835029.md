@@ -23,7 +23,7 @@ $ cp /usr/local/share/kolla-ansible/ansible/inventory/* .
 
 ```
 
-如果需要修改源码请使用下面的安装方式
+如果是开发者模式请使用下面的安装方式
 
 ```
 $ cd ~
@@ -50,17 +50,17 @@ pipelining=True
 forks=100
 ```
 
-## 安装前配置
+## 配置机器结构
 
 如果在一台机器上面安装使用`~/all-in-one`，如果多台，则使用`~/multinode`
 
 ```
-vim ~/multinode
+$ vim ~/multinode
 ```
 
 参考如下内容
 
-> 带`children`的参数可以配置类似 `control` 的值，表示和`control`的值相同。如果不带`children` 则必须写完整的`Host`和用户密码
+> 带`children`的参数可以配置类似 `control`、`compute` 的值，表示和`control`的值相同。如果不带`children` 则必须写完整的`Host`和用户密码
 >
 > 如下文的
 > `[network:children]` 可以写作 `[network]` 那么就需要写完整的`host`配置
@@ -98,12 +98,21 @@ localhost       ansible_connection=local become=true
 密码会修改到`/etc/kolla/passwords.yml`
 
 ```
-kolla-genpwd
+$ kolla-genpwd
 ```
 
 如果是开发者模式，使用如下方式
 
 ```
-cd kolla-ansible/tools
-./generate_passwords.py
+$ cd kolla-ansible/tools
+$ ./generate_passwords.py
 ```
+
+## 配置主信息
+
+```
+$ vim /etc/kolla/globals.yml
+```
+
+## 开始部署
+
