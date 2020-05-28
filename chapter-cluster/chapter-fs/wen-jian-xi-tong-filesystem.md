@@ -5,9 +5,9 @@
 再将这两个指定到新的`cephfs`
 
 ```
-ceph osd pool create cephfs_data 8
-ceph osd pool create cephfs_metadata 8
-ceph fs new cephfs cephfs_metadata cephfs_data
+$ ceph osd pool create cephfs_data 8
+$ ceph osd pool create cephfs_metadata 8
+$ ceph fs new cephfs cephfs_metadata cephfs_data
 ```
 
 > 关联cephfs的默认pool
@@ -22,7 +22,7 @@ ceph fs new cephfs cephfs_metadata cephfs_data
 
 
 ```
-mount -t ceph ceph-node1:6789:/ /ceph/data/ -o name=admin,secretfile=/ceph/cluster/admin.secret
+$ mount -t ceph ceph-node1:6789:/ /ceph/data/ -o name=admin,secretfile=/ceph/cluster/admin.secret
 ```
 
 ## insufficient standby MDS daemons available
@@ -31,7 +31,6 @@ mount -t ceph ceph-node1:6789:/ /ceph/data/ -o name=admin,secretfile=/ceph/clust
 将活动的mds变成待机
 
 ```
-ceph fs set cephfs max_mds 数量
-ceph mds deactivate cephfs:数量
-
+$ ceph fs set cephfs max_mds 数量
+$ ceph mds deactivate cephfs:数量
 ```
