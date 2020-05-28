@@ -157,6 +157,14 @@ $ vgcreate cinder-volumes /dev/loop0
 $ vgdisplay cinder-volumes
 ```
 
+删除 cinder-volumes
+
+```
+losetup -d /dev/loop0
+vgremove cinder-volumes
+```
+
+
 
 ## 开始部署
 
