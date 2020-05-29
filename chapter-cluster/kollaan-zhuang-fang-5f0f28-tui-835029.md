@@ -200,6 +200,7 @@ $ kolla-ansible -i ./multinode deploy -vvvv
 
 ```
 127.0.0.1 registryserver
+# 如果打算搭建其它机器上，自行修改ip
 ```
 
 #### 启动容器
@@ -283,6 +284,14 @@ done
 ```
 
 #### 上传镜像
+
+如果仓库非本地127.0.0.1，需要当前机器上的`/etc/docker/daemon.json`添加
+
+```
+{
+  "insecure-registries":["registryserver:5001"]
+}
+```
 
 ```
 #!/bin/bash
