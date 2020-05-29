@@ -119,7 +119,7 @@ $ vim /etc/kolla/globals.yml
 ```
 
 ```
-# 如果来源于本地仓库，设置此项
+# 如果来源于本地仓库，参照下文设置此项
 docker_registry: "registryserver:5001"
 
 kolla_base_distro: "centos"
