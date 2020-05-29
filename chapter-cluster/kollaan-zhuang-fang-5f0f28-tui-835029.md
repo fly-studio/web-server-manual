@@ -1,4 +1,4 @@
-# Kolla 安装Openstack
+# 使用 Kolla 安装 Openstack Train
 
 > 参考：https://docs.openstack.org/kolla-ansible/latest/user/quickstart.html
 
@@ -125,7 +125,7 @@ kolla_base_distro: "centos"
 kolla_install_type: "binary"
 
 # openstack 的版本
-openstack_release: ""
+openstack_release: "train"
 
 # 网卡名，比如enp3s0
 network_interface: "eth0"
