@@ -249,7 +249,7 @@ $ vim get_images.sh
 IMAGEFILE=images
 DOCKER_NAMESPACE="kolla"
 KOLLA_BASE_DISTRO="centos"
-INSTALL_TYPE="binary"
+INSTALL_TYPE="source"
 TAG="train"
 images=`cat $IMAGEFILE`
 count=`cat $IMAGEFILE |wc -l`
@@ -274,7 +274,7 @@ $ ./get_images.sh
 IMAGEFILE=images
 DOCKER_NAMESPACE="kolla"
 KOLLA_BASE_DISTRO="centos"
-INSTALL_TYPE="binary"
+INSTALL_TYPE="source"
 DES_REGISTRY="registryserver:5001"
 TAG="train"
 images=`cat $IMAGEFILE`
@@ -303,7 +303,7 @@ done
 IMAGEFILE=images
 DOCKER_NAMESPACE="kolla"
 KOLLA_BASE_DISTRO="centos"
-INSTALL_TYPE="binary"
+INSTALL_TYPE="source"
 DES_REGISTRY="registryserver:5001"
 TAG="train"
 images=`cat $IMAGEFILE`
