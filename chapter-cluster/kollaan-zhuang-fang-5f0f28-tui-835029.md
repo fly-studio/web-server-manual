@@ -238,57 +238,7 @@ rabbitmq
 ```
 
 
-### 拉取镜像脚本
-
-```
-$ vim get_images.sh
-```
-
-```
-#!/bin/bash
-IMAGEFILE=images
-DOCKER_NAMESPACE="kolla"
-KOLLA_BASE_DISTRO="centos"
-INSTALL_TYPE="source"
-TAG="train"
-images=`cat $IMAGEFILE`
-count=`cat $IMAGEFILE |wc -l`
-icount=1
-for image in $images
-do
-  echo [$icount/$count]: $image
-  docker pull $DOCKER_NAMESPACE/${KOLLA_BASE_DISTRO}-${INSTALL_TYPE}-$image:$TAG
-  ((icount++))
-done
-```
-
-```
-$ chmod +x get_images.sh
-$ ./get_images.sh
-```
-
-#### TAG镜像
-
-```
-#!/bin/bash
-IMAGEFILE=images
-DOCKER_NAMESPACE="kolla"
-KOLLA_BASE_DISTRO="centos"
-INSTALL_TYPE="source"
-DES_REGISTRY="registryserver:5001"
-TAG="train"
-images=`cat $IMAGEFILE`
-count=`cat $IMAGEFILE |wc -l`
-icount=1
-for image in $images
-do
-  echo [$icount/$count]: $image
-  docker tag $DOCKER_NAMESPACE/${KOLLA_BASE_DISTRO}-${INSTALL_TYPE}-$image:$TAG $DES_REGISTRY/$DOCKER_NAMESPACE/${KOLLA_BASE_DISTRO}-${INSTALL_TYPE}-$image:$TAG
-  ((icount++))
-done
-```
-
-#### 上传镜像
+### 拉取镜像，并上传到私有仓库
 
 如果仓库非本地127.0.0.1，需要当前机器上的`/etc/docker/daemon.json`添加
 
@@ -299,22 +249,39 @@ done
 ```
 
 ```
+$ vim sync_images.sh
+```
+
+```
 #!/bin/bash
 IMAGEFILE=images
 DOCKER_NAMESPACE="kolla"
 KOLLA_BASE_DISTRO="centos"
 INSTALL_TYPE="source"
-DES_REGISTRY="registryserver:5001"
 TAG="train"
+DES_REGISTRY="registryserver:5001"
+
 images=`cat $IMAGEFILE`
 count=`cat $IMAGEFILE |wc -l`
+
 icount=1
 for image in $images
 do
   echo [$icount/$count]: $image
+  docker pull $DOCKER_NAMESPACE/${KOLLA_BASE_DISTRO}-${INSTALL_TYPE}-$image:$TAG
+  
+  docker tag $DOCKER_NAMESPACE/${KOLLA_BASE_DISTRO}-${INSTALL_TYPE}-$image:$TAG $DES_REGISTRY/$DOCKER_NAMESPACE/${KOLLA_BASE_DISTRO}-${INSTALL_TYPE}-$image:$TAG
+
+  
   docker push $DES_REGISTRY/$DOCKER_NAMESPACE/${KOLLA_BASE_DISTRO}-${INSTALL_TYPE}-$image:$TAG
   ((icount++))
+
 done
+```
+
+```
+$ chmod +x sync_images.sh
+$ ./sync_images.sh
 ```
 
 #### 打包镜像
