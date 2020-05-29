@@ -119,6 +119,9 @@ $ vim /etc/kolla/globals.yml
 ```
 
 ```
+# 如果来源于本地仓库，设置此项
+docker_registry: "registryserver:5001"
+
 kolla_base_distro: "centos"
 
 # 表示yum安装
@@ -200,7 +203,6 @@ $ kolla-ansible -i ./multinode deploy -vvvv
 
 ```
 # 如果打算搭建其它机器上，自行修改ip
-
 127.0.0.1 registryserver
 ```
 
