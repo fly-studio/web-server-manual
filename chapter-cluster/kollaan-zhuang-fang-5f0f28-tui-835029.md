@@ -257,7 +257,7 @@ $ vim sync_images.sh
 IMAGEFILE=images
 DOCKER_NAMESPACE="kolla"
 KOLLA_BASE_DISTRO="centos"
-INSTALL_TYPE="source"
+INSTALL_TYPE="binary"
 TAG="train"
 DES_REGISTRY="registryserver:5001"
 
