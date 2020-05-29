@@ -199,11 +199,14 @@ $ kolla-ansible -i ./multinode deploy -vvvv
 #### 添加hosts
 
 ```
-127.0.0.1 registryserver
 # 如果打算搭建其它机器上，自行修改ip
+
+127.0.0.1 registryserver
 ```
 
 #### 启动容器
+
+在`registryserver`上执行
 
 ```
 $ docker run -d -p 5001:5000 --name registry registry
@@ -313,6 +316,8 @@ done
 ```
 
 #### 打包镜像
+
+在`registryserver`上执行
 
 ```
 $ docker inspect registry
