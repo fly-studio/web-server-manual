@@ -160,8 +160,8 @@ $ vgdisplay cinder-volumes
 删除 cinder-volumes
 
 ```
-losetup -d /dev/loop0
-vgremove cinder-volumes
+$ losetup -d /dev/loop0
+$ vgremove cinder-volumes
 ```
 
 
@@ -174,23 +174,25 @@ vgremove cinder-volumes
 ### Bootstrap服务器部署依赖项
 
 ```
-kolla-ansible -i ./multinode bootstrap-servers -vvvv
+$ kolla-ansible -i ./multinode bootstrap-servers -vvvv
 ```
 
 ### 对主机进行部署前检查
 
 ```
-kolla-ansible -i ./multinode prechecks -vvvv
+$ kolla-ansible -i ./multinode prechecks -vvvv
 ```
 
 ### 开始部署
 
 ```
-kolla-ansible -i ./multinode deploy -vvvv
+$ kolla-ansible -i ./multinode deploy -vvvv
 ```
 
 
 ### 离线备份镜像
+
+镜像源于：https://hub.docker.com/u/kolla/
 
 #### 添加hosts
 
@@ -201,10 +203,12 @@ kolla-ansible -i ./multinode deploy -vvvv
 #### 启动容器
 
 ```
-docker run -d -p 5001:5000 --name registry registry
+$ docker run -d -p 5001:5000 --name registry registry
 ```
 
 #### 得到所有镜像名
+
+先`git clone kolla-anible & git checkout 9.1.0`
 
 ```
 $ grep "docker_namespace }" kolla-ansible/ -R | while read line ; do line=${line##*\}-};line=${line%\"};  echo $line >> images ;done
