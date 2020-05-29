@@ -192,6 +192,8 @@ $ kolla-ansible -i ./multinode deploy -vvvv
 
 ### 离线备份镜像
 
+> https://www.jianshu.com/p/7c91b799b12e
+
 镜像源于：https://hub.docker.com/u/kolla/
 
 #### 添加hosts
@@ -213,6 +215,22 @@ $ docker run -d -p 5001:5000 --name registry registry
 ```
 $ grep "docker_namespace }" kolla-ansible/ -R | while read line ; do line=${line##*\}-};line=${line%\"};  echo $line >> images ;done
 ```
+
+修改其中的内容
+
+```
+neutron-server{{ '-opendaylight' if enable_opendaylight | bool else '' }}
+{{ rabbitmq_image_name }}
+```
+
+为
+
+```
+neutron-server
+neutron-server-opendaylight
+rabbitmq
+```
+
 
 ### 拉取镜像脚本
 
@@ -259,7 +277,7 @@ icount=1
 for image in $images
 do
   echo [$icount/$count]: $image
-  docker tag $DOCKER_NAMESPACE/${KOLLA_BASE_DISTRO}-${INSTALL_TYPE}-$image:$TAG $DES_REGISTRY/$DOCKER_NAMESPACE/${KOLLA_BASE_DISTRO}- ${INSTALL_TYPE}-$image:$TAG
+  docker tag $DOCKER_NAMESPACE/${KOLLA_BASE_DISTRO}-${INSTALL_TYPE}-$image:$TAG $DES_REGISTRY/$DOCKER_NAMESPACE/${KOLLA_BASE_DISTRO}-${INSTALL_TYPE}-$image:$TAG
   ((icount++))
 done
 ```
