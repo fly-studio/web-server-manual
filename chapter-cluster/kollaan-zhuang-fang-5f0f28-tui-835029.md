@@ -193,4 +193,17 @@ $ kolla-ansible -i ./multinode deploy -vvvv
 ```
 
 
-### 
+### 安装出现的问题
+
+# docker源不存在
+
+比如提示：`kolla/centos-binary-kuryr-libnetwork:train not found`不存在，因为docker只有`centos-binary--kuryr-libnetwork`
+
+找到它的配置文件，如：`/usr/local/share/kolla-ansible/ansible/roles/kuryr/defaults/main.yml`
+
+里面`{{ kuryr_install_type }}`的改成`source`
+
+如下：
+```
+kuryr_image: "{{ docker_registry ~ '/' if docker_registry else '' }}{{ docker_namespace }}/{{ kolla_base_distro }}-source-kuryr-libnetwork"
+```
