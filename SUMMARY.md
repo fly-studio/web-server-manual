@@ -100,6 +100,7 @@
   * [VPN](chapter-tools/vpn.md)
 * [分布式服务器](cluster.md)
   * [网络结构](chapter-cluster/网络结构.md)
+    * [安装OpenVSwitch](chapter-cluster/网络结构/an-zhuang-openvswitch.md)
   * [负载均衡](chapter-cluster/负载均衡.md)
   * [文件同步](chapter-cluster/文件同步.md)
     * [上传文件同步](chapter-cluster/chapter-file/上传文件同步.md)
