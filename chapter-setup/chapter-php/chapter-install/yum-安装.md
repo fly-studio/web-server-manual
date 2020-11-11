@@ -1,7 +1,7 @@
 # Yum 安装
 
 ```
-$ yum --enablerepo=remi-php74,remi install php php-cgi pcre pcre-devel php-fpm gd php-gd libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel zlib zlib-devel  php-pecl-zip glibc glibc-devel glib2 glib2-devel bzip2 bzip2-devel curl curl-devel openssl openssl-devel openldap openldap-devel nss_ldap openldap-clients openldap-servers libmcrypt libmcrypt-devel mcrypt mhash php-mcrypt libidn libidn-devel php-mbstring libxml2 libxml2-devel php-xmlrpc php-xml php-bcmath php-gmp php-ssh2 php-pecl-swoole
+$ yum --enablerepo=remi-php74,remi install php pcre pcre-devel php-fpm gd php-gd libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel zlib zlib-devel  php-pecl-zip glibc glibc-devel glib2 glib2-devel bzip2 bzip2-devel curl curl-devel openssl openssl-devel openldap openldap-devel nss_ldap openldap-clients openldap-servers libmcrypt libmcrypt-devel mcrypt mhash php-pecl-mcrypt libidn libidn-devel php-mbstring libxml2 libxml2-devel php-xmlrpc php-xml php-bcmath php-gmp php-ssh2 php-pecl-swoole4
 
 ```
 - **php-cgi**：
@@ -28,7 +28,7 @@ cURL HTTP下载上传组件
 SSL组件
 - **openldap openldap-devel nss_ldap openldap-clients openldap-servers**：
 LDAP Windows域验证组件
-- **libmcrypt libmcrypt-devel mcrypt mhash php-mcrypt**：
+- **libmcrypt libmcrypt-devel mcrypt mhash php-pecl-mcrypt**：
 加解密、Hash组件
 - **libidn libidn-devel**：
 国际域名（IDN）实施字符串预处理库
@@ -42,7 +42,7 @@ GMP BCMath 高精度大数计算组件
 SSH客户端组件
 - **php-pthreads**：
 多线程组件
-- **php-pecl-swoole**：
+- **php-pecl-swoole4**：
 网络通讯组件
 
 ## 注意

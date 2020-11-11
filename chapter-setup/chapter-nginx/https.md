@@ -108,7 +108,6 @@ server {
     listen      443 default_server ssl; # 监听 SSL 端口
     server_name www.domain.com;
 	# 加入SSL配置
-    ssl on;
     ssl_certificate /www/cert/1_www.domain.com_cert.crt;
     ssl_certificate_key /www/cert/2_www.domain.com.key;
     ssl_session_timeout 5m;
@@ -256,6 +255,5 @@ yum安装的nignx使用的是```OpenSSL 1.0.1e-fips 11 Feb 2013```，而 OpenSSL
 server {
 	client_max_body_size  50M;
 	....
-	ssl on;
 }
 ```
