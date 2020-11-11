@@ -14,6 +14,7 @@
     * [GLIBC](chapter-started/服务器「必要组建」和「开放端口」/glibc.md)
     * [iptables常规操作](chapter-started/服务器「必要组建」和「开放端口」/iptableschang-gui-cao-zuo.md)
     * [firewall 端口控制](chapter-started/服务器「必要组建」和「开放端口」/firewall-duan-kou-kong-zhi.md)
+    * [升级内核](chapter-started/服务器「必要组建」和「开放端口」/sheng-ji-nei-he.md)
 * [安装](setup.md)
   * [nginX安装与配置](chapter-setup/nginx-安装与配置.md)
     * [安装](chapter-setup/chapter-nginx/安装.md)
