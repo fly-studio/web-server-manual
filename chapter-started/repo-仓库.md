@@ -66,6 +66,8 @@ $ sed -i -e 's/\#baseurl\=http:\/\/rpms.remirepo.net\//baseurl\=https:\/\/mirror
 
 ## RepoForge 仓库
 
+RepoForge源可以做为Centos官方源及EPEL源的补充
+
 ```
 $ vim /etc/yum.repos.d/rpmforge.repo
 ```
