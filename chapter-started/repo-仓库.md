@@ -61,8 +61,8 @@ $ rpm -Uvh remi-release-*.rpm
 $ sed -i -e 's/\#baseurl\=http:\/\/rpms.remirepo.net\//baseurl\=https:\/\/mirrors.aliyun.com\/remi\//g' /etc/yum.repos.d/remi-*.repo
 ```
 
-`remi` 软件库包含`PHP 5.4、7.0-7.4`，以及其对应的扩展  
-并且默认情况下`remi`库是未启用状态，需要使用`enablerepo=remi-php74`启用指定版本
+`remi` 软件库包含`PHP 5.4-5.6、7.0-7.4、8.0`，以及其对应的扩展  
+并且默认情况下`remi`库是未启用状态，需要使用类似`enablerepo=remi-php74`启用指定版本
 
 ## RepoForge 仓库
 
