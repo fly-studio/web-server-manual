@@ -56,4 +56,36 @@ $ awk -F\' '$1=="menuentry " {print i++ " : " $2}' /etc/grub2.cfg
 1: CentOs Linux (3.x) 7 (Core)
 ```
 
+#### 设定为最新内核
+
+0 为上面最新的内核序号
+
+```
+$ grub2-set-default 0
+```
+
+或者编辑 `/etc/default/grub`
+
+```
+GRUB_DEFAULT=0
+```
+
+#### 生成grub配置并重启
+
+```
+$ grub2-mkconfig -o /boot/grub2/grub.cfg
+```
+
+然后重启
+
+### 5. 清理旧内核
+
+只有在安装的内核大于 3 个时，以下指令才会自动删除旧内核
+
+```
+$ yum install yum-utils
+$ package-cleanup --oldkernels
+```
+
+
 
