@@ -1,3 +1,8 @@
 # Docker
 
-如何安装Docker不在本文范畴，因为在官网很容易查到。
+## 安装
+
+```
+yum install -y yum-utils
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+yum install docker-ce docker-ce-cli containerd.io
