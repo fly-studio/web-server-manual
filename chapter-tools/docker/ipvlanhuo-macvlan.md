@@ -1,15 +1,15 @@
-# 什么是macvlan/ipvlan
+#
+什么是macvlan/ipvlan
 
 这是一种可以让Docker的容器使用宿主机局域网的网络方法，同样的，可以用于跨docker的网络。
 
 场景使用如下：
 1. 使用docker搭建了一个软路由，局域网中的其它机器将网关IP设定为该容器
-    作为一个网关（旁路由）要接受所有数据，所以拥有单独的IP，并运行与容器中会非常的方便
+作为一个网关（旁路由）要接受所有数据，所以拥有单独的IP，并运行与容器中会非常的方便
 2. 分别在多台机器上部署了docker，但里面的容器需要通信。
-    使用macvlan/ipvlan会暴露所有端口，
-    较安全的做法是：将端口映射到宿主机，然后可以利用宿主的端口进行通信。
-    最安全的方法是：使用docker swarm，然后使用overlap网络，这样可以做到没端口暴露。只是这种方法需要docker-compoer支持，配置比较麻烦
-    
+使用macvlan/ipvlan会暴露所有端口，
+较安全的做法是：将端口映射到宿主机，然后可以利用宿主的端口进行通信。
+最安全的方法是：使用docker swarm，然后使用overlap网络，这样可以做到没端口暴露。只是这种方法需要docker-compoer支持，配置比较麻烦
 ## 工作模式
 
 链路详情可以查看: https://blog.csdn.net/dog250/article/details/45788279
@@ -22,11 +22,10 @@
 
 ![](/assets/1003074-20190818212109034-918981291[1].png)
 
-### ipvlan 工作模式图    
+### ipvlan 工作模式图
 
 ![](/assets/1003074-20190818212141511-935245092[1].png)
 
-    
 ## 创建xxvlan网络
 
 注意：下文的`--subnet=192.168.0.0/24`必须是你局域网的网段，同理网关`--gateway=192.168.0.1`也是真实的路由器网关，`parent=eth0`是你宿主机的真实物理网卡。
@@ -55,10 +54,10 @@ $ docker create network -d ipvlan --subnet=192.168.0.0/24 --gateway=192.168.0.1 
 $ docker pull registry.cn-shanghai.aliyuncs.com/suling/openwrt:latest
 
 # 启动镜像
-$  docker run -it --restart always  --network=ipvlan0 --ip=192.168.0.3 --privileged -d  --name openwrt registry.cn-shanghai.aliyuncs.com/suling/openwrt /sbin/init
+$ docker run -it --restart always --network=ipvlan0 --ip=192.168.0.100 --privileged -d --name openwrt registry.cn-shanghai.aliyuncs.com/suling/openwrt /sbin/init
 ```
 
-上面的`--ip=192.168.0.3`根据情况修改
+上面的`--ip=192.168.0.100`根据情况修改
 
 #### 进入容器修改ip
 
@@ -72,15 +71,15 @@ $ vim /etc/config/network
 
 ```
 config interface 'lan'
-        option type 'bridge'
-        option ifname 'eth0'
-        option proto 'static'
-        option ipaddr '192.168.0.3'
-        option netmask '255.255.255.0'
-        option ip6assign '60'
-        option gateway '192.168.0.1'
-        option broadcast '192.168.0.255'
-        option dns '223.5.5.5'
+option type 'bridge'
+option ifname 'eth0'
+option proto 'static'
+option ipaddr '192.168.0.100'
+option netmask '255.255.255.0'
+option ip6assign '60'
+option gateway '192.168.0.1'
+option broadcast '192.168.0.255'
+option dns '223.5.5.5'
 
 ```
 
@@ -91,7 +90,7 @@ $ /etc/init.d/network restart
 
 ```
 
-此时你可以在局域网中的其它机器使用浏览器打开这个容器`http://192.168.0.3` 账密: `root password`
+此时你可以在局域网中的其它机器使用浏览器打开这个容器`http://192.168.0.100` 账密: `root password`
 
 ## 宿主机和容器不能通信
 
@@ -107,30 +106,34 @@ $ /etc/init.d/network restart
 ```
 $ ip link add ipvlan1 link eth0 type ipvlan mode l2
 $ ip l s ipvlan1 up
-$ ip a a 192.168.0.4 dev ipvlan1
+$ ip a a 192.168.0.101 dev ipvlan1
 ```
 
 ### 2. 宿主机上指定路由
 
-比如 `192.168.0.3`是容器中的地址，如果有多个容器，就创建多条
+比如 `192.168.0.100`是容器中的地址，如果有多个容器，就创建多条
 
 ```
-$ ip route add 192.168.0.3 dev ipvlan1
+$ ip route add 192.168.0.100 dev ipvlan1
 ```
 
-此时你会发现，已经可以在宿主机上ping通容器
+此时你会发现，已经可以在宿主机上`ping`通容器
 
-### 3. 容器中指定路由
+这句话的意思是本机如果访问`192.168.0.100`就使用`ipvlan1`网卡出去
 
-假设宿主机是`192.168.0.2`
-
-进入容器（参照上文）
+其实此时在宿主机上如果指定物理网卡去`ping`容器，仍然是不通的，如下
 
 ```
-$ route add -host 192.168.0.2 gw 192.168.0.4
+# 容器
+ping 192.168.0.101 -I eth0
+
+# ipvlan1的ip
+ping 192.168.0.101 -I eth0
 ```
 
-此时，容器仍然不能ping宿主
 
+### 3. 容器连接宿主
 
+直接连接`ipvlan1`的ip: `192.168.0.101`即可
 
+如果需要连接宿主机中特殊IP监听的端口，比如`Listen 宿主ip` 或`Listen 127.0.0.1`，此时仍然无法从容器中连接，需要改为`Listen 宿主IP, 192.168.0.4`，或者简单改为`Listen 0.0.0.0`即可
