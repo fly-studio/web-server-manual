@@ -10,10 +10,22 @@
     较安全的做法是：将端口映射到宿主机，然后可以利用宿主的端口进行通信。
     最安全的方法是：使用docker swarm，然后使用overlap网络，这样可以做到没端口暴露。只是这种方法需要docker-compoer支持，配置比较麻烦
     
-## macvlan 工作模式图
+## 工作模式
+
+链路详情可以查看: https://blog.csdn.net/dog250/article/details/45788279
+
+### macvlan 工作模式图
+
+详情查看: https://blog.csdn.net/dog250/article/details/81074426
 
 ![](/assets/20180717081048987[1])
-    
+
+![](/assets/1003074-20190818212109034-918981291[1].png)
+
+### ipvlan 工作模式图    
+
+![](/assets/1003074-20190818212141511-935245092[1].png)
+
     
 ## 创建xxvlan网络
 
@@ -25,7 +37,7 @@
 $ docker create network -d macvlan --subnet=192.168.0.0/24 --gateway=192.168.0.1 -o parent=eth0 -o macvlan_mode=bridge macvlan0
 ```
 
-此处`-o macvlan_mode=bridge`表示使用bridge模式，这种模式
+此处`-o macvlan_mode=bridge`表示使用`bridge`模式，查看上文的模式图。一般情况`bridge`即可
 
 ### ipvlan
 ```
