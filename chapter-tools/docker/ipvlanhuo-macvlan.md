@@ -36,28 +36,28 @@
 
 ### macvlan
 ```
-$ docker create network -d macvlan --subnet=192.168.0.0/24 --gateway=192.168.0.1 -o parent=eth0 -o macvlan_mode=bridge macvlan0
+$ docker network create -d macvlan --subnet=192.168.0.0/24 --gateway=192.168.0.1 -o parent=eth0 -o macvlan_mode=bridge macvlan0
 ```
 
 此处`-o macvlan_mode=bridge`表示使用`bridge`模式，查看上文的模式图。一般情况`bridge`即可
 
 ### ipvlan
 ```
-$ docker create network -d ipvlan --subnet=192.168.0.0/24 --gateway=192.168.0.1 -o parent=eth0 -o ipvlan_mode=l2 ipvlan0
+$ docker network create -d ipvlan --subnet=192.168.0.0/24 --gateway=192.168.0.1 -o parent=eth0 -o ipvlan_mode=l2 ipvlan0
 ```
 
 此处`-o ipvlan_mode=l2`表示`ipvlan`运行在2层，这种情况足够使用，如果要使用`l3`，还需要配置路由，比较麻烦，不推荐
 
-### 创建一个基于ipvlan的容器
+### 创建一个基于macvlan的容器
 
-因为macvlan同理，此处不赘述
+软路由只能使用`macvlan`，因为`ipvlan`的`mac`地址相同，会导致流量从此容器的宿主机就出去了，而不会通过容器
 
 ```
 # 拉取镜像
 $ docker pull registry.cn-shanghai.aliyuncs.com/suling/openwrt:latest
 
 # 启动镜像
-$ docker run -it --restart always --network=ipvlan0 --ip=192.168.0.100 --privileged -d --name openwrt registry.cn-shanghai.aliyuncs.com/suling/openwrt /sbin/init
+$ docker run -it --restart always --network=macvlan0 --ip=192.168.0.100 --privileged -d --name openwrt registry.cn-shanghai.aliyuncs.com/suling/openwrt /sbin/init
 ```
 
 上面的`--ip=192.168.0.100`根据情况修改
@@ -97,7 +97,7 @@ $ /etc/init.d/network restart
 
 ## 宿主机和容器不能通信
 
-你会发现使用`ipvlan`之后，局域网的其它机器和这个容器都能互通，唯独宿主机和这个容器无法互通，因为这是`ipvlan/macvlan`的安全策略导致的，根据上面的工作模式图也可看出来
+你会发现使用`ipvlan/macvlan`之后，局域网的其它机器和这个容器都能互通，唯独宿主机和这个容器无法互通，因为这是`ipvlan/macvlan`的安全策略导致的，根据上面的工作模式图也可看出来
 
 此时，可以使用一个曲线的方式让他们互通
 
@@ -112,9 +112,18 @@ $ ip l s ipvlan1 up
 $ ip a a 192.168.0.101 dev ipvlan1
 ```
 
+如果是`macvlan`
+命令如下:
+
+```
+$ ip link add macvlan1 link eth0 type macvlan mode bridge
+$ ip l s macvlan1 up
+$ ip a a 192.168.0.101 dev macvlan1
+```
+
 ### 2. 宿主机上指定路由
 
-比如 `192.168.0.100`是容器中的地址，如果有多个容器，就创建多条
+比如 `192.168.0.100`是容器中的地址，如果有多个容器，就创建多条。`ipvlan1`按照上面的名称修改
 
 ```
 $ ip route add 192.168.0.100 dev ipvlan1
