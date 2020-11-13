@@ -1,4 +1,4 @@
-#什么是macvlan/ipvlan
+# 什么是macvlan/ipvlan
 
 这是一种可以让Docker的容器使用宿主机局域网的网络方法，同样的，可以用于多台docker中容器的通信。
 
@@ -107,45 +107,4 @@ $ /etc/init.d/network restart
 创建并启动ipvlan1
 
 ```
-$ ip link add ipvlan1 link eth0 type ipvlan mode l2
-$ ip l s ipvlan1 up
-$ ip a a 192.168.0.101 dev ipvlan1
-```
-
-如果是`macvlan`
-命令如下:
-
-```
-$ ip link add macvlan1 link eth0 type macvlan mode bridge
-$ ip l s macvlan1 up
-$ ip a a 192.168.0.101 dev macvlan1
-```
-
-### 2. 宿主机上指定路由
-
-比如 `192.168.0.100`是容器中的地址，如果有多个容器，就创建多条。`ipvlan1`按照上面的名称修改
-
-```
-$ ip route add 192.168.0.100 dev ipvlan1
-```
-
-此时你会发现，已经可以在宿主机上`ping`通容器
-
-这句话的意思是本机如果访问`192.168.0.100`就使用`ipvlan1`网卡出去
-
-其实此时在宿主机上如果指定物理网卡去`ping`容器，仍然是不通的，如下
-
-```
-# 容器
-ping 192.168.0.101 -I eth0
-
-# ipvlan1的ip
-ping 192.168.0.101 -I eth0
-```
-
-
-### 3. 容器连接宿主
-
-直接连接`ipvlan1`的ip: `192.168.0.101`即可
-
-如果需要连接宿主机中特殊IP监听的端口，比如`Listen 宿主ip` 或`Listen 127.0.0.1`，此时仍然无法从容器中连接，需要改为`Listen 宿主IP, 192.168.0.4`，或者简单改为`Listen 0.0.0.0`即可
+$ ip 
