@@ -4,7 +4,7 @@
 
 ```
 $ groupadd -r prometheus
-$ useradd -r -M -s /sbin/nologin -d /tmp prometheus
+$ useradd -g prometheus -s /sbin/nologin -d /dev/null prometheus
 ```
 
 ## 创建数据/配置目录
@@ -48,7 +48,7 @@ ExecStart=/usr/bin/prometheus \
   --web.console.libraries=/etc/prometheus/console_libraries \
   --web.console.templates=/etc/prometheus/consoles \
   --web.listen-address=0.0.0.0:9090 \
-  --web.external-url=/prometheus
+  --web.external-url=/
 PrivateTmp=true
 PrivateDevices=true
 ProtectHome=true
