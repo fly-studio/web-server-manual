@@ -141,6 +141,8 @@
       * [Kolla安装方式\(推荐\)](chapter-cluster/kollaan-zhuang-fang-5f0f28-tui-835029.md)
         * [单网卡安装的问题](chapter-cluster/kollaan-zhuang-fang-5f0f28-tui-835029/dan-wang-qia-an-zhuang-de-wen-ti.md)
         * [构造本地docker库](chapter-cluster/kollaan-zhuang-fang-5f0f28-tui-835029/tong-guo-ben-di-docker-ku-an-zhuang.md)
+  * Prometheus
+    * [安装](chapter-cluster/an-zhuang.md)
 * [搜索引擎](search.md)
   * [Elasticsearch](chapter-search/elasticsearch.md)
     * [安装](chapter-search/elasticsearch/an-zhuang.md)
