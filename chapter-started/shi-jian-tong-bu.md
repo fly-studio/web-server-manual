@@ -23,12 +23,13 @@ $ sed -i 's/^#allow 192.168.0.0\/16/allow 10.0.7.0\/24/g' /etc/chrony.conf
 
 Ubuntu/Debian
 
-```
-vim /etc/chrony/chrony.conf
+$ vim /etc/chrony/chrony.conf
 ```
 
+选择下面任意一条，注意：配置文件中只能有1条pool
 ```
 pool 2.debian.pool.ntp.org iburst
+pool 0.pool.ntp.org iburst
 pool ntp.aliyun.com iburst
 ```
 
@@ -45,6 +46,19 @@ $ systemctl restart chrony
 ```
 
 ## 查看同步状态
+
+```
+$ chronyc activity
+```
+
+```
+200 OK
+0 sources online
+0 sources offline
+1 sources doing burst (return to online)
+0 sources doing burst (return to offline)
+0 sources with unknown address
+```
 
 ```
 $ chronyc sourcestats -v
@@ -66,4 +80,8 @@ $ chronyc sourcestats -v
 Name/IP Address            NP  NR  Span  Frequency  Freq Skew  Offset  Std Dev
 ==============================================================================
 203.107.6.88               17   9   847     -0.076      7.905  -3424ns  2119us
+```
+
+```
+
 ```
