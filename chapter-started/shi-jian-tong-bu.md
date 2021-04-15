@@ -3,11 +3,16 @@
 ## 安装
 
 ```
+# CentOS
 $ yum install -y chrony
+
+# Ubuntu/Debian
+$ apt install chrony
 ```
 
 ## 修改为阿里云时间服务器
 
+CentOS
 ```
 $ sed -i 's/server 0.centos.pool.ntp.org iburst/server ntp.aliyun.com iburst/g' /etc/chrony.conf
 $ sed -i '/^server 1.centos.pool.ntp.org iburst/d' /etc/chrony.conf
@@ -16,11 +21,27 @@ $ sed -i '/^server 3.centos.pool.ntp.org iburst/d' /etc/chrony.conf
 $ sed -i 's/^#allow 192.168.0.0\/16/allow 10.0.7.0\/24/g' /etc/chrony.conf
 ```
 
+Ubuntu/Debian
+
+```
+vim /etc/chrony/chrony.conf
+```
+
+```
+pool 2.debian.pool.ntp.org iburst
+pool ntp.aliyun.com iburst
+```
+
 ## 启动
 
 ```
+# CentOS
 $ systemctl enable chronyd.service
 $ systemctl restart chronyd.service
+
+# Ubuntu/Debian
+$ systemctl enable chrony
+$ systemctl restart chrony
 ```
 
 ## 查看同步状态
