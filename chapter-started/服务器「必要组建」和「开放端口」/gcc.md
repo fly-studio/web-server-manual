@@ -70,10 +70,12 @@ $ yum install devtoolset-9-binutils devtoolset-9-gcc devtoolset-9-gcc-c++
 $ mv /usr/bin/gcc /usr/bin/gcc-old
 $ mv /usr/bin/g++ /usr/bin/g++-old
 $ mv /usr/bin/cc /usr/bin/cc-old
+$ mv /usr/bin/c++ /usr/bin/c++-old
 
 # 将新版的gcc链接到系统目录，
 # 注意，下面的 9 请替换成上面安装的对应版本
 $ ln -fs /opt/rh/devtoolset-9/root/usr/bin/gcc /usr/bin/gcc
 $ ln -fs /opt/rh/devtoolset-9/root/usr/bin/gcc /usr/bin/cc
 $ ln -fs /opt/rh/devtoolset-9/root/usr/bin/g++ /usr/bin/g++
+$ ln -fs /opt/rh/devtoolset-9/root/usr/bin/g++ /usr/bin/c++
 ```
