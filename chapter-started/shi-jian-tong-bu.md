@@ -82,6 +82,3 @@ Name/IP Address            NP  NR  Span  Frequency  Freq Skew  Offset  Std Dev
 203.107.6.88               17   9   847     -0.076      7.905  -3424ns  2119us
 ```
 
-```
-
-```
