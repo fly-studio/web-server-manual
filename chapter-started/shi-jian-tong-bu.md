@@ -22,7 +22,7 @@ $ sed -i 's/^#allow 192.168.0.0\/16/allow 10.0.7.0\/24/g' /etc/chrony.conf
 ```
 
 Ubuntu/Debian
-
+```
 $ vim /etc/chrony/chrony.conf
 ```
 
