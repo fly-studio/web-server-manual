@@ -74,6 +74,7 @@
     * [客户端](chapter-setup/chapter-mysql/客户端.md)
     * [用户和密码](chapter-setup/chapter-mysql/yong-hu-he-mi-ma.md)
     * [常见问题](chapter-setup/chapter-mysql/常见问题.md)
+    * [Ubuntu 上的错误](chapter-setup/chapter-mysql/ubuntu-shang-de-cuo-wu.md)
   * [PostgreSQL](chapter-setup/postgresql.md)
     * [安装](chapter-setup/chapter-postgresql/安装.md)
       * [YUM 安装](chapter-setup/chapter-postgresql/chapter-install/yum-安装.md)
