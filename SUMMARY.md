@@ -61,6 +61,8 @@
     * [安装 MySQL](chapter-setup/chapter-mysql/安装.md)
       * [YUM 安装](chapter-setup/chapter-mysql/chapter-install/yum-安装.md)
       * [编译安装](chapter-setup/chapter-mysql/chapter-install/编译安装.md)
+    * MySQL 8
+      * [密码](chapter-setup/chapter-mysql/mi-ma.md)
     * [安装 MariaDB](chapter-setup/chapter-mariadb/安装.md)
       * [YUM 安装](chapter-setup/chapter-mariadb/chapter-install/yum-安装.md)
       * [编译安装](chapter-setup/chapter-mariadb/chapter-install/编译安装.md)
