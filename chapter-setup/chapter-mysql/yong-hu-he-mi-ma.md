@@ -72,6 +72,12 @@ CREATE USER '用户名'@'%' IDENTIFIED BY '密码';
 GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLES, CREATE VIEW, SHOW VIEW ON *.* TO '用户名'@'%';
 ```
 
+授予全部权限, 包含`grant option`
+
+```
+grant all privileges on *.* to 'root'@'%' with grant option;
+```
+
 ## ## 刷新权限表
 
 修改任意用户权限之后，需要刷新权限表
